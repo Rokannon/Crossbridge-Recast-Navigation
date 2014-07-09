@@ -41,12 +41,14 @@
     <NMakeOutput>as3_internal_api.exe</NMakeOutput>
     <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <NMakeBuildCommandLine>crossbridge_launcher.bat "$(CROSSBRIDGE_PATH)"</NMakeBuildCommandLine>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(CROSSBRIDGE_PATH)\sdk\usr\include\</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(CROSSBRIDGE_PATH)\sdk\usr\include\;$(ProjectDir)\..\recastnavigation\Recast\Include</IncludePath>
+    <SourcePath>$(VC_SourcePath);$(CROSSBRIDGE_PATH)\sdk\usr\include\;</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <NMakeOutput>as3_internal_api.exe</NMakeOutput>
     <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(CROSSBRIDGE_PATH)\sdk\usr\include\</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(CROSSBRIDGE_PATH)\sdk\usr\include\;$(ProjectDir)\..\recastnavigation\Recast\Include</IncludePath>
+    <SourcePath>$(VC_SourcePath);$(CROSSBRIDGE_PATH)\sdk\usr\include\;</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
@@ -54,6 +56,7 @@
     <Text Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="as3_api.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
