@@ -1,4 +1,4 @@
-﻿Build started 12.07.2014 13:06:39.
+﻿Build started 12.07.2014 15:15:58.
      1>Project "C:\Users\Vladimir\Documents\Crossbridge-Recast-Navigation\as3_internal_api\as3_internal_api.vcxproj" on node 2 (Build target(s)).
      1>Build:
          crossbridge_launcher.bat "c:\Crossbridge_1.0.1\"
@@ -20,4 +20,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:38.92
+Time Elapsed 00:00:38.76

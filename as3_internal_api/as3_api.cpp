@@ -520,3 +520,72 @@ void _rcCopyPolyMesh()
 
 	AS3_Return(rcCopyPolyMesh(ctx, *src, *dst));
 }
+
+void _rcAllocPolyMeshDetail() __attribute__((used,
+	annotate("as3sig:public function rcAllocPolyMeshDetail():int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcAllocPolyMeshDetail()
+{
+	AS3_Return(rcAllocPolyMeshDetail());
+}
+
+void _rcFreePolyMeshDetail() __attribute__((used,
+	annotate("as3sig:public function rcFreePolyMeshDetail(ptr:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcFreePolyMeshDetail()
+{
+	rcPolyMeshDetail * _ptr;
+	AS3_GetScalarFromVar(_ptr, ptr);
+
+	rcFreePolyMeshDetail(_ptr);
+}
+
+void _rcBuildPolyMeshDetail() __attribute__((used,
+	annotate("as3sig:public function rcBuildPolyMeshDetail(ctx_ptr:int, mesh_ptr:int, chf_ptr:int, sampleDist:Number, sampleMaxError:Number, dmesh_ptr:int):Boolean"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcBuildPolyMeshDetail()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	rcPolyMesh * mesh;
+	AS3_GetScalarFromVar(mesh, mesh_ptr);
+
+	rcCompactHeightfield * chf;
+	AS3_GetScalarFromVar(chf, chf_ptr);
+
+	int _sampleDist;
+	AS3_GetScalarFromVar(_sampleDist, sampleDist);
+
+	int _sampleMaxError;
+	AS3_GetScalarFromVar(_sampleMaxError, sampleMaxError);
+
+	rcPolyMeshDetail * dmesh;
+	AS3_GetScalarFromVar(dmesh, dmesh_ptr);
+
+	AS3_Return(rcBuildPolyMeshDetail(ctx, *mesh, *chf, _sampleDist, _sampleMaxError, *dmesh));
+}
+
+void _rcMergePolyMeshDetails() __attribute__((used,
+	annotate("as3sig:public function rcMergePolyMeshDetails(ctx_ptr:int, dmeshes_ptr:int, nmeshes:int, dmesh_ptr:int):Boolean"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcMergePolyMeshDetails()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	rcPolyMeshDetail * * dmeshes;
+	AS3_GetScalarFromVar(dmeshes, dmeshes_ptr);
+
+	int _nmeshes;
+	AS3_GetScalarFromVar(_nmeshes, nmeshes);
+
+	rcPolyMeshDetail * dmesh;
+	AS3_GetScalarFromVar(dmesh, dmesh_ptr);
+
+	AS3_Return(rcMergePolyMeshDetails(ctx, dmeshes, _nmeshes, *dmesh));
+}
