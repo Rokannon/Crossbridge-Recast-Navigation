@@ -12,11 +12,10 @@ package recastnavigation.recast {
 	 * Sets the area id of all triangles with a slope below the specified value to #RC_WALKABLE_AREA.
 	 */
 	public function rcMarkWalkableTriangles(ctx:RCContext, walkableSlopeAngle:Number, verts:Vector.<Number>, 
-											tris:Vector.<int>, nt:int, resultAreas:Vector.<int> = null):void {
+											tris:Vector.<int>, nt:int, resultAreas:Vector.<int>):void {
 		
 		var i:int;
 		
-		if (resultAreas == null) resultAreas = new Vector.<int>();
 		resultAreas.fixed = false;
 		resultAreas.length = nt;
 		resultAreas.fixed = true;

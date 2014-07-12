@@ -5,7 +5,7 @@ package recastnavigation.core.utils {
 	public function mallocIntVector(vector:Vector.<int>):int {
 		
 		var ptr:int = CModule.malloc(4 * vector.length);
-		for (var i:int = vector.length; i >= 0; --i) {
+		for (var i:int = vector.length - 1; i >= 0; --i) {
 			CModule.write32(ptr + 4 * i, vector[i]);
 		}
 		return ptr;
