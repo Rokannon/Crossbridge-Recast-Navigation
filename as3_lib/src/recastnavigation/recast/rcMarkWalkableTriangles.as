@@ -1,14 +1,17 @@
 package recastnavigation.recast {
 	
+	import recastnavigation.core.rn_internal;
 	import recastnavigation.core.utils.mallocIntVector;
 	import recastnavigation.core.utils.mallocNumberVector;
 	import recastnavigation.internal_api.CModule;
 	import recastnavigation.internal_api.rcMarkWalkableTriangles;
 	
+	use namespace rn_internal;
+	
 	/**
 	 * Sets the area id of all triangles with a slope below the specified value to #RC_WALKABLE_AREA.
 	 */
-	public function rcMarkWalkableTriangles(walkableSlopeAngle:Number, verts:Vector.<Number>, 
+	public function rcMarkWalkableTriangles(ctx:RCContext, walkableSlopeAngle:Number, verts:Vector.<Number>, 
 											tris:Vector.<int>, nt:int, resultAreas:Vector.<int> = null):void {
 		
 		var i:int;
@@ -26,7 +29,7 @@ package recastnavigation.recast {
 			CModule.write8(areas_ptr + i, 0);
 		}
 		
-		recastnavigation.internal_api.rcMarkWalkableTriangles(0, walkableSlopeAngle, verts_ptr, tris_ptr, nt, areas_ptr);
+		recastnavigation.internal_api.rcMarkWalkableTriangles(ctx.ptr, walkableSlopeAngle, verts_ptr, tris_ptr, nt, areas_ptr);
 		
 		CModule.free(verts_ptr);
 		CModule.free(tris_ptr);

@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <AS3\AS3.h>
+#include <AS3\AS3++.h>
 #include <Recast.h>
 #include <RecastAlloc.h>
 #include <RecastAssert.h>
@@ -134,7 +135,7 @@ void _rcMarkWalkableTriangles() __attribute__((used,
 
 void _rcMarkWalkableTriangles()
 {
-	rcContext* ctx;
+	rcContext * ctx;
 	AS3_GetScalarFromVar(ctx, ctx_ptr);
 
 	float _walkableSlopeAngle;
@@ -161,7 +162,7 @@ void _rcRasterizeTriangles() __attribute__((used,
 
 void _rcRasterizeTriangles()
 {
-	rcContext* ctx;
+	rcContext * ctx;
 	AS3_GetScalarFromVar(ctx, ctx_ptr);
 
 	float * verts;
@@ -183,4 +184,124 @@ void _rcRasterizeTriangles()
 	AS3_GetScalarFromVar(_flagMergeThr, flagMergeThr);
 
 	rcRasterizeTriangles(ctx, verts, 0, tris, areas, _nt, *solid, _flagMergeThr);
+}
+
+void _rcFilterLowHangingWalkableObstacles() __attribute__((used,
+	annotate("as3sig:public function rcFilterLowHangingWalkableObstacles(ctx_ptr:int, walkableClimb:int, solid_ptr:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcFilterLowHangingWalkableObstacles()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	int _walkableClimb;
+	AS3_GetScalarFromVar(_walkableClimb, walkableClimb);
+
+	rcHeightfield * solid;
+	AS3_GetScalarFromVar(solid, solid_ptr);
+
+	rcFilterLowHangingWalkableObstacles(ctx, _walkableClimb, *solid);
+}
+
+void _rcFilterLedgeSpans() __attribute__((used,
+	annotate("as3sig:public function rcFilterLedgeSpans(ctx_ptr:int, walkableHeight:int, walkableClimb:int, solid_ptr:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcFilterLedgeSpans()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	int _walkableHeight;
+	AS3_GetScalarFromVar(_walkableHeight, walkableHeight);
+
+	int _walkableClimb;
+	AS3_GetScalarFromVar(_walkableClimb, walkableClimb);
+
+	rcHeightfield * solid;
+	AS3_GetScalarFromVar(solid, solid_ptr);
+
+	rcFilterLedgeSpans(ctx, _walkableHeight, _walkableClimb, *solid);
+}
+
+void _rcFilterWalkableLowHeightSpans() __attribute__((used,
+	annotate("as3sig:public function rcFilterWalkableLowHeightSpans(ctx_ptr:int, walkableHeight:int, solid_ptr:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcFilterWalkableLowHeightSpans()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	int _walkableHeight;
+	AS3_GetScalarFromVar(_walkableHeight, walkableHeight);
+
+	rcHeightfield * solid;
+	AS3_GetScalarFromVar(solid, solid_ptr);
+
+	rcFilterWalkableLowHeightSpans(ctx, _walkableHeight, *solid);
+}
+
+void _rcAllocCompactHeightfield() __attribute__((used,
+	annotate("as3sig:public function rcAllocCompactHeightfield():int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcAllocCompactHeightfield()
+{
+	AS3_Return(rcAllocCompactHeightfield());
+}
+
+void _rcFreeCompactHeightfield() __attribute__((used,
+	annotate("as3sig:public function rcFreeCompactHeightfield(chf_ptr:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcFreeCompactHeightfield()
+{
+	rcCompactHeightfield * chf;
+	AS3_GetScalarFromVar(chf, chf_ptr);
+
+	rcFreeCompactHeightfield(chf);
+}
+
+void _rcBuildCompactHeightfield() __attribute__((used,
+	annotate("as3sig:public function rcBuildCompactHeightfield(ctx_ptr:int, walkableHeight:int, walkableClimb:int, hf_ptr:int, chf_ptr:int):Boolean"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcBuildCompactHeightfield()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	int _walkableHeight;
+	AS3_GetScalarFromVar(_walkableHeight, walkableHeight);
+
+	int _walkableClimb;
+	AS3_GetScalarFromVar(_walkableClimb, walkableClimb);
+
+	rcHeightfield * hf;
+	AS3_GetScalarFromVar(hf, hf_ptr);
+
+	rcCompactHeightfield * chf;
+	AS3_GetScalarFromVar(chf, chf_ptr);
+
+	AS3_Return(rcBuildCompactHeightfield(ctx, _walkableHeight, _walkableClimb, *hf, *chf));
+}
+
+void _rcErodeWalkableArea() __attribute__((used,
+	annotate("as3sig:public function rcErodeWalkableArea(ctx_ptr:int, radius:int, chf_ptr:int):Boolean"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcErodeWalkableArea()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	int _radius;
+	AS3_GetScalarFromVar(_radius, radius);
+
+	rcCompactHeightfield * chf;
+	AS3_GetScalarFromVar(chf, chf_ptr);
+
+	AS3_Return(rcErodeWalkableArea(ctx, _radius, *chf));
 }

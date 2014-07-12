@@ -24,5 +24,8 @@
     <ClCompile Include="as3_api.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="rc_context_adapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

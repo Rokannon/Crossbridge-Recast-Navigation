@@ -10,14 +10,14 @@ package recastnavigation.recast {
 	/**
 	 * Rasterizes an indexed triangle mesh into the specified heightfield.
 	 */
-	public function rcRasterizeTriangles(verts:Vector.<Number>, tris:Vector.<int>, areas:Vector.<int>, 
+	public function rcRasterizeTriangles(ctx:RCContext, verts:Vector.<Number>, tris:Vector.<int>, areas:Vector.<int>, 
 										 nt:int, solid:RCHeightfield, flagMergeThr:int):void {
 		
 		var verts_ptr:int = mallocNumberVector(verts);
 		var tris_ptr:int = mallocIntVector(tris);
 		var areas_ptr:int = mallocIntVector(areas);
 		
-		recastnavigation.internal_api.rcRasterizeTriangles(0, verts_ptr, tris_ptr, areas_ptr, nt, solid.ptr, flagMergeThr); 
+		recastnavigation.internal_api.rcRasterizeTriangles(ctx.ptr, verts_ptr, tris_ptr, areas_ptr, nt, solid.ptr, flagMergeThr); 
 		
 	}
 	
