@@ -305,3 +305,87 @@ void _rcErodeWalkableArea()
 
 	AS3_Return(rcErodeWalkableArea(ctx, _radius, *chf));
 }
+
+void _rcBuildDistanceField() __attribute__((used,
+	annotate("as3sig:public function rcBuildDistanceField(ctx_ptr:int, chf_ptr:int):Boolean"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcBuildDistanceField()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	rcCompactHeightfield * chf;
+	AS3_GetScalarFromVar(chf, chf_ptr);
+
+	AS3_Return(rcBuildDistanceField(ctx, *chf));
+}
+
+void _rcBuildRegions() __attribute__((used,
+	annotate("as3sig:public function rcBuildRegions(ctx_ptr:int, chf_ptr:int, borderSize:int, minRegionArea:int, mergeRegionArea:int):Boolean"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcBuildRegions()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	rcCompactHeightfield * chf;
+	AS3_GetScalarFromVar(chf, chf_ptr);
+
+	int _borderSize;
+	AS3_GetScalarFromVar(_borderSize, borderSize);
+
+	int _minRegionArea;
+	AS3_GetScalarFromVar(_minRegionArea, minRegionArea);
+
+	int _mergeRegionArea;
+	AS3_GetScalarFromVar(_mergeRegionArea, mergeRegionArea);
+
+	AS3_Return(rcBuildRegions(ctx, *chf, _borderSize, _minRegionArea, _mergeRegionArea));
+}
+
+void _rcBuildRegionsMonotone() __attribute__((used,
+	annotate("as3sig:public function rcBuildRegionsMonotone(ctx_ptr:int, chf_ptr:int, borderSize:int, minRegionArea:int, mergeRegionArea:int):Boolean"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcBuildRegionsMonotone()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	rcCompactHeightfield * chf;
+	AS3_GetScalarFromVar(chf, chf_ptr);
+
+	int _borderSize;
+	AS3_GetScalarFromVar(_borderSize, borderSize);
+
+	int _minRegionArea;
+	AS3_GetScalarFromVar(_minRegionArea, minRegionArea);
+
+	int _mergeRegionArea;
+	AS3_GetScalarFromVar(_mergeRegionArea, mergeRegionArea);
+
+	AS3_Return(rcBuildRegionsMonotone(ctx, *chf, _borderSize, _minRegionArea, _mergeRegionArea));
+}
+
+void _rcBuildLayerRegions() __attribute__((used,
+	annotate("as3sig:public function rcBuildLayerRegions(ctx_ptr:int, chf_ptr:int, borderSize:int, minRegionArea:int):Boolean"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcBuildLayerRegions()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	rcCompactHeightfield * chf;
+	AS3_GetScalarFromVar(chf, chf_ptr);
+
+	int _borderSize;
+	AS3_GetScalarFromVar(_borderSize, borderSize);
+
+	int _minRegionArea;
+	AS3_GetScalarFromVar(_minRegionArea, minRegionArea);
+
+	AS3_Return(rcBuildLayerRegions(ctx, *chf, _borderSize, _minRegionArea));
+}
