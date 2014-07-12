@@ -389,3 +389,40 @@ void _rcBuildLayerRegions()
 
 	AS3_Return(rcBuildLayerRegions(ctx, *chf, _borderSize, _minRegionArea));
 }
+
+void _rcAllocContourSet() __attribute__((used,
+	annotate("as3sig:public function rcAllocContourSet():int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcAllocContourSet()
+{
+	AS3_Return(rcAllocContourSet());
+}
+
+void _rcBuildContours() __attribute__((used,
+	annotate("as3sig:public function rcBuildContours(ctx_ptr:int, chf_ptr:int, maxError:Number, maxEdgeLen:int, cset_ptr:int, buildFlags:int):Boolean"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcBuildContours()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	rcCompactHeightfield * chf;
+	AS3_GetScalarFromVar(chf, chf_ptr);
+
+	float _maxError;
+	AS3_GetScalarFromVar(_maxError, maxError);
+
+	int _maxEdgeLen;
+	AS3_GetScalarFromVar(_maxEdgeLen, maxEdgeLen);
+
+	rcContourSet * cset;
+	AS3_GetScalarFromVar(cset, cset_ptr);
+
+	int _buildFlags;
+	AS3_GetScalarFromVar(_buildFlags, buildFlags);
+
+	rcBuildContours(ctx, *chf, _maxError, _maxEdgeLen, *cset, _buildFlags);
+}
+}
