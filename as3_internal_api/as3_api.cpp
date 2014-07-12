@@ -19,6 +19,7 @@ void _rcFree()
 {
 	void * _ptr;
 	AS3_GetScalarFromVar(_ptr, ptr);
+
 	rcFree(_ptr);
 }
 
@@ -93,6 +94,7 @@ void _rcFreeHeightField()
 {
 	rcHeightfield * _ptr;
 	AS3_GetScalarFromVar(_ptr, ptr);
+
 	rcFreeHeightField(_ptr);
 }
 
@@ -399,6 +401,18 @@ void _rcAllocContourSet()
 	AS3_Return(rcAllocContourSet());
 }
 
+void _rcFreeContourSet() __attribute__((used,
+	annotate("as3sig:public function rcFreeContourSet(ptr:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcFreeContourSet()
+{
+	rcContourSet * _ptr;
+	AS3_GetScalarFromVar(_ptr, ptr);
+
+	rcFreeContourSet(_ptr);
+}
+
 void _rcBuildContours() __attribute__((used,
 	annotate("as3sig:public function rcBuildContours(ctx_ptr:int, chf_ptr:int, maxError:Number, maxEdgeLen:int, cset_ptr:int, buildFlags:int):Boolean"),
 	annotate("as3package:recastnavigation.internal_api")));
@@ -425,4 +439,84 @@ void _rcBuildContours()
 
 	rcBuildContours(ctx, *chf, _maxError, _maxEdgeLen, *cset, _buildFlags);
 }
+
+void _rcAllocPolyMesh() __attribute__((used,
+	annotate("as3sig:public function rcAllocPolyMesh():int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcAllocPolyMesh()
+{
+	AS3_Return(rcAllocPolyMesh());
+}
+
+void _rcFreePolyMesh() __attribute__((used,
+	annotate("as3sig:public function rcFreePolyMesh(ptr:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcFreePolyMesh()
+{
+	rcPolyMesh * _ptr;
+	AS3_GetScalarFromVar(_ptr, ptr);
+
+	rcFreePolyMesh(_ptr);
+}
+
+void _rcBuildPolyMesh() __attribute__((used,
+	annotate("as3sig:public function rcBuildPolyMesh(ctx_ptr:int, cset_ptr:int, nvp:int, mesh_ptr:int):Boolean"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcBuildPolyMesh()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	rcContourSet * cset;
+	AS3_GetScalarFromVar(cset, cset_ptr);
+
+	int _nvp;
+	AS3_GetScalarFromVar(_nvp, nvp);
+
+	rcPolyMesh * mesh;
+	AS3_GetScalarFromVar(mesh, mesh_ptr);
+
+	AS3_Return(rcBuildPolyMesh(ctx, *cset, _nvp, *mesh));
+}
+
+void _rcMergePolyMeshes() __attribute__((used,
+	annotate("as3sig:public function rcMergePolyMeshes(ctx_ptr:int, meshes_ptr:int, nmeshes:int, mesh_ptr:int):Boolean"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcMergePolyMeshes()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	rcPolyMesh * * meshes;
+	AS3_GetScalarFromVar(meshes, meshes_ptr);
+
+	int _nmeshes;
+	AS3_GetScalarFromVar(_nmeshes, nmeshes);
+
+	rcPolyMesh * mesh;
+	AS3_GetScalarFromVar(mesh, mesh_ptr);
+
+	AS3_Return(rcMergePolyMeshes(ctx, meshes, _nmeshes, *mesh));
+}
+
+void _rcCopyPolyMesh() __attribute__((used,
+	annotate("as3sig:public function rcCopyPolyMesh(ctx_ptr:int, src_ptr:int, dst_ptr:int):Boolean"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _rcCopyPolyMesh()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	rcPolyMesh * src;
+	AS3_GetScalarFromVar(src, src_ptr);
+
+	rcPolyMesh * dst;
+	AS3_GetScalarFromVar(dst, dst_ptr);
+
+	AS3_Return(rcCopyPolyMesh(ctx, *src, *dst));
 }

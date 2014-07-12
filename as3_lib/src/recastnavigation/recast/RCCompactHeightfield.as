@@ -26,6 +26,7 @@ package recastnavigation.recast {
 		public override function free():void {
 			
 			recastnavigation.internal_api.rcFreeCompactHeightfield(ptr);
+			ptr = 0;
 			
 		}
 		

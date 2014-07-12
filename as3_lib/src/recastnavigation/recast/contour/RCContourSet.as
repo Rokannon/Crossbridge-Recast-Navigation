@@ -101,7 +101,7 @@ package recastnavigation.recast.contour {
 		
 		public override function free():void {
 			
-			recastnavigation.internal_api.rcFree(ptr);
+			recastnavigation.internal_api.rcFreeContourSet(ptr);
 			ptr = 0;
 			
 		}
