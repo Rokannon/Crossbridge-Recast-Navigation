@@ -21,10 +21,10 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="as3_api.cpp">
+    <ClCompile Include="rc_context_adapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="rc_context_adapter.cpp">
+    <ClCompile Include="recast.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

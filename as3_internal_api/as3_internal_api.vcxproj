@@ -56,9 +56,9 @@
     <Text Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="as3_api.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="rc_context_adapter.cpp" />
+    <ClCompile Include="recast.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
