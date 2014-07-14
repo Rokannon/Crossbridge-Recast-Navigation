@@ -41,7 +41,7 @@
     <NMakeOutput>as3_internal_api.exe</NMakeOutput>
     <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <NMakeBuildCommandLine>crossbridge_launcher.bat "$(CROSSBRIDGE_PATH)"</NMakeBuildCommandLine>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(CROSSBRIDGE_PATH)\sdk\usr\include\;$(ProjectDir)\..\recastnavigation\Recast\Include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(CROSSBRIDGE_PATH)\sdk\usr\include\;$(ProjectDir)\..\recastnavigation\Recast\Include;$(ProjectDir)\..\recastnavigation\Detour\Include</IncludePath>
     <SourcePath>$(VC_SourcePath);$(CROSSBRIDGE_PATH)\sdk\usr\include\;</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -49,6 +49,7 @@
     <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(CROSSBRIDGE_PATH)\sdk\usr\include\;$(ProjectDir)\..\recastnavigation\Recast\Include</IncludePath>
     <SourcePath>$(VC_SourcePath);$(CROSSBRIDGE_PATH)\sdk\usr\include\;</SourcePath>
+    <NMakeBuildCommandLine>crossbridge_launcher.bat "$(CROSSBRIDGE_PATH)"</NMakeBuildCommandLine>
   </PropertyGroup>
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
@@ -56,6 +57,7 @@
     <Text Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="detour.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="rc_context_adapter.cpp" />
     <ClCompile Include="recast.cpp" />
