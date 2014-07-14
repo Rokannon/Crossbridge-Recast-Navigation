@@ -14,7 +14,7 @@ package recastnavigation.recast.enum {
 		 * This is also the maximum allowed area id, and the only 
 		 * non-null area id recognized by some steps in the build process.
 		 */
-		public static const RC_WALKABLE_AREA:int = 0;
+		public static const RC_WALKABLE_AREA:int = 63;
 		
 	}
 	
