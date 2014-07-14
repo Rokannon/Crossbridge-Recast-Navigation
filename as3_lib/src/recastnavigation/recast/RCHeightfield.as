@@ -68,12 +68,6 @@ package recastnavigation.recast {
 		public function get ch():Number { return CModule.readFloat(ptr + OFFSET_CH); }
 		public function set ch(value:Number):void { CModule.writeFloat(ptr + OFFSET_CH, value); }
 		
-		public function RCHeightfield() {
-			
-			super();
-			
-		}
-		
 		public override function alloc():void {
 			
 			ptr = internal_rcAllocHeightfield();

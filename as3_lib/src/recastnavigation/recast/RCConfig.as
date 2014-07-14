@@ -135,12 +135,6 @@ package recastnavigation.recast {
 		public function get detailSampleMaxError():Number { return CModule.readFloat(ptr + OFFSET_DETAIL_SAMPLE_MAX_ERROR); }
 		public function set detailSampleMaxError(value:Number):void { CModule.writeFloat(ptr + OFFSET_DETAIL_SAMPLE_MAX_ERROR, value); }
 		
-		public function RCConfig() {
-			
-			super();
-			
-		}
-		
 		public override function alloc():void {
 			
 			ptr = internal_rcAlloc_rcConfig();

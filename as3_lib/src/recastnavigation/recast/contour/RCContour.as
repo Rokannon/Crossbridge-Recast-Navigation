@@ -49,12 +49,6 @@ package recastnavigation.recast.contour {
 		public function get area():int { return CModule.read8(ptr + OFFSET_AREA); }
 		public function set area(value:int):void { CModule.write8(ptr + OFFSET_AREA, value); }
 		
-		public function RCContour() {
-			
-			super();
-			
-		}
-		
 	}
 	
 }

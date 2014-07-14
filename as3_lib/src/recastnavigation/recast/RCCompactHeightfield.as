@@ -11,12 +11,6 @@ package recastnavigation.recast {
 	
 	public class RCCompactHeightfield extends RNBase {
 		
-		public function RCCompactHeightfield() {
-			
-			super();
-			
-		}
-		
 		public override function alloc():void {
 			
 			ptr = internal_rcAllocCompactHeightfield();
