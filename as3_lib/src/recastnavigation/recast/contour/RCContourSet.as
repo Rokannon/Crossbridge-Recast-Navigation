@@ -2,6 +2,7 @@ package recastnavigation.recast.contour {
 	
 	import recastnavigation.core.RNBase;
 	import recastnavigation.core.rn_internal;
+	import recastnavigation.core.utils.copyBytes;
 	import recastnavigation.internal_api.CModule;
 	import recastnavigation.internal_api.internal_rcAllocContourSet;
 	import recastnavigation.internal_api.internal_rcFreeContourSet;
@@ -42,7 +43,7 @@ package recastnavigation.recast.contour {
 		/** An array of the contours in the set. Setter. */
 		public function setCont(index:int, value:RCContour):void {
 			
-			CModule.write32(CModule.read32(ptr + OFFSET_CONTS) + RCContour.SIZE * index, value.ptr);
+			copyBytes(value.ptr, CModule.read32(ptr + OFFSET_CONTS) + RCContour.SIZE * index, RCContour.SIZE);
 			
 		}
 		
