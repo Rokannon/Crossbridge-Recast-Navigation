@@ -1,7 +1,7 @@
 package recastnavigation.recast {
 	
 	import recastnavigation.core.rn_internal;
-	import recastnavigation.internal_api.rcErodeWalkableArea;
+	import recastnavigation.internal_api.internal_rcErodeWalkableArea;
 	
 	use namespace rn_internal;
 	
@@ -12,7 +12,7 @@ package recastnavigation.recast {
 	 */
 	public function rcErodeWalkableArea(ctx:RCContext, radius:int, chf:RCCompactHeightfield):Boolean {
 		
-		return recastnavigation.internal_api.rcErodeWalkableArea(ctx.ptr, radius, chf.ptr);
+		return internal_rcErodeWalkableArea(ctx.ptr, radius, chf.ptr);
 		
 	}
 	

@@ -3,7 +3,7 @@ package recastnavigation.recast {
 	import recastnavigation.core.rn_internal;
 	import recastnavigation.core.utils.mallocIntVector;
 	import recastnavigation.core.utils.mallocNumberVector;
-	import recastnavigation.internal_api.rcRasterizeTriangles;
+	import recastnavigation.internal_api.internal_rcRasterizeTriangles;
 	
 	use namespace rn_internal;
 	
@@ -17,7 +17,7 @@ package recastnavigation.recast {
 		var tris_ptr:int = mallocIntVector(tris);
 		var areas_ptr:int = mallocIntVector(areas);
 		
-		recastnavigation.internal_api.rcRasterizeTriangles(ctx.ptr, verts_ptr, tris_ptr, areas_ptr, nt, solid.ptr, flagMergeThr); 
+		internal_rcRasterizeTriangles(ctx.ptr, verts_ptr, tris_ptr, areas_ptr, nt, solid.ptr, flagMergeThr); 
 		
 	}
 	

@@ -5,14 +5,8 @@
 #include <RecastAlloc.h>
 #include <RecastAssert.h>
 
-// Used to avoid '"__asm__" is undefined' error in Visual Studio.
-#ifdef _MSC_VER
-#define __asm__
-#define __attribute__(x)
-#endif
-
 void _rcFree() __attribute__((used,
-	annotate("as3sig:public function rcFree(ptr:int):void"),
+	annotate("as3sig:public function internal_rcFree(ptr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcFree()
@@ -24,7 +18,7 @@ void _rcFree()
 }
 
 void _rcAlloc_rcConfig() __attribute__((used,
-	annotate("as3sig:public function rcAlloc_rcConfig():int"),
+	annotate("as3sig:public function internal_rcAlloc_rcConfig():int"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcAlloc_rcConfig()
@@ -33,7 +27,7 @@ void _rcAlloc_rcConfig()
 }
 
 void _rcCalcGridSize() __attribute__((used,
-	annotate("as3sig:public function rcCalcGridSize(bmin_ptr:int, bmax_ptr:int, cs:Number, w_ptr:int, h_ptr:int):void"),
+	annotate("as3sig:public function internal_rcCalcGridSize(bmin_ptr:int, bmax_ptr:int, cs:Number, w_ptr:int, h_ptr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcCalcGridSize()
@@ -57,7 +51,7 @@ void _rcCalcGridSize()
 }
 
 void _rcCalcBounds() __attribute__((used,
-	annotate("as3sig:public function rcCalcBounds(verts_ptr:int, nv:int, bmin_ptr:int, bmax_ptr:int):void"),
+	annotate("as3sig:public function internal_rcCalcBounds(verts_ptr:int, nv:int, bmin_ptr:int, bmax_ptr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcCalcBounds()
@@ -78,7 +72,7 @@ void _rcCalcBounds()
 }
 
 void _rcAllocHeightfield() __attribute__((used,
-	annotate("as3sig:public function rcAllocHeightfield():int"),
+	annotate("as3sig:public function internal_rcAllocHeightfield():int"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcAllocHeightfield()
@@ -87,7 +81,7 @@ void _rcAllocHeightfield()
 }
 
 void _rcFreeHeightField() __attribute__((used,
-	annotate("as3sig:public function rcFreeHeightField(ptr:int):void"),
+	annotate("as3sig:public function internal_rcFreeHeightField(ptr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcFreeHeightField()
@@ -99,7 +93,7 @@ void _rcFreeHeightField()
 }
 
 void _rcCreateHeightfield() __attribute__((used,
-	annotate("as3sig:public function rcCreateHeightfield(ctx_ptr:int, hf_ptr:int, width:int, height:int, bmin_ptr:int, bmax_ptr:int, cs:Number, ch:Number):Boolean"),
+	annotate("as3sig:public function internal_rcCreateHeightfield(ctx_ptr:int, hf_ptr:int, width:int, height:int, bmin_ptr:int, bmax_ptr:int, cs:Number, ch:Number):Boolean"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcCreateHeightfield()
@@ -132,7 +126,7 @@ void _rcCreateHeightfield()
 }
 
 void _rcMarkWalkableTriangles() __attribute__((used,
-	annotate("as3sig:public function rcMarkWalkableTriangles(ctx_ptr:int, walkableSlopeAngle:Number, verts_ptr:int, tris_ptr:int, nt:int, areas_ptr:int):void"),
+	annotate("as3sig:public function internal_rcMarkWalkableTriangles(ctx_ptr:int, walkableSlopeAngle:Number, verts_ptr:int, tris_ptr:int, nt:int, areas_ptr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcMarkWalkableTriangles()
@@ -159,7 +153,7 @@ void _rcMarkWalkableTriangles()
 }
 
 void _rcRasterizeTriangles() __attribute__((used,
-	annotate("as3sig:public function rcRasterizeTriangles(ctx_ptr:int, verts_ptr:int, tris_ptr:int, areas_ptr:int, nt:int, solid_ptr:int, flagMergeThr:int):void"),
+	annotate("as3sig:public function internal_rcRasterizeTriangles(ctx_ptr:int, verts_ptr:int, tris_ptr:int, areas_ptr:int, nt:int, solid_ptr:int, flagMergeThr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcRasterizeTriangles()
@@ -189,7 +183,7 @@ void _rcRasterizeTriangles()
 }
 
 void _rcFilterLowHangingWalkableObstacles() __attribute__((used,
-	annotate("as3sig:public function rcFilterLowHangingWalkableObstacles(ctx_ptr:int, walkableClimb:int, solid_ptr:int):void"),
+	annotate("as3sig:public function internal_rcFilterLowHangingWalkableObstacles(ctx_ptr:int, walkableClimb:int, solid_ptr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcFilterLowHangingWalkableObstacles()
@@ -207,7 +201,7 @@ void _rcFilterLowHangingWalkableObstacles()
 }
 
 void _rcFilterLedgeSpans() __attribute__((used,
-	annotate("as3sig:public function rcFilterLedgeSpans(ctx_ptr:int, walkableHeight:int, walkableClimb:int, solid_ptr:int):void"),
+	annotate("as3sig:public function internal_rcFilterLedgeSpans(ctx_ptr:int, walkableHeight:int, walkableClimb:int, solid_ptr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcFilterLedgeSpans()
@@ -228,7 +222,7 @@ void _rcFilterLedgeSpans()
 }
 
 void _rcFilterWalkableLowHeightSpans() __attribute__((used,
-	annotate("as3sig:public function rcFilterWalkableLowHeightSpans(ctx_ptr:int, walkableHeight:int, solid_ptr:int):void"),
+	annotate("as3sig:public function internal_rcFilterWalkableLowHeightSpans(ctx_ptr:int, walkableHeight:int, solid_ptr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcFilterWalkableLowHeightSpans()
@@ -246,7 +240,7 @@ void _rcFilterWalkableLowHeightSpans()
 }
 
 void _rcAllocCompactHeightfield() __attribute__((used,
-	annotate("as3sig:public function rcAllocCompactHeightfield():int"),
+	annotate("as3sig:public function internal_rcAllocCompactHeightfield():int"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcAllocCompactHeightfield()
@@ -255,7 +249,7 @@ void _rcAllocCompactHeightfield()
 }
 
 void _rcFreeCompactHeightfield() __attribute__((used,
-	annotate("as3sig:public function rcFreeCompactHeightfield(chf_ptr:int):void"),
+	annotate("as3sig:public function internal_rcFreeCompactHeightfield(chf_ptr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcFreeCompactHeightfield()
@@ -267,7 +261,7 @@ void _rcFreeCompactHeightfield()
 }
 
 void _rcBuildCompactHeightfield() __attribute__((used,
-	annotate("as3sig:public function rcBuildCompactHeightfield(ctx_ptr:int, walkableHeight:int, walkableClimb:int, hf_ptr:int, chf_ptr:int):Boolean"),
+	annotate("as3sig:public function internal_rcBuildCompactHeightfield(ctx_ptr:int, walkableHeight:int, walkableClimb:int, hf_ptr:int, chf_ptr:int):Boolean"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcBuildCompactHeightfield()
@@ -291,7 +285,7 @@ void _rcBuildCompactHeightfield()
 }
 
 void _rcErodeWalkableArea() __attribute__((used,
-	annotate("as3sig:public function rcErodeWalkableArea(ctx_ptr:int, radius:int, chf_ptr:int):Boolean"),
+	annotate("as3sig:public function internal_rcErodeWalkableArea(ctx_ptr:int, radius:int, chf_ptr:int):Boolean"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcErodeWalkableArea()
@@ -309,7 +303,7 @@ void _rcErodeWalkableArea()
 }
 
 void _rcBuildDistanceField() __attribute__((used,
-	annotate("as3sig:public function rcBuildDistanceField(ctx_ptr:int, chf_ptr:int):Boolean"),
+	annotate("as3sig:public function internal_rcBuildDistanceField(ctx_ptr:int, chf_ptr:int):Boolean"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcBuildDistanceField()
@@ -324,7 +318,7 @@ void _rcBuildDistanceField()
 }
 
 void _rcBuildRegions() __attribute__((used,
-	annotate("as3sig:public function rcBuildRegions(ctx_ptr:int, chf_ptr:int, borderSize:int, minRegionArea:int, mergeRegionArea:int):Boolean"),
+	annotate("as3sig:public function internal_rcBuildRegions(ctx_ptr:int, chf_ptr:int, borderSize:int, minRegionArea:int, mergeRegionArea:int):Boolean"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcBuildRegions()
@@ -348,7 +342,7 @@ void _rcBuildRegions()
 }
 
 void _rcBuildRegionsMonotone() __attribute__((used,
-	annotate("as3sig:public function rcBuildRegionsMonotone(ctx_ptr:int, chf_ptr:int, borderSize:int, minRegionArea:int, mergeRegionArea:int):Boolean"),
+	annotate("as3sig:public function internal_rcBuildRegionsMonotone(ctx_ptr:int, chf_ptr:int, borderSize:int, minRegionArea:int, mergeRegionArea:int):Boolean"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcBuildRegionsMonotone()
@@ -372,7 +366,7 @@ void _rcBuildRegionsMonotone()
 }
 
 void _rcBuildLayerRegions() __attribute__((used,
-	annotate("as3sig:public function rcBuildLayerRegions(ctx_ptr:int, chf_ptr:int, borderSize:int, minRegionArea:int):Boolean"),
+	annotate("as3sig:public function internal_rcBuildLayerRegions(ctx_ptr:int, chf_ptr:int, borderSize:int, minRegionArea:int):Boolean"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcBuildLayerRegions()
@@ -393,7 +387,7 @@ void _rcBuildLayerRegions()
 }
 
 void _rcAllocContourSet() __attribute__((used,
-	annotate("as3sig:public function rcAllocContourSet():int"),
+	annotate("as3sig:public function internal_rcAllocContourSet():int"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcAllocContourSet()
@@ -402,7 +396,7 @@ void _rcAllocContourSet()
 }
 
 void _rcFreeContourSet() __attribute__((used,
-	annotate("as3sig:public function rcFreeContourSet(ptr:int):void"),
+	annotate("as3sig:public function internal_rcFreeContourSet(ptr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcFreeContourSet()
@@ -414,7 +408,7 @@ void _rcFreeContourSet()
 }
 
 void _rcBuildContours() __attribute__((used,
-	annotate("as3sig:public function rcBuildContours(ctx_ptr:int, chf_ptr:int, maxError:Number, maxEdgeLen:int, cset_ptr:int, buildFlags:int):Boolean"),
+	annotate("as3sig:public function internal_rcBuildContours(ctx_ptr:int, chf_ptr:int, maxError:Number, maxEdgeLen:int, cset_ptr:int, buildFlags:int):Boolean"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcBuildContours()
@@ -441,7 +435,7 @@ void _rcBuildContours()
 }
 
 void _rcAllocPolyMesh() __attribute__((used,
-	annotate("as3sig:public function rcAllocPolyMesh():int"),
+	annotate("as3sig:public function internal_rcAllocPolyMesh():int"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcAllocPolyMesh()
@@ -450,7 +444,7 @@ void _rcAllocPolyMesh()
 }
 
 void _rcFreePolyMesh() __attribute__((used,
-	annotate("as3sig:public function rcFreePolyMesh(ptr:int):void"),
+	annotate("as3sig:public function internal_rcFreePolyMesh(ptr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcFreePolyMesh()
@@ -462,7 +456,7 @@ void _rcFreePolyMesh()
 }
 
 void _rcBuildPolyMesh() __attribute__((used,
-	annotate("as3sig:public function rcBuildPolyMesh(ctx_ptr:int, cset_ptr:int, nvp:int, mesh_ptr:int):Boolean"),
+	annotate("as3sig:public function internal_rcBuildPolyMesh(ctx_ptr:int, cset_ptr:int, nvp:int, mesh_ptr:int):Boolean"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcBuildPolyMesh()
@@ -483,7 +477,7 @@ void _rcBuildPolyMesh()
 }
 
 void _rcMergePolyMeshes() __attribute__((used,
-	annotate("as3sig:public function rcMergePolyMeshes(ctx_ptr:int, meshes_ptr:int, nmeshes:int, mesh_ptr:int):Boolean"),
+	annotate("as3sig:public function internal_rcMergePolyMeshes(ctx_ptr:int, meshes_ptr:int, nmeshes:int, mesh_ptr:int):Boolean"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcMergePolyMeshes()
@@ -504,7 +498,7 @@ void _rcMergePolyMeshes()
 }
 
 void _rcCopyPolyMesh() __attribute__((used,
-	annotate("as3sig:public function rcCopyPolyMesh(ctx_ptr:int, src_ptr:int, dst_ptr:int):Boolean"),
+	annotate("as3sig:public function internal_rcCopyPolyMesh(ctx_ptr:int, src_ptr:int, dst_ptr:int):Boolean"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcCopyPolyMesh()
@@ -522,7 +516,7 @@ void _rcCopyPolyMesh()
 }
 
 void _rcAllocPolyMeshDetail() __attribute__((used,
-	annotate("as3sig:public function rcAllocPolyMeshDetail():int"),
+	annotate("as3sig:public function internal_rcAllocPolyMeshDetail():int"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcAllocPolyMeshDetail()
@@ -531,7 +525,7 @@ void _rcAllocPolyMeshDetail()
 }
 
 void _rcFreePolyMeshDetail() __attribute__((used,
-	annotate("as3sig:public function rcFreePolyMeshDetail(ptr:int):void"),
+	annotate("as3sig:public function internal_rcFreePolyMeshDetail(ptr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcFreePolyMeshDetail()
@@ -543,7 +537,7 @@ void _rcFreePolyMeshDetail()
 }
 
 void _rcBuildPolyMeshDetail() __attribute__((used,
-	annotate("as3sig:public function rcBuildPolyMeshDetail(ctx_ptr:int, mesh_ptr:int, chf_ptr:int, sampleDist:Number, sampleMaxError:Number, dmesh_ptr:int):Boolean"),
+	annotate("as3sig:public function internal_rcBuildPolyMeshDetail(ctx_ptr:int, mesh_ptr:int, chf_ptr:int, sampleDist:Number, sampleMaxError:Number, dmesh_ptr:int):Boolean"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcBuildPolyMeshDetail()
@@ -570,7 +564,7 @@ void _rcBuildPolyMeshDetail()
 }
 
 void _rcMergePolyMeshDetails() __attribute__((used,
-	annotate("as3sig:public function rcMergePolyMeshDetails(ctx_ptr:int, dmeshes_ptr:int, nmeshes:int, dmesh_ptr:int):Boolean"),
+	annotate("as3sig:public function internal_rcMergePolyMeshDetails(ctx_ptr:int, dmeshes_ptr:int, nmeshes:int, dmesh_ptr:int):Boolean"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcMergePolyMeshDetails()

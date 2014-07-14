@@ -4,9 +4,10 @@ package recastnavigation.recast {
 	import recastnavigation.core.rn_internal;
 	import recastnavigation.core.utils.mallocNumberVector;
 	import recastnavigation.internal_api.CModule;
-	import recastnavigation.internal_api.rcAlloc_rcConfig;
-	import recastnavigation.internal_api.rcCalcGridSize;
-	import recastnavigation.internal_api.rcFree;
+	import recastnavigation.internal_api.internal_rcAlloc_rcConfig;
+	import recastnavigation.internal_api.internal_rcCalcBounds;
+	import recastnavigation.internal_api.internal_rcCalcGridSize;
+	import recastnavigation.internal_api.internal_rcFree;
 
 	use namespace rn_internal;
 	
@@ -135,13 +136,13 @@ package recastnavigation.recast {
 		
 		public override function alloc():void {
 			
-			ptr = recastnavigation.internal_api.rcAlloc_rcConfig();
+			ptr = internal_rcAlloc_rcConfig();
 			
 		}
 		
 		public override function free():void {
 			
-			recastnavigation.internal_api.rcFree(ptr);
+			internal_rcFree(ptr);
 			ptr = 0;
 			
 		}
@@ -151,7 +152,7 @@ package recastnavigation.recast {
 		 */
 		public function rcCalcGridSize():void {
 			
-			recastnavigation.internal_api.rcCalcGridSize(
+			internal_rcCalcGridSize(
 				ptr + OFFSET_BMIN, 
 				ptr + OFFSET_BMAX, 
 				CModule.readFloat(ptr + OFFSET_CS), 
@@ -167,7 +168,7 @@ package recastnavigation.recast {
 		public function rcCalcBounds(verts:Vector.<Number>, nv:int):void {
 			
 			var verts_ptr:int = mallocNumberVector(verts);
-			recastnavigation.internal_api.rcCalcBounds(verts_ptr, nv, ptr + OFFSET_WIDTH, ptr + OFFSET_HEIGHT);
+			internal_rcCalcBounds(verts_ptr, nv, ptr + OFFSET_WIDTH, ptr + OFFSET_HEIGHT);
 			CModule.free(verts_ptr);
 			
 		}

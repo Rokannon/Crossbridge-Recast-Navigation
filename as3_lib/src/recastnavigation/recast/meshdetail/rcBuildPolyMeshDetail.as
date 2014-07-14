@@ -1,7 +1,7 @@
 package recastnavigation.recast.meshdetail {
 	
 	import recastnavigation.core.rn_internal;
-	import recastnavigation.internal_api.rcBuildPolyMeshDetail;
+	import recastnavigation.internal_api.internal_rcBuildPolyMeshDetail;
 	import recastnavigation.recast.RCCompactHeightfield;
 	import recastnavigation.recast.RCContext;
 	import recastnavigation.recast.mesh.RCPolyMesh;
@@ -14,7 +14,7 @@ package recastnavigation.recast.meshdetail {
 	public function rcBuildPolyMeshDetail(ctx:RCContext, mesh:RCPolyMesh, chf:RCCompactHeightfield, 
 										  sampleDist:Number, sampleMaxError:Number, dmesh:RCPolyMeshDetail):Boolean {
 		
-		return recastnavigation.internal_api.rcBuildPolyMeshDetail(ctx.ptr, mesh.ptr, chf.ptr, sampleDist, sampleMaxError, dmesh.ptr);
+		return internal_rcBuildPolyMeshDetail(ctx.ptr, mesh.ptr, chf.ptr, sampleDist, sampleMaxError, dmesh.ptr);
 		
 	}
 	

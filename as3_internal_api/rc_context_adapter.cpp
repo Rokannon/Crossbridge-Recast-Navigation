@@ -80,7 +80,7 @@ protected:
 // ////
 
 void _rcAlloc_rcContext() __attribute__((used,
-	annotate("as3sig:public function rcAlloc_rcContext(state:Boolean, obj:*):int"),
+	annotate("as3sig:public function internal_rcAlloc_rcContext(state:Boolean, obj:*):int"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcAlloc_rcContext()
@@ -99,7 +99,7 @@ void _rcAlloc_rcContext()
 // ////
 
 void _rcContext_enableLog() __attribute__((used,
-	annotate("as3sig:public function rcContext_enableLog(ctx_ptr:int, state:Boolean):void"),
+	annotate("as3sig:public function internal_rcContext_enableLog(ctx_ptr:int, state:Boolean):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcContext_enableLog()
@@ -114,7 +114,7 @@ void _rcContext_enableLog()
 }
 
 void _rcContext_resetLog() __attribute__((used,
-	annotate("as3sig:public function rcContext_resetLog(ctx_ptr:int):void"),
+	annotate("as3sig:public function internal_rcContext_resetLog(ctx_ptr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcContext_resetLog()
@@ -126,7 +126,7 @@ void _rcContext_resetLog()
 }
 
 void _rcContext_log() __attribute__((used,
-	annotate("as3sig:public function rcContext_log(ctx_ptr:int, logCategory:int, message:String):void"),
+	annotate("as3sig:public function internal_rcContext_log(ctx_ptr:int, logCategory:int, message:String):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcContext_log()
@@ -146,7 +146,7 @@ void _rcContext_log()
 }
 
 void _rcContext_enableTimer() __attribute__((used,
-	annotate("as3sig:public function rcContext_enableTimer(ctx_ptr:int, state:Boolean):void"),
+	annotate("as3sig:public function internal_rcContext_enableTimer(ctx_ptr:int, state:Boolean):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcContext_enableTimer()
@@ -161,7 +161,7 @@ void _rcContext_enableTimer()
 }
 
 void _rcContext_resetTimers() __attribute__((used,
-	annotate("as3sig:public function rcContext_resetTimers(ctx_ptr:int):void"),
+	annotate("as3sig:public function internal_rcContext_resetTimers(ctx_ptr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcContext_resetTimers()
@@ -173,7 +173,7 @@ void _rcContext_resetTimers()
 }
 
 void _rcContext_startTimer() __attribute__((used,
-	annotate("as3sig:public function rcContext_startTimer(ctx_ptr:int, timerLabel:int):void"),
+	annotate("as3sig:public function internal_rcContext_startTimer(ctx_ptr:int, timerLabel:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcContext_startTimer()
@@ -188,7 +188,7 @@ void _rcContext_startTimer()
 }
 
 void _rcContext_stopTimer() __attribute__((used,
-	annotate("as3sig:public function rcContext_stopTimer(ctx_ptr:int, timerLabel:int):void"),
+	annotate("as3sig:public function internal_rcContext_stopTimer(ctx_ptr:int, timerLabel:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcContext_stopTimer()
@@ -203,7 +203,7 @@ void _rcContext_stopTimer()
 }
 
 void _rcContext_getAccumulatedTime() __attribute__((used,
-	annotate("as3sig:public function rcContext_getAccumulatedTime(ctx_ptr:int, timerLabel:int):int"),
+	annotate("as3sig:public function internal_rcContext_getAccumulatedTime(ctx_ptr:int, timerLabel:int):int"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcContext_getAccumulatedTime()

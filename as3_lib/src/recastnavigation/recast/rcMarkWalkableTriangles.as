@@ -4,7 +4,7 @@ package recastnavigation.recast {
 	import recastnavigation.core.utils.mallocIntVector;
 	import recastnavigation.core.utils.mallocNumberVector;
 	import recastnavigation.internal_api.CModule;
-	import recastnavigation.internal_api.rcMarkWalkableTriangles;
+	import recastnavigation.internal_api.internal_rcMarkWalkableTriangles;
 	
 	use namespace rn_internal;
 	
@@ -28,7 +28,7 @@ package recastnavigation.recast {
 			CModule.write8(areas_ptr + i, 0);
 		}
 		
-		recastnavigation.internal_api.rcMarkWalkableTriangles(ctx.ptr, walkableSlopeAngle, verts_ptr, tris_ptr, nt, areas_ptr);
+		internal_rcMarkWalkableTriangles(ctx.ptr, walkableSlopeAngle, verts_ptr, tris_ptr, nt, areas_ptr);
 		
 		CModule.free(verts_ptr);
 		CModule.free(tris_ptr);

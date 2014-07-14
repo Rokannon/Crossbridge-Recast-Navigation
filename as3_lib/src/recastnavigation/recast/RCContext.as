@@ -2,16 +2,16 @@ package recastnavigation.recast {
 	
 	import recastnavigation.core.RNBase;
 	import recastnavigation.core.rn_internal;
-	import recastnavigation.internal_api.rcAlloc_rcContext;
-	import recastnavigation.internal_api.rcContext_enableLog;
-	import recastnavigation.internal_api.rcContext_enableTimer;
-	import recastnavigation.internal_api.rcContext_getAccumulatedTime;
-	import recastnavigation.internal_api.rcContext_log;
-	import recastnavigation.internal_api.rcContext_resetLog;
-	import recastnavigation.internal_api.rcContext_resetTimers;
-	import recastnavigation.internal_api.rcContext_startTimer;
-	import recastnavigation.internal_api.rcContext_stopTimer;
-	import recastnavigation.internal_api.rcFree;
+	import recastnavigation.internal_api.internal_rcAlloc_rcContext;
+	import recastnavigation.internal_api.internal_rcContext_enableLog;
+	import recastnavigation.internal_api.internal_rcContext_enableTimer;
+	import recastnavigation.internal_api.internal_rcContext_getAccumulatedTime;
+	import recastnavigation.internal_api.internal_rcContext_log;
+	import recastnavigation.internal_api.internal_rcContext_resetLog;
+	import recastnavigation.internal_api.internal_rcContext_resetTimers;
+	import recastnavigation.internal_api.internal_rcContext_startTimer;
+	import recastnavigation.internal_api.internal_rcContext_stopTimer;
+	import recastnavigation.internal_api.internal_rcFree;
 	
 	use namespace rn_internal;
 	
@@ -41,13 +41,13 @@ package recastnavigation.recast {
 		
 		public override function alloc():void {
 			
-			ptr = recastnavigation.internal_api.rcAlloc_rcContext(_state, _obj);
+			ptr = internal_rcAlloc_rcContext(_state, _obj);
 			
 		}
 		
 		public override function free():void {
 			
-			recastnavigation.internal_api.rcFree(ptr);
+			internal_rcFree(ptr);
 			ptr = 0;
 			
 		}
@@ -58,7 +58,7 @@ package recastnavigation.recast {
 		public final function enableLog(state:Boolean):void {
 			
 			_state = state;
-			recastnavigation.internal_api.rcContext_enableLog(ptr, state);
+			internal_rcContext_enableLog(ptr, state);
 			
 		}
 		
@@ -67,7 +67,7 @@ package recastnavigation.recast {
 		 */
 		public final function resetLog():void {
 			
-			recastnavigation.internal_api.rcContext_resetLog(ptr);
+			internal_rcContext_resetLog(ptr);
 			
 		}
 		
@@ -76,7 +76,7 @@ package recastnavigation.recast {
 		 */
 		public final function log(logCategory:int, message:String):void {
 			
-			recastnavigation.internal_api.rcContext_log(ptr, logCategory, message);
+			internal_rcContext_log(ptr, logCategory, message);
 			
 		}
 		
@@ -85,7 +85,7 @@ package recastnavigation.recast {
 		 */
 		public final function enableTimer(state:Boolean):void {
 			
-			recastnavigation.internal_api.rcContext_enableTimer(ptr,state);
+			internal_rcContext_enableTimer(ptr,state);
 			
 		}
 		
@@ -94,7 +94,7 @@ package recastnavigation.recast {
 		 */
 		public final function resetTimers():void {
 			
-			recastnavigation.internal_api.rcContext_resetTimers(ptr);
+			internal_rcContext_resetTimers(ptr);
 			
 		}
 		
@@ -103,7 +103,7 @@ package recastnavigation.recast {
 		 */
 		public final function startTimer(timerLabel:int):void {
 			
-			recastnavigation.internal_api.rcContext_startTimer(ptr, timerLabel);
+			internal_rcContext_startTimer(ptr, timerLabel);
 			
 		}
 		
@@ -112,7 +112,7 @@ package recastnavigation.recast {
 		 */
 		public final function stopTimer(timerLabel:int):void {
 			
-			recastnavigation.internal_api.rcContext_stopTimer(ptr, timerLabel);
+			internal_rcContext_stopTimer(ptr, timerLabel);
 			
 		}
 		
@@ -121,7 +121,7 @@ package recastnavigation.recast {
 		 */
 		public final function getAccumulatedTime(timerLabel:int):int {
 			
-			return recastnavigation.internal_api.rcContext_getAccumulatedTime(ptr, timerLabel);
+			return internal_rcContext_getAccumulatedTime(ptr, timerLabel);
 			
 		}
 		

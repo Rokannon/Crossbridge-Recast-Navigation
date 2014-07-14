@@ -3,9 +3,9 @@ package recastnavigation.recast {
 	import recastnavigation.core.RNBase;
 	import recastnavigation.core.rn_internal;
 	import recastnavigation.internal_api.CModule;
-	import recastnavigation.internal_api.rcAllocHeightfield;
-	import recastnavigation.internal_api.rcCreateHeightfield;
-	import recastnavigation.internal_api.rcFreeHeightField;
+	import recastnavigation.internal_api.internal_rcAllocHeightfield;
+	import recastnavigation.internal_api.internal_rcCreateHeightfield;
+	import recastnavigation.internal_api.internal_rcFreeHeightField;
 	
 	use namespace rn_internal;
 	
@@ -69,13 +69,13 @@ package recastnavigation.recast {
 		
 		public override function alloc():void {
 			
-			ptr = recastnavigation.internal_api.rcAllocHeightfield();
+			ptr = internal_rcAllocHeightfield();
 			
 		}
 		
 		public override function free():void {
 			
-			recastnavigation.internal_api.rcFreeHeightField(ptr);
+			internal_rcFreeHeightField(ptr);
 			ptr = 0;
 			
 		}
@@ -85,7 +85,7 @@ package recastnavigation.recast {
 		 */
 		public function rcCreateHeightfield(ctx:RCContext, cfg:RCConfig):Boolean {
 			
-			return recastnavigation.internal_api.rcCreateHeightfield(
+			return internal_rcCreateHeightfield(
 				ctx.ptr, 
 				ptr, 
 				CModule.read32(cfg.ptr + RCConfig.OFFSET_WIDTH),

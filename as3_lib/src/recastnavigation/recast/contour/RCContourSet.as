@@ -3,8 +3,8 @@ package recastnavigation.recast.contour {
 	import recastnavigation.core.RNBase;
 	import recastnavigation.core.rn_internal;
 	import recastnavigation.internal_api.CModule;
-	import recastnavigation.internal_api.rcAllocContourSet;
-	import recastnavigation.internal_api.rcFree;
+	import recastnavigation.internal_api.internal_rcAllocContourSet;
+	import recastnavigation.internal_api.internal_rcFreeContourSet;
 	
 	use namespace rn_internal;
 	
@@ -95,13 +95,13 @@ package recastnavigation.recast.contour {
 		
 		public override function alloc():void {
 			
-			ptr = recastnavigation.internal_api.rcAllocContourSet();
+			ptr = internal_rcAllocContourSet();
 			
 		}
 		
 		public override function free():void {
 			
-			recastnavigation.internal_api.rcFreeContourSet(ptr);
+			internal_rcFreeContourSet(ptr);
 			ptr = 0;
 			
 		}

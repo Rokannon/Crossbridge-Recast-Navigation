@@ -1,7 +1,7 @@
 package recastnavigation.recast.mesh {
 	
 	import recastnavigation.core.rn_internal;
-	import recastnavigation.internal_api.rcCopyPolyMesh;
+	import recastnavigation.internal_api.internal_rcCopyPolyMesh;
 	import recastnavigation.recast.RCContext;
 	
 	use namespace rn_internal;
@@ -11,7 +11,7 @@ package recastnavigation.recast.mesh {
 	 */
 	public function rcCopyPolyMesh(ctx:RCContext, src:RCPolyMesh, dst:RCPolyMesh):Boolean {
 		
-		return recastnavigation.internal_api.rcCopyPolyMesh(ctx.ptr, src.ptr, dst.ptr);
+		return internal_rcCopyPolyMesh(ctx.ptr, src.ptr, dst.ptr);
 		
 	}
 	

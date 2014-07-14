@@ -1,7 +1,7 @@
 package recastnavigation.recast.filter {
 	
 	import recastnavigation.core.rn_internal;
-	import recastnavigation.internal_api.rcFilterLowHangingWalkableObstacles;
+	import recastnavigation.internal_api.internal_rcFilterLowHangingWalkableObstacles;
 	import recastnavigation.recast.RCContext;
 	import recastnavigation.recast.RCHeightfield;
 	
@@ -13,7 +13,7 @@ package recastnavigation.recast.filter {
 	 */
 	public function rcFilterLowHangingWalkableObstacles(ctx:RCContext, walkableClimb:int, solid:RCHeightfield):void {
 		
-		recastnavigation.internal_api.rcFilterLowHangingWalkableObstacles(ctx.ptr, walkableClimb, solid.ptr);
+		internal_rcFilterLowHangingWalkableObstacles(ctx.ptr, walkableClimb, solid.ptr);
 		
 	}
 	

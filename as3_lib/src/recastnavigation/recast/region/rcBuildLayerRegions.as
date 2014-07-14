@@ -1,7 +1,7 @@
 package recastnavigation.recast.region {
 	
 	import recastnavigation.core.rn_internal;
-	import recastnavigation.internal_api.rcBuildLayerRegions;
+	import recastnavigation.internal_api.internal_rcBuildLayerRegions;
 	import recastnavigation.recast.RCCompactHeightfield;
 	import recastnavigation.recast.RCContext;
 	
@@ -13,7 +13,7 @@ package recastnavigation.recast.region {
 	public function rcBuildLayerRegions(ctx:RCContext, chf:RCCompactHeightfield, 
 										borderSize:int, minRegionArea:int):Boolean {
 		
-		return recastnavigation.internal_api.rcBuildLayerRegions(ctx.ptr, chf.ptr, borderSize, minRegionArea);
+		return internal_rcBuildLayerRegions(ctx.ptr, chf.ptr, borderSize, minRegionArea);
 		
 	}
 	

@@ -3,8 +3,8 @@ package recastnavigation.recast.meshdetail {
 	import recastnavigation.core.RNBase;
 	import recastnavigation.core.rn_internal;
 	import recastnavigation.internal_api.CModule;
-	import recastnavigation.internal_api.rcAllocPolyMeshDetail;
-	import recastnavigation.internal_api.rcFreePolyMeshDetail;
+	import recastnavigation.internal_api.internal_rcAllocPolyMeshDetail;
+	import recastnavigation.internal_api.internal_rcFreePolyMeshDetail;
 	
 	use namespace rn_internal;
 	
@@ -60,13 +60,13 @@ package recastnavigation.recast.meshdetail {
 		
 		public override function alloc():void {
 			
-			ptr = recastnavigation.internal_api.rcAllocPolyMeshDetail();
+			ptr = internal_rcAllocPolyMeshDetail();
 			
 		}
 		
 		public override function free():void {
 			
-			recastnavigation.internal_api.rcFreePolyMeshDetail(ptr);
+			internal_rcFreePolyMeshDetail(ptr);
 			ptr = 0;
 			
 		}

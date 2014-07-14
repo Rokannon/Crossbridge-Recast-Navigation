@@ -1,7 +1,7 @@
 package recastnavigation.recast.mesh {
 	
 	import recastnavigation.core.rn_internal;
-	import recastnavigation.internal_api.rcBuildPolyMesh;
+	import recastnavigation.internal_api.internal_rcBuildPolyMesh;
 	import recastnavigation.recast.RCContext;
 	import recastnavigation.recast.contour.RCContourSet;
 	
@@ -12,7 +12,7 @@ package recastnavigation.recast.mesh {
 	 */
 	public function rcBuildPolyMesh(ctx:RCContext, cset:RCContourSet, nvp:int, mesh:RCPolyMesh):Boolean {
 		
-		return recastnavigation.internal_api.rcBuildPolyMesh(ctx.ptr, cset.ptr, nvp, mesh.ptr);
+		return internal_rcBuildPolyMesh(ctx.ptr, cset.ptr, nvp, mesh.ptr);
 		
 	}
 	

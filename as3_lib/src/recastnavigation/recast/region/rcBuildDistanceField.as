@@ -1,7 +1,7 @@
 package recastnavigation.recast.region {
 	
 	import recastnavigation.core.rn_internal;
-	import recastnavigation.internal_api.rcBuildDistanceField;
+	import recastnavigation.internal_api.internal_rcBuildDistanceField;
 	import recastnavigation.recast.RCCompactHeightfield;
 	import recastnavigation.recast.RCContext;
 	
@@ -12,7 +12,7 @@ package recastnavigation.recast.region {
 	 */
 	public function rcBuildDistanceField(ctx:RCContext, chf:RCCompactHeightfield):Boolean {
 		
-		return recastnavigation.internal_api.rcBuildDistanceField(ctx.ptr, chf.ptr);
+		return internal_rcBuildDistanceField(ctx.ptr, chf.ptr);
 		
 	}
 	

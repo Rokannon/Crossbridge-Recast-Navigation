@@ -1,7 +1,7 @@
 package recastnavigation.recast.filter {
 	
 	import recastnavigation.core.rn_internal;
-	import recastnavigation.internal_api.rcFilterWalkableLowHeightSpans;
+	import recastnavigation.internal_api.internal_rcFilterWalkableLowHeightSpans;
 	import recastnavigation.recast.RCContext;
 	import recastnavigation.recast.RCHeightfield;
 	
@@ -13,7 +13,7 @@ package recastnavigation.recast.filter {
 	 */
 	public function rcFilterWalkableLowHeightSpans(ctx:RCContext, walkableHeight:int, solid:RCHeightfield):void {
 		
-		recastnavigation.internal_api.rcFilterWalkableLowHeightSpans(ctx.ptr, walkableHeight, solid.ptr);
+		internal_rcFilterWalkableLowHeightSpans(ctx.ptr, walkableHeight, solid.ptr);
 		
 	}
 	

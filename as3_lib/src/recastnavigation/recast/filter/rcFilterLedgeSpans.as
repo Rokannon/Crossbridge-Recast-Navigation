@@ -1,7 +1,7 @@
 package recastnavigation.recast.filter {
 	
 	import recastnavigation.core.rn_internal;
-	import recastnavigation.internal_api.rcFilterLedgeSpans;
+	import recastnavigation.internal_api.internal_rcFilterLedgeSpans;
 	import recastnavigation.recast.RCContext;
 	import recastnavigation.recast.RCHeightfield;
 	
@@ -15,7 +15,7 @@ package recastnavigation.recast.filter {
 	 */
 	public function rcFilterLedgeSpans(ctx:RCContext, walkableHeight:int, walkableClimb:int, solid:RCHeightfield):void {
 		
-		recastnavigation.internal_api.rcFilterLedgeSpans(ctx.ptr, walkableHeight, walkableClimb, solid.ptr);
+		internal_rcFilterLedgeSpans(ctx.ptr, walkableHeight, walkableClimb, solid.ptr);
 		
 	}
 	
