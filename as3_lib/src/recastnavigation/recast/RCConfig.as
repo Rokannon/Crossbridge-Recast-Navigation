@@ -16,25 +16,32 @@ package recastnavigation.recast {
 	 */
 	public class RCConfig extends RNBase {
 		
-		rn_internal static const OFFSET_WIDTH						:int = 4 * 0;
-		rn_internal static const OFFSET_HEIGHT						:int = 4 * 1;
-		rn_internal static const OFFSET_TILE_SIZE					:int = 4 * 2;
-		rn_internal static const OFFSET_BORDER_SIZE					:int = 4 * 3;
-		rn_internal static const OFFSET_CS							:int = 4 * 4;
-		rn_internal static const OFFSET_CH							:int = 4 * 5;
-		rn_internal static const OFFSET_BMIN						:int = 4 * 6;
-		rn_internal static const OFFSET_BMAX						:int = 4 * 9;
-		rn_internal static const OFFSET_WALKABLE_SLOPE_ANGLE		:int = 4 * 12;
-		rn_internal static const OFFSET_WALKABLE_HEIGHT				:int = 4 * 13;
-		rn_internal static const OFFSET_WALKABLE_CLIMB				:int = 4 * 14;
-		rn_internal static const OFFSET_WALKABLE_RADIUS				:int = 4 * 15;
-		rn_internal static const OFFSET_MAX_EDGE_LEN				:int = 4 * 16;
-		rn_internal static const OFFSET_MAX_SIMPLIFICATION_ERROR	:int = 4 * 17;
-		rn_internal static const OFFSET_MIN_REGION_AREA				:int = 4 * 18;
-		rn_internal static const OFFSET_MERGE_REGION_AREA			:int = 4 * 19;
-		rn_internal static const OFFSET_MAX_VERTS_PER_POLY			:int = 4 * 20;
-		rn_internal static const OFFSET_DETAIL_SAMPLE_DIST			:int = 4 * 21;
-		rn_internal static const OFFSET_DETAIL_SAMPLE_MAX_ERROR		:int = 4 * 22;
+		rn_internal static var SIZE									:int = 0;
+		rn_internal static const OFFSET_WIDTH						:int = offset(4);
+		rn_internal static const OFFSET_HEIGHT						:int = offset(4);
+		rn_internal static const OFFSET_TILE_SIZE					:int = offset(4);
+		rn_internal static const OFFSET_BORDER_SIZE					:int = offset(4);
+		rn_internal static const OFFSET_CS							:int = offset(4);
+		rn_internal static const OFFSET_CH							:int = offset(4);
+		rn_internal static const OFFSET_BMIN						:int = offset(12);
+		rn_internal static const OFFSET_BMAX						:int = offset(12);
+		rn_internal static const OFFSET_WALKABLE_SLOPE_ANGLE		:int = offset(4);
+		rn_internal static const OFFSET_WALKABLE_HEIGHT				:int = offset(4);
+		rn_internal static const OFFSET_WALKABLE_CLIMB				:int = offset(4);
+		rn_internal static const OFFSET_WALKABLE_RADIUS				:int = offset(4);
+		rn_internal static const OFFSET_MAX_EDGE_LEN				:int = offset(4);
+		rn_internal static const OFFSET_MAX_SIMPLIFICATION_ERROR	:int = offset(4);
+		rn_internal static const OFFSET_MIN_REGION_AREA				:int = offset(4);
+		rn_internal static const OFFSET_MERGE_REGION_AREA			:int = offset(4);
+		rn_internal static const OFFSET_MAX_VERTS_PER_POLY			:int = offset(4);
+		rn_internal static const OFFSET_DETAIL_SAMPLE_DIST			:int = offset(4);
+		rn_internal static const OFFSET_DETAIL_SAMPLE_MAX_ERROR		:int = offset(4);
+		
+		private static function offset(size:int):int {
+			
+			return (SIZE += size) - size;
+			
+		}
 		
 		/** The width of the field along the x-axis. [Limit: >= 0] [Units: vx] */
 		public function get width():int { return CModule.read32(ptr + OFFSET_WIDTH); }

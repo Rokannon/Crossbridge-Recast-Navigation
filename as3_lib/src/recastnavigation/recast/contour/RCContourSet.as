@@ -13,15 +13,22 @@ package recastnavigation.recast.contour {
 	 */
 	public class RCContourSet extends RNBase {
 		
-		rn_internal static const OFFSET_CONTS				:int = 4 * 0;
-		rn_internal static const OFFSET_NCONTS				:int = 4 * 1;
-		rn_internal static const OFFSET_BMIN				:int = 4 * 2;
-		rn_internal static const OFFSET_BMAX				:int = 4 * 5;
-		rn_internal static const OFFSET_CS					:int = 4 * 8;
-		rn_internal static const OFFSET_CH					:int = 4 * 9;
-		rn_internal static const OFFSET_WIDTH				:int = 4 * 10;
-		rn_internal static const OFFSET_HEIGHT				:int = 4 * 11;
-		rn_internal static const OFFSET_BORDER_SIZE			:int = 4 * 12;
+		rn_internal static var SIZE							:int = 0;
+		rn_internal static const OFFSET_CONTS				:int = offset(4);
+		rn_internal static const OFFSET_NCONTS				:int = offset(4);
+		rn_internal static const OFFSET_BMIN				:int = offset(12);
+		rn_internal static const OFFSET_BMAX				:int = offset(12);
+		rn_internal static const OFFSET_CS					:int = offset(4);
+		rn_internal static const OFFSET_CH					:int = offset(4);
+		rn_internal static const OFFSET_WIDTH				:int = offset(4);
+		rn_internal static const OFFSET_HEIGHT				:int = offset(4);
+		rn_internal static const OFFSET_BORDER_SIZE			:int = offset(4);
+		
+		private static function offset(size:int):int {
+			
+			return (SIZE += size) - size;
+			
+		}
 		
 		/** An array of the contours in the set. Getter. */
 		public function getCont(index:int, resultContour:RCContour = null):RCContour {

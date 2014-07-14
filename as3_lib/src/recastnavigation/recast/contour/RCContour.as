@@ -11,13 +11,19 @@ package recastnavigation.recast.contour {
 	 */
 	public class RCContour extends RNBase {
 		
-		rn_internal static const OFFSET_VERTS		:int = 4 * 0;
-		rn_internal static const OFFSET_NVERTS		:int = 4 * 1;
-		rn_internal static const OFFSET_RVERTS		:int = 4 * 2;
-		rn_internal static const OFFSET_NRVERTS		:int = 4 * 3;
-		rn_internal static const OFFSET_REG			:int = 4 * 4;
-		rn_internal static const OFFSET_AREA		:int = 4 * 4 + 2 * 1;
-		rn_internal static const SIZE				:int = 4 * 4 + 2 * 1 + 1;
+		rn_internal static var SIZE					:int = 0;
+		rn_internal static const OFFSET_VERTS		:int = offset(4);
+		rn_internal static const OFFSET_NVERTS		:int = offset(4);
+		rn_internal static const OFFSET_RVERTS		:int = offset(4);
+		rn_internal static const OFFSET_NRVERTS		:int = offset(4);
+		rn_internal static const OFFSET_REG			:int = offset(2);
+		rn_internal static const OFFSET_AREA		:int = offset(1);
+		
+		private static function offset(size:int):int {
+			
+			return (SIZE += size) - size;
+			
+		}
 		
 		/** Simplified contour vertex and connection data. */
 		public function getVert(index:int):int { return CModule.read32(CModule.read32(ptr + OFFSET_VERTS) + 4 * index); }

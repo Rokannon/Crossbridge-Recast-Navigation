@@ -13,21 +13,27 @@ package recastnavigation.recast.mesh {
 	 */
 	public class RCPolyMesh extends RNBase {
 		
-		rn_internal static const OFFSET_VERTS			:int = 4 * 0;
-		rn_internal static const OFFSET_POLYS			:int = 4 * 1;
-		rn_internal static const OFFSET_REGS			:int = 4 * 2;
-		rn_internal static const OFFSET_FLAGS			:int = 4 * 3;
-		rn_internal static const OFFSET_AREAS			:int = 4 * 4;
-		rn_internal static const OFFSET_NVERTS			:int = 4 * 5;
-		rn_internal static const OFFSET_NPOLYS			:int = 4 * 6;
-		rn_internal static const OFFSET_MAXPOLYS		:int = 4 * 7;
-		rn_internal static const OFFSET_NVP				:int = 4 * 8;
-		rn_internal static const OFFSET_BMIN			:int = 4 * 9;
-		rn_internal static const OFFSET_BMAX			:int = 4 * 12;
-		rn_internal static const OFFSET_CS				:int = 4 * 15;
-		rn_internal static const OFFSET_CH				:int = 4 * 16;
-		rn_internal static const OFFSET_BORDER_SIZE		:int = 4 * 17;
-		rn_internal static const SIZE					:int = 4 * 18;
+		rn_internal static var SIZE						:int = 0;
+		rn_internal static const OFFSET_VERTS			:int = offset(4);
+		rn_internal static const OFFSET_POLYS			:int = offset(4);
+		rn_internal static const OFFSET_REGS			:int = offset(4);
+		rn_internal static const OFFSET_FLAGS			:int = offset(4);
+		rn_internal static const OFFSET_AREAS			:int = offset(4);
+		rn_internal static const OFFSET_NVERTS			:int = offset(4);
+		rn_internal static const OFFSET_NPOLYS			:int = offset(4);
+		rn_internal static const OFFSET_MAXPOLYS		:int = offset(4);
+		rn_internal static const OFFSET_NVP				:int = offset(4);
+		rn_internal static const OFFSET_BMIN			:int = offset(12);
+		rn_internal static const OFFSET_BMAX			:int = offset(12);
+		rn_internal static const OFFSET_CS				:int = offset(4);
+		rn_internal static const OFFSET_CH				:int = offset(4);
+		rn_internal static const OFFSET_BORDER_SIZE		:int = offset(4);
+		
+		private static function offset(size:int):int {
+			
+			return (SIZE += size) - size;
+			
+		}
 		
 		/** The mesh vertices. Getter. [Form: (x, y, z) * #nverts] */
 		public function getVert(index:int):int { return CModule.read16(CModule.read32(ptr + OFFSET_VERTS) + 2 * index); }

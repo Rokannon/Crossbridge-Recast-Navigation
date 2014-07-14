@@ -14,12 +14,19 @@ package recastnavigation.recast {
 	 */
 	public class RCHeightfield extends RNBase {
 		
-		rn_internal static const OFFSET_WIDTH						:int = 4 * 0;
-		rn_internal static const OFFSET_HEIGHT						:int = 4 * 1;
-		rn_internal static const OFFSET_BMIN						:int = 4 * 2;
-		rn_internal static const OFFSET_BMAX						:int = 4 * 5;
-		rn_internal static const OFFSET_CS							:int = 4 * 8;
-		rn_internal static const OFFSET_CH							:int = 4 * 9;
+		rn_internal static var SIZE									:int = 0;
+		rn_internal static const OFFSET_WIDTH						:int = offset(4);
+		rn_internal static const OFFSET_HEIGHT						:int = offset(4);
+		rn_internal static const OFFSET_BMIN						:int = offset(12);
+		rn_internal static const OFFSET_BMAX						:int = offset(12);
+		rn_internal static const OFFSET_CS							:int = offset(4);
+		rn_internal static const OFFSET_CH							:int = offset(4);
+		
+		private static function offset(size:int):int {
+			
+			return (SIZE += size) - size;
+			
+		}
 		
 		/** The width of the heightfield. (Along the x-axis in cell units.) */
 		public function get width():int { return CModule.read32(ptr + OFFSET_WIDTH); }

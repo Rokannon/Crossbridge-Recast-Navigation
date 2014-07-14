@@ -14,13 +14,19 @@ package recastnavigation.recast.meshdetail {
 	 */
 	public class RCPolyMeshDetail extends RNBase {
 		
-		rn_internal static const OFFSET_MESHES			:int = 4 * 0;
-		rn_internal static const OFFSET_VERTS			:int = 4 * 1;
-		rn_internal static const OFFSET_TRIS			:int = 4 * 2;
-		rn_internal static const OFFSET_NMESHES			:int = 4 * 3;
-		rn_internal static const OFFSET_NVERTS			:int = 4 * 4;
-		rn_internal static const OFFSET_NTRIS			:int = 4 * 5;
-		rn_internal static const SIZE					:int = 4 * 6;
+		rn_internal static var SIZE						:int = 0;
+		rn_internal static const OFFSET_MESHES			:int = offset(4);
+		rn_internal static const OFFSET_VERTS			:int = offset(4);
+		rn_internal static const OFFSET_TRIS			:int = offset(4);
+		rn_internal static const OFFSET_NMESHES			:int = offset(4);
+		rn_internal static const OFFSET_NVERTS			:int = offset(4);
+		rn_internal static const OFFSET_NTRIS			:int = offset(4);
+		
+		private static function offset(size:int):int {
+			
+			return (SIZE += size) - size;
+			
+		}
 		
 		/** The sub-mesh data. Getter. [Size: 4*#nmeshes] */
 		public function getMesh(index:int):int { return CModule.read32(CModule.read32(ptr + OFFSET_MESHES) + 4 * index); }
