@@ -21,6 +21,9 @@ package recastnavigation.recast {
 		rn_internal static const OFFSET_BMAX						:int = offset(12);
 		rn_internal static const OFFSET_CS							:int = offset(4);
 		rn_internal static const OFFSET_CH							:int = offset(4);
+		rn_internal static const OFFSET_SPANS						:int = offset(4);
+		rn_internal static const OFFSET_POOLS						:int = offset(4);
+		rn_internal static const OFFSET_FREELIST					:int = offset(4);
 		
 		private static function offset(size:int):int {
 			
@@ -67,6 +70,54 @@ package recastnavigation.recast {
 		/** The height of each cell. (The minimum increment along the y-axis.) */
 		public function get ch():Number { return CModule.readFloat(ptr + OFFSET_CH); }
 		public function set ch(value:Number):void { CModule.writeFloat(ptr + OFFSET_CH, value); }
+		
+		/** Heightfield of spans (width*height). Getter. */
+		public function getSpan(index:int, resultSpan:RCSpan = null):RCSpan {
+			
+			if (resultSpan == null) resultSpan = new RCSpan();
+			resultSpan.ptr = CModule.read32(CModule.read32(ptr + OFFSET_SPANS) + 4 * index);
+			return resultSpan;
+			
+		}
+		
+		/** Heightfield of spans (width*height). Setter. */
+		public function setSpan(index:int, span:RCSpan):void {
+			
+			CModule.write32(CModule.read32(ptr + OFFSET_SPANS) + 4 * index, span.ptr);
+			
+		}
+		
+		/** Linked list of span pools. Getter. */
+		public function getPools(resultSpanPool:RCSpanPool = null):RCSpanPool {
+			
+			if (resultSpanPool == null) resultSpanPool = new RCSpanPool();
+			resultSpanPool.ptr = CModule.read32(ptr + OFFSET_POOLS);
+			return resultSpanPool;
+			
+		}
+		
+		/** Linked list of span pools. Setter. */
+		public function setPools(spanPool:RCSpanPool):void {
+			
+			CModule.write32(ptr + OFFSET_POOLS, spanPool.ptr);
+			
+		}
+		
+		/** The next free span. Getter. */
+		public function getFreelist(resultSpan:RCSpan = null):RCSpan {
+			
+			if (resultSpan == null) resultSpan = new RCSpan();
+			resultSpan.ptr = CModule.read32(ptr + OFFSET_FREELIST);
+			return resultSpan;
+			
+		}
+		
+		/** The next free span. Setter. */
+		public function setFreelist(span:RCSpan):void {
+			
+			CModule.write32(ptr + OFFSET_FREELIST, span.ptr);
+			
+		}
 		
 		public override function alloc():void {
 			
