@@ -81,9 +81,9 @@ package recastnavigation.recast {
 		}
 		
 		/** Heightfield of spans (width*height). Setter. */
-		public function setSpan(index:int, span:RCSpan):void {
+		public function setSpan(index:int, value:RCSpan):void {
 			
-			CModule.write32(CModule.read32(ptr + OFFSET_SPANS) + 4 * index, span.ptr);
+			CModule.write32(CModule.read32(ptr + OFFSET_SPANS) + 4 * index, value.ptr);
 			
 		}
 		
@@ -97,9 +97,9 @@ package recastnavigation.recast {
 		}
 		
 		/** Linked list of span pools. Setter. */
-		public function setPools(spanPool:RCSpanPool):void {
+		public function setPools(value:RCSpanPool):void {
 			
-			CModule.write32(ptr + OFFSET_POOLS, spanPool.ptr);
+			CModule.write32(ptr + OFFSET_POOLS, value.ptr);
 			
 		}
 		
@@ -113,9 +113,9 @@ package recastnavigation.recast {
 		}
 		
 		/** The next free span. Setter. */
-		public function setFreelist(span:RCSpan):void {
+		public function setFreelist(value:RCSpan):void {
 			
-			CModule.write32(ptr + OFFSET_FREELIST, span.ptr);
+			CModule.write32(ptr + OFFSET_FREELIST, value.ptr);
 			
 		}
 		

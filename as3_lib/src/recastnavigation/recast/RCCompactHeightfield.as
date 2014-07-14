@@ -133,32 +133,16 @@ package recastnavigation.recast {
 		}
 		
 		/** Array containing border distance data. Getter. [Size: #spanCount] */
-		public function getDist(index:int):int {
-			
-			return CModule.read16(CModule.read32(ptr + OFFSET_DIST) + 2 * index);
-			
-		}
+		public function getDist(index:int):int { return CModule.read16(CModule.read32(ptr + OFFSET_DIST) + 2 * index); }
 		
 		/** Array containing border distance data. Setter. [Size: #spanCount] */
-		public function setDist(index:int, value:int):void {
-			
-			CModule.write16(CModule.read32(ptr + OFFSET_DIST) + 2 * index, value);
-			
-		}
+		public function setDist(index:int, value:int):void { CModule.write16(CModule.read32(ptr + OFFSET_DIST) + 2 * index, value); }
 		
 		/** Array containing area id data. Getter. [Size: #spanCount] */
-		public function getArea(index:int):int {
-			
-			return CModule.read8(CModule.read32(ptr + OFFSET_AREAS) + 1 * index);
-			
-		}
+		public function getArea(index:int):int { return CModule.read8(CModule.read32(ptr + OFFSET_AREAS) + 1 * index); }
 		
 		/** Array containing area id data. Setter. [Size: #spanCount] */
-		public function setArea(index:int, value:int):void {
-			
-			CModule.write8(CModule.read32(ptr + OFFSET_AREAS) + 1 * index, value);
-			
-		}
+		public function setArea(index:int, value:int):void { CModule.write8(CModule.read32(ptr + OFFSET_AREAS) + 1 * index, value); }
 		
 		public override function alloc():void {
 			

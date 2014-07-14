@@ -45,9 +45,9 @@ package recastnavigation.recast {
 		}
 		
 		/** The next span higher up in column. Setter. */
-		public function setNext(span:RCSpan):void {
+		public function setNext(value:RCSpan):void {
 			
-			CModule.write32(ptr + OFFSET_NEXT, span.ptr);
+			CModule.write32(ptr + OFFSET_NEXT, value.ptr);
 			
 		}
 		

@@ -33,9 +33,9 @@ package recastnavigation.recast {
 		}
 		
 		/** The next span pool. Setter. */
-		public function setNext(spanPool:RCSpanPool):void {
+		public function setNext(value:RCSpanPool):void {
 			
-			CModule.write32(ptr + OFFSET_NEXT, spanPool.ptr);
+			CModule.write32(ptr + OFFSET_NEXT, value.ptr);
 			
 		}
 		
@@ -49,9 +49,9 @@ package recastnavigation.recast {
 		}
 		
 		/** Array of spans in the pool. Setter. */
-		public function setItem(index:int, span:RCSpanPool):void {
+		public function setItem(index:int, value:RCSpanPool):void {
 			
-			CModule.write32(ptr + OFFSET_ITEMS + RCSpan.SIZE * index, span.ptr);
+			CModule.write32(ptr + OFFSET_ITEMS + RCSpan.SIZE * index, value.ptr);
 			
 		}
 		
