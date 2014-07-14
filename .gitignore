@@ -1,6 +1,4 @@
-# Other files and folders
 .settings/
-
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+as3_internal_api/Debug/*
+as3_internal_api/Release/*
+as3_internal_api/obj/*
