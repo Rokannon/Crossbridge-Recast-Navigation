@@ -1,4 +1,4 @@
-package recastnavigation.detour {
+package recastnavigation.detour.navmeshbuilder {
 	
 	import recastnavigation.core.RNBase;
 	import recastnavigation.core.rn_internal;

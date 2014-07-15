@@ -1,7 +1,7 @@
 package recastnavigation.recast {
 	
 	import recastnavigation.core.rn_internal;
-	import recastnavigation.core.utils.mallocIntVector;
+	import recastnavigation.core.utils.mallocInt32Vector;
 	import recastnavigation.core.utils.mallocNumberVector;
 	import recastnavigation.internal_api.CModule;
 	import recastnavigation.internal_api.internal_rcMarkWalkableTriangles;
@@ -21,7 +21,7 @@ package recastnavigation.recast {
 		resultAreas.fixed = true;
 		
 		var verts_ptr:int = mallocNumberVector(verts);
-		var tris_ptr:int = mallocIntVector(tris);
+		var tris_ptr:int = mallocInt32Vector(tris);
 		
 		var areas_ptr:int = CModule.malloc(nt);
 		for (i = 0; i < nt; ++i) {
