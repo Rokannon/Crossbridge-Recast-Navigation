@@ -41,7 +41,7 @@
     <NMakeOutput>as3_internal_api.exe</NMakeOutput>
     <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
     <NMakeBuildCommandLine>crossbridge_launcher.bat "$(CROSSBRIDGE_PATH)"</NMakeBuildCommandLine>
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(CROSSBRIDGE_PATH)\sdk\usr\include\;$(ProjectDir)\..\recastnavigation\Recast\Include;$(ProjectDir)\..\recastnavigation\Detour\Include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(CROSSBRIDGE_PATH)\sdk\usr\include\;$(ProjectDir)\..\recastnavigation\Recast\Include;$(ProjectDir)\..\recastnavigation\Detour\Include;$(ProjectDir)\..\recastnavigation\DetourCrowd\Include;</IncludePath>
     <SourcePath>$(VC_SourcePath);$(CROSSBRIDGE_PATH)\sdk\usr\include\;</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -57,6 +57,7 @@
     <Text Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="detour_crowd.cpp" />
     <ClCompile Include="localvar.cpp" />
     <ClCompile Include="detour.cpp" />
     <ClCompile Include="main.cpp" />
