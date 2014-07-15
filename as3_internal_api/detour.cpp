@@ -110,13 +110,13 @@ void _dtFreeNavMesh()
 }
 
 void _dtNavMesh_init() __attribute__((used,
-	annotate("as3sig:public function internal_dtNavMesh_init(mesh_ptr:int, data_ptr:int, dataSize:int, flags:int):int"),
+	annotate("as3sig:public function internal_dtNavMesh_init(nav_ptr:int, data_ptr:int, dataSize:int, flags:int):int"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _dtNavMesh_init()
 {
-	dtNavMesh * mesh;
-	AS3_GetScalarFromVar(mesh, mesh_ptr);
+	dtNavMesh * nav;
+	AS3_GetScalarFromVar(nav, nav_ptr);
 
 	unsigned char * data;
 	AS3_GetScalarFromVar(data, data_ptr);
@@ -127,5 +127,48 @@ void _dtNavMesh_init()
 	int _flags;
 	AS3_GetScalarFromVar(_flags, flags);
 
-	AS3_Return(mesh->init(data, _dataSize, _flags));
+	AS3_Return(nav->init(data, _dataSize, _flags));
+}
+
+// ////
+// DetourNavMeshQuery
+// ////
+
+void _dtAllocNavMeshQuery() __attribute__((used,
+	annotate("as3sig:public function internal_dtAllocNavMeshQuery():int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtAllocNavMeshQuery()
+{
+	AS3_Return(dtAllocNavMeshQuery());
+}
+
+void _dtFreeNavMeshQuery() __attribute__((used,
+	annotate("as3sig:public function internal_dtFreeNavMeshQuery(ptr:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtFreeNavMeshQuery()
+{
+	dtNavMeshQuery * _ptr;
+	AS3_GetScalarFromVar(_ptr, ptr);
+
+	dtFreeNavMeshQuery(_ptr);
+}
+
+void _dtNavMeshQuery_init() __attribute__((used,
+	annotate("as3sig:public function internal_dtNavMeshQuery_init(query_ptr:int, nav_ptr:int, maxNodes:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtNavMeshQuery_init()
+{
+	dtNavMeshQuery * query;
+	AS3_GetScalarFromVar(query, query_ptr);
+	
+	dtNavMesh * nav;
+	AS3_GetScalarFromVar(nav, nav_ptr);
+
+	int _maxNodes;
+	AS3_GetScalarFromVar(_maxNodes, maxNodes);
+
+	AS3_Return(query->init(nav, _maxNodes));
 }
