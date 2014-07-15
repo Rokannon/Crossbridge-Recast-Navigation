@@ -57,6 +57,7 @@
     <Text Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="localvar.cpp" />
     <ClCompile Include="detour.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="rc_context_adapter.cpp" />

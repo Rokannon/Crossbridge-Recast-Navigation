@@ -30,5 +30,8 @@
     <ClCompile Include="detour.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="localvar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
