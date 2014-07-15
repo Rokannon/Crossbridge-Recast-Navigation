@@ -76,14 +76,14 @@ protected:
 };
 
 // ////
-// ALLOC
+// API
 // ////
 
-void _rcAlloc_rcContext() __attribute__((used,
-	annotate("as3sig:public function internal_rcAlloc_rcContext(state:Boolean, obj:*):int"),
+void _rcContext_alloc() __attribute__((used,
+	annotate("as3sig:public function internal_rcContext_alloc(state:Boolean, obj:*):int"),
 	annotate("as3package:recastnavigation.internal_api")));
 
-void _rcAlloc_rcContext()
+void _rcContext_alloc()
 {
 	bool _state;
 	AS3_GetScalarFromVar(_state, state);
@@ -93,10 +93,6 @@ void _rcAlloc_rcContext()
 
 	AS3_Return(new rcContextAdapter(_state, _obj));
 }
-
-// ////
-// API
-// ////
 
 void _rcContext_enableLog() __attribute__((used,
 	annotate("as3sig:public function internal_rcContext_enableLog(ctx_ptr:int, state:Boolean):void"),

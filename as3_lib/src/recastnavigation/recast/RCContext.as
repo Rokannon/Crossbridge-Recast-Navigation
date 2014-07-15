@@ -2,7 +2,7 @@ package recastnavigation.recast {
 	
 	import recastnavigation.core.RNBase;
 	import recastnavigation.core.rn_internal;
-	import recastnavigation.internal_api.internal_rcAlloc_rcContext;
+	import recastnavigation.internal_api.internal_rcContext_alloc;
 	import recastnavigation.internal_api.internal_rcContext_enableLog;
 	import recastnavigation.internal_api.internal_rcContext_enableTimer;
 	import recastnavigation.internal_api.internal_rcContext_getAccumulatedTime;
@@ -41,7 +41,7 @@ package recastnavigation.recast {
 		
 		public override function alloc():void {
 			
-			ptr = internal_rcAlloc_rcContext(_state, _obj);
+			ptr = internal_rcContext_alloc(_state, _obj);
 			
 		}
 		
