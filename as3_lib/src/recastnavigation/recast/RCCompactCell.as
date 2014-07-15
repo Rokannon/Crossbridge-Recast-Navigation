@@ -14,7 +14,7 @@ package recastnavigation.recast {
 	public class RCCompactCell extends RNBase {
 		
 		rn_internal static var SIZE					:int = 0;
-		rn_internal static const OFFSET_MIXED		:int = offset(4);
+		rn_internal static const OFFSET_UNION		:int = offset(4);
 		
 		private static function offset(size:int):int {
 			
@@ -23,12 +23,12 @@ package recastnavigation.recast {
 		}
 		
 		/** Index to the first span in the column. */
-		public function get index():int { return readBits(CModule.read32(ptr + OFFSET_MIXED), 0, 24); }
-		public function set index(value:int):void { CModule.write32(ptr + OFFSET_MIXED, writeBits(CModule.read32(ptr + OFFSET_MIXED), 0, 24, value)); }
+		public function get index():int { return readBits(CModule.read32(ptr + OFFSET_UNION), 0, 24); }
+		public function set index(value:int):void { CModule.write32(ptr + OFFSET_UNION, writeBits(CModule.read32(ptr + OFFSET_UNION), 0, 24, value)); }
 		
 		/** Number of spans in the column. */
-		public function get count():int { return readBits(CModule.read32(ptr + OFFSET_MIXED), 24, 8); }
-		public function set count(value:int):void { CModule.write32(ptr + OFFSET_MIXED, writeBits(CModule.read32(ptr + OFFSET_MIXED), 24, 8, value)); }
+		public function get count():int { return readBits(CModule.read32(ptr + OFFSET_UNION), 24, 8); }
+		public function set count(value:int):void { CModule.write32(ptr + OFFSET_UNION, writeBits(CModule.read32(ptr + OFFSET_UNION), 24, 8, value)); }
 		
 	}
 	

@@ -16,7 +16,7 @@ package recastnavigation.recast {
 		rn_internal static var SIZE					:int = 0;
 		rn_internal static const OFFSET_Y			:int = offset(4);
 		rn_internal static const OFFSET_REG			:int = offset(4);
-		rn_internal static const OFFSET_MIXED		:int = offset(4);
+		rn_internal static const OFFSET_UNION		:int = offset(4);
 		
 		private static function offset(size:int):int {
 			
@@ -33,12 +33,12 @@ package recastnavigation.recast {
 		public function set reg(value:int):void { CModule.write32(ptr + OFFSET_REG, value); }
 		
 		/** Packed neighbor connection data. */
-		public function get con():int { return readBits(CModule.read32(ptr + OFFSET_MIXED), 0, 24); }
-		public function set con(value:int):void { CModule.write32(ptr + OFFSET_MIXED, writeBits(CModule.read32(ptr + OFFSET_MIXED), 0, 24, value)); }
+		public function get con():int { return readBits(CModule.read32(ptr + OFFSET_UNION), 0, 24); }
+		public function set con(value:int):void { CModule.write32(ptr + OFFSET_UNION, writeBits(CModule.read32(ptr + OFFSET_UNION), 0, 24, value)); }
 		
 		/** The height of the span.  (Measured from #y.) */
-		public function get h():int { return readBits(CModule.read32(ptr + OFFSET_MIXED), 24, 8); }
-		public function set h(value:int):void { CModule.write32(ptr + OFFSET_MIXED, writeBits(CModule.read32(ptr + OFFSET_MIXED), 24, 8, value)); }
+		public function get h():int { return readBits(CModule.read32(ptr + OFFSET_UNION), 24, 8); }
+		public function set h(value:int):void { CModule.write32(ptr + OFFSET_UNION, writeBits(CModule.read32(ptr + OFFSET_UNION), 24, 8, value)); }
 		
 	}
 	
