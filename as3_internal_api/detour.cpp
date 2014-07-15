@@ -23,6 +23,10 @@ void _dtFree()
 	dtFree(_ptr);
 }
 
+// ////
+// DetourNavMeshBuilder
+// ////
+
 void _dtAlloc_dtNavMeshCreateParams() __attribute__((used,
 	annotate("as3sig:public function internal_dtAlloc_dtNavMeshCreateParams():int"),
 	annotate("as3package:recastnavigation.internal_api")));
@@ -78,4 +82,50 @@ void _dtNavMeshDataSwapEndian()
 	AS3_GetScalarFromVar(_dataSize, dataSize);
 
 	AS3_Return(dtNavMeshDataSwapEndian(data, _dataSize));
+}
+
+// ////
+// DetourNavMesh
+// ////
+
+void _dtAllocNavMesh() __attribute__((used,
+	annotate("as3sig:public function internal_dtAllocNavMesh():int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtAllocNavMesh()
+{
+	AS3_Return(dtAllocNavMesh());
+}
+
+void _dtFreeNavMesh() __attribute__((used,
+	annotate("as3sig:public function internal_dtFreeNavMesh(ptr:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtFreeNavMesh()
+{
+	dtNavMesh * _ptr;
+	AS3_GetScalarFromVar(_ptr, ptr);
+
+	dtFreeNavMesh(_ptr);
+}
+
+void _dtNavMesh_init() __attribute__((used,
+	annotate("as3sig:public function internal_dtNavMesh_init(mesh_ptr:int, data_ptr:int, dataSize:int, flags:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtNavMesh_init()
+{
+	dtNavMesh * mesh;
+	AS3_GetScalarFromVar(mesh, mesh_ptr);
+
+	unsigned char * data;
+	AS3_GetScalarFromVar(data, data_ptr);
+
+	int _dataSize;
+	AS3_GetScalarFromVar(_dataSize, dataSize);
+
+	int _flags;
+	AS3_GetScalarFromVar(_flags, flags);
+
+	AS3_Return(mesh->init(data, _dataSize, _flags));
 }
