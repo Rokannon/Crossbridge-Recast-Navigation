@@ -45,7 +45,7 @@ package recastnavigation.detour {
 		rn_internal static const OFFSET_WALKABLE_CLIMB				:int = offset(4);
 		rn_internal static const OFFSET_CS							:int = offset(4);
 		rn_internal static const OFFSET_CH							:int = offset(4);
-		rn_internal static const OFFSET_BUILD_BV_TREE				:int = offset(1);
+		rn_internal static const OFFSET_BUILD_BV_TREE				:int = offset(4);
 		
 		private static function offset(size:int):int {
 			

@@ -27,8 +27,8 @@ package recastnavigation.recast {
 		rn_internal static const OFFSET_CH							:int = offset(4);
 		rn_internal static const OFFSET_CELLS						:int = offset(4);
 		rn_internal static const OFFSET_SPANS						:int = offset(4);
-		rn_internal static const OFFSET_DIST						:int = offset(2);
-		rn_internal static const OFFSET_AREAS						:int = offset(1);
+		rn_internal static const OFFSET_DIST						:int = offset(4);
+		rn_internal static const OFFSET_AREAS						:int = offset(4);
 		
 		private static function offset(size:int):int {
 			

@@ -17,7 +17,7 @@ package recastnavigation.recast.contour {
 		rn_internal static const OFFSET_RVERTS		:int = offset(4);
 		rn_internal static const OFFSET_NRVERTS		:int = offset(4);
 		rn_internal static const OFFSET_REG			:int = offset(2);
-		rn_internal static const OFFSET_AREA		:int = offset(1);
+		rn_internal static const OFFSET_AREA		:int = offset(2);
 		
 		private static function offset(size:int):int {
 			
