@@ -135,19 +135,6 @@ package recastnavigation.recast {
 		public function get detailSampleMaxError():Number { return CModule.readFloat(ptr + OFFSET_DETAIL_SAMPLE_MAX_ERROR); }
 		public function set detailSampleMaxError(value:Number):void { CModule.writeFloat(ptr + OFFSET_DETAIL_SAMPLE_MAX_ERROR, value); }
 		
-		public override function alloc():void {
-			
-			ptr = internal_rcAlloc_rcConfig();
-			
-		}
-		
-		public override function free():void {
-			
-			internal_rcFree(ptr);
-			ptr = 0;
-			
-		}
-		
 		/**
 		 * Calculates the grid size based on the bounding box and grid cell size.
 		 */
@@ -171,6 +158,19 @@ package recastnavigation.recast {
 			var verts_ptr:int = mallocNumberVector(verts);
 			internal_rcCalcBounds(verts_ptr, nv, ptr + OFFSET_WIDTH, ptr + OFFSET_HEIGHT);
 			CModule.free(verts_ptr);
+			
+		}
+		
+		public override function alloc():void {
+			
+			ptr = internal_rcAlloc_rcConfig();
+			
+		}
+		
+		public override function free():void {
+			
+			internal_rcFree(ptr);
+			ptr = 0;
 			
 		}
 		

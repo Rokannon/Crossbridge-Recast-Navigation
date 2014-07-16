@@ -119,19 +119,6 @@ package recastnavigation.recast {
 			
 		}
 		
-		public override function alloc():void {
-			
-			ptr = internal_rcAllocHeightfield();
-			
-		}
-		
-		public override function free():void {
-			
-			internal_rcFreeHeightField(ptr);
-			ptr = 0;
-			
-		}
-		
 		/**
 		 * Initializes a new heightfield.
 		 */
@@ -147,6 +134,19 @@ package recastnavigation.recast {
 				CModule.readFloat(cfg.ptr + RCConfig.OFFSET_CS),
 				CModule.readFloat(cfg.ptr + RCConfig.OFFSET_CH)
 			);
+			
+		}
+		
+		public override function alloc():void {
+			
+			ptr = internal_rcAllocHeightfield();
+			
+		}
+		
+		public override function free():void {
+			
+			internal_rcFreeHeightField(ptr);
+			ptr = 0;
 			
 		}
 		

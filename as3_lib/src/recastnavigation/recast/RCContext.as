@@ -39,19 +39,6 @@ package recastnavigation.recast {
 			
 		}
 		
-		public override function alloc():void {
-			
-			ptr = internal_rcContext_alloc(_state, _obj);
-			
-		}
-		
-		public override function free():void {
-			
-			internal_rcFree(ptr);
-			ptr = 0;
-			
-		}
-		
 		/**
 		 * Enables or disables logging.
 		 */
@@ -122,6 +109,19 @@ package recastnavigation.recast {
 		public final function getAccumulatedTime(timerLabel:int):int {
 			
 			return internal_rcContext_getAccumulatedTime(ptr, timerLabel);
+			
+		}
+		
+		public override function alloc():void {
+			
+			ptr = internal_rcContext_alloc(_state, _obj);
+			
+		}
+		
+		public override function free():void {
+			
+			internal_rcFree(ptr);
+			ptr = 0;
 			
 		}
 		

@@ -109,4 +109,5 @@ package recastnavigation.recast.contour {
 		}
 		
 	}
+	
 }

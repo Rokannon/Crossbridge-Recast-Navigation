@@ -144,19 +144,6 @@ package recastnavigation.recast {
 		/** Array containing area id data. Setter. [Size: #spanCount] */
 		public function setArea(index:int, value:int):void { CModule.write8(CModule.read32(ptr + OFFSET_AREAS) + 1 * index, value); }
 		
-		public override function alloc():void {
-			
-			ptr = internal_rcAllocCompactHeightfield();
-			
-		}
-		
-		public override function free():void {
-			
-			internal_rcFreeCompactHeightfield(ptr);
-			ptr = 0;
-			
-		}
-		
 		/**
 		 * Builds a compact heightfield representing open space, 
 		 * from a heightfield representing solid space.
@@ -170,6 +157,19 @@ package recastnavigation.recast {
 				hf.ptr,
 				ptr
 			);
+			
+		}
+		
+		public override function alloc():void {
+			
+			ptr = internal_rcAllocCompactHeightfield();
+			
+		}
+		
+		public override function free():void {
+			
+			internal_rcFreeCompactHeightfield(ptr);
+			ptr = 0;
 			
 		}
 		
