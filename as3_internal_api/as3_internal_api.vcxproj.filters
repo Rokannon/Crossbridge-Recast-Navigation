@@ -36,5 +36,8 @@
     <ClCompile Include="detour_crowd.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sizeof.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
