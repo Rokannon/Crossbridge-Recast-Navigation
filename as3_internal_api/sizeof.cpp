@@ -35,8 +35,14 @@ void _sizeof_ ## x()\
 	AS3_Return(sizeof(x));\
 }
 
+_SIZEOF(dtPathCorridor);
+_SIZEOF(dtLocalBoundary);
+_SIZEOF(dtPathQueue);
+_SIZEOF(dtQueryFilter);
+
 _SIZEOF(dtCrowdNeighbour);
 _SIZEOF(dtCrowdAgentParams);
 _SIZEOF(dtCrowdAgent);
-_SIZEOF(dtPathCorridor);
-_SIZEOF(dtLocalBoundary);
+_SIZEOF(dtObstacleAvoidanceDebugData);
+_SIZEOF(dtCrowd);
+_SIZEOF(dtObstacleAvoidanceParams);
