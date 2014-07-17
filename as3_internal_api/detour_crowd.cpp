@@ -46,10 +46,10 @@ void _dtFreeCrowd() __attribute__((used,
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _dtFreeCrowd() {
-	dtCrowd * _ptr;
-	AS3_GetScalarFromVar(_ptr, ptr);
+	dtCrowd * ptr;
+	AS3_GetScalarFromVar(ptr, ptr);
 
-	dtFreeCrowd(_ptr);
+	dtFreeCrowd(ptr);
 }
 
 void _dtCrowd_init() __attribute__((used,
@@ -61,16 +61,16 @@ void _dtCrowd_init()
 	dtCrowd * crowd;
 	AS3_GetScalarFromVar(crowd, crowd_ptr);
 
-	int _maxAgents;
-	AS3_GetScalarFromVar(_maxAgents, maxAgents);
+	int maxAgents;
+	AS3_GetScalarFromVar(maxAgents, maxAgents);
 
-	float _maxAgentRadius;
-	AS3_GetScalarFromVar(_maxAgentRadius, maxAgentRadius);
+	float maxAgentRadius;
+	AS3_GetScalarFromVar(maxAgentRadius, maxAgentRadius);
 
 	dtNavMesh * nav;
 	AS3_GetScalarFromVar(nav, nav_ptr);
 
-	AS3_Return(crowd->init(_maxAgents, _maxAgentRadius, nav));
+	AS3_Return(crowd->init(maxAgents, maxAgentRadius, nav));
 }
 
 void _dtCrowd_setObstacleAvoidanceParams() __attribute__((used,
@@ -82,13 +82,13 @@ void _dtCrowd_setObstacleAvoidanceParams()
 	dtCrowd * crowd;
 	AS3_GetScalarFromVar(crowd, crowd_ptr);
 
-	int _idx;
-	AS3_GetScalarFromVar(_idx, idx);
+	int idx;
+	AS3_GetScalarFromVar(idx, idx);
 
 	dtObstacleAvoidanceParams * params;
 	AS3_GetScalarFromVar(params, params_ptr);
 
-	crowd->setObstacleAvoidanceParams(_idx, params);
+	crowd->setObstacleAvoidanceParams(idx, params);
 }
 
 void _dtCrowd_getObstacleAvoidanceParams() __attribute__((used,
@@ -100,10 +100,10 @@ void _dtCrowd_getObstacleAvoidanceParams()
 	dtCrowd * crowd;
 	AS3_GetScalarFromVar(crowd, crowd_ptr);
 
-	int _idx;
-	AS3_GetScalarFromVar(_idx, idx);
+	int idx;
+	AS3_GetScalarFromVar(idx, idx);
 
-	AS3_Return(crowd->getObstacleAvoidanceParams(_idx));
+	AS3_Return(crowd->getObstacleAvoidanceParams(idx));
 }
 
 void _dtCrowd_getAgent() __attribute__((used,
@@ -115,10 +115,10 @@ void _dtCrowd_getAgent()
 	dtCrowd * crowd;
 	AS3_GetScalarFromVar(crowd, crowd_ptr);
 
-	int _idx;
-	AS3_GetScalarFromVar(_idx, idx);
+	int idx;
+	AS3_GetScalarFromVar(idx, idx);
 
-	AS3_Return(crowd->getAgent(_idx));
+	AS3_Return(crowd->getAgent(idx));
 }
 
 void _dtCrowd_getAgentCount() __attribute__((used,
@@ -160,13 +160,13 @@ void _dtCrowd_updateAgentParameters()
 	dtCrowd * crowd;
 	AS3_GetScalarFromVar(crowd, crowd_ptr);
 
-	int _idx;
-	AS3_GetScalarFromVar(_idx, idx);
+	int idx;
+	AS3_GetScalarFromVar(idx, idx);
 
 	dtCrowdAgentParams * params;
 	AS3_GetScalarFromVar(params, params_ptr);
 
-	crowd->updateAgentParameters(_idx, params);
+	crowd->updateAgentParameters(idx, params);
 }
 
 void _dtCrowd_removeAgent() __attribute__((used,
@@ -178,10 +178,10 @@ void _dtCrowd_removeAgent()
 	dtCrowd * crowd;
 	AS3_GetScalarFromVar(crowd, crowd_ptr);
 
-	int _idx;
-	AS3_GetScalarFromVar(_idx, idx);
+	int idx;
+	AS3_GetScalarFromVar(idx, idx);
 
-	crowd->removeAgent(_idx);
+	crowd->removeAgent(idx);
 }
 
 void _dtCrowd_requestMoveTarget() __attribute__((used,
@@ -193,16 +193,16 @@ void _dtCrowd_requestMoveTarget()
 	dtCrowd * crowd;
 	AS3_GetScalarFromVar(crowd, crowd_ptr);
 
-	int _idx;
-	AS3_GetScalarFromVar(_idx, idx);
+	int idx;
+	AS3_GetScalarFromVar(idx, idx);
 
-	int _ref;
-	AS3_GetScalarFromVar(_ref, ref);
+	int ref;
+	AS3_GetScalarFromVar(ref, ref);
 
 	float * pos;
 	AS3_GetScalarFromVar(pos, pos_ptr);
 
-	AS3_Return(crowd->requestMoveTarget(_idx, _ref, pos));
+	AS3_Return(crowd->requestMoveTarget(idx, ref, pos));
 }
 
 void _dtCrowd_requestMoveVelocity() __attribute__((used,
@@ -214,13 +214,13 @@ void _dtCrowd_requestMoveVelocity()
 	dtCrowd * crowd;
 	AS3_GetScalarFromVar(crowd, crowd_ptr);
 
-	int _idx;
-	AS3_GetScalarFromVar(_idx, idx);
+	int idx;
+	AS3_GetScalarFromVar(idx, idx);
 
 	float * vel;
 	AS3_GetScalarFromVar(vel, vel_ptr);
 
-	AS3_Return(crowd->requestMoveVelocity(_idx, vel));
+	AS3_Return(crowd->requestMoveVelocity(idx, vel));
 }
 
 void _dtCrowd_resetMoveTarget() __attribute__((used,
@@ -232,10 +232,10 @@ void _dtCrowd_resetMoveTarget()
 	dtCrowd * crowd;
 	AS3_GetScalarFromVar(crowd, crowd_ptr);
 
-	int _idx;
-	AS3_GetScalarFromVar(_idx, idx);
+	int idx;
+	AS3_GetScalarFromVar(idx, idx);
 
-	AS3_Return(crowd->resetMoveTarget(_idx));
+	AS3_Return(crowd->resetMoveTarget(idx));
 }
 
 void _dtCrowd_getActiveAgents() __attribute__((used,
@@ -250,10 +250,10 @@ void _dtCrowd_getActiveAgents()
 	dtCrowdAgent * * agents;
 	AS3_GetScalarFromVar(agents, agents_ptr);
 
-	int _maxAgents;
-	AS3_GetScalarFromVar(_maxAgents, maxAgents);
+	int maxAgents;
+	AS3_GetScalarFromVar(maxAgents, maxAgents);
 
-	AS3_Return(crowd->getActiveAgents(agents, _maxAgents));
+	AS3_Return(crowd->getActiveAgents(agents, maxAgents));
 }
 
 void _dtCrowd_update() __attribute__((used,
@@ -265,11 +265,11 @@ void _dtCrowd_update()
 	dtCrowd * crowd;
 	AS3_GetScalarFromVar(crowd, crowd_ptr);
 
-	float _dt;
-	AS3_GetScalarFromVar(_dt, dt);
+	float dt;
+	AS3_GetScalarFromVar(dt, dt);
 
 	dtCrowdAgentDebugInfo* debug;
 	AS3_GetScalarFromVar(debug, debug_ptr);
 
-	crowd->update(_dt, debug);
+	crowd->update(dt, debug);
 }

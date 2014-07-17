@@ -11,10 +11,10 @@ void _rcFree() __attribute__((used,
 
 void _rcFree()
 {
-	void * _ptr;
-	AS3_GetScalarFromVar(_ptr, ptr);
+	void * ptr;
+	AS3_GetScalarFromVar(ptr, ptr);
 
-	rcFree(_ptr);
+	rcFree(ptr);
 }
 
 void _rcAlloc_rcConfig() __attribute__((used,
@@ -38,8 +38,8 @@ void _rcCalcGridSize()
 	float * bmax;
 	AS3_GetScalarFromVar(bmax, bmax_ptr);
 
-	float _cs;
-	AS3_GetScalarFromVar(_cs, cs);
+	float cs;
+	AS3_GetScalarFromVar(cs, cs);
 
 	int * w;
 	AS3_GetScalarFromVar(w, w_ptr);
@@ -47,7 +47,7 @@ void _rcCalcGridSize()
 	int * h;
 	AS3_GetScalarFromVar(h, h_ptr);
 
-	rcCalcGridSize(bmin, bmax, _cs, w, h);
+	rcCalcGridSize(bmin, bmax, cs, w, h);
 }
 
 void _rcCalcBounds() __attribute__((used,
@@ -59,8 +59,8 @@ void _rcCalcBounds()
 	float * verts;
 	AS3_GetScalarFromVar(verts, verts_ptr);
 
-	float _nv;
-	AS3_GetScalarFromVar(_nv, nv);
+	float nv;
+	AS3_GetScalarFromVar(nv, nv);
 
 	float * bmin;
 	AS3_GetScalarFromVar(bmin, bmin_ptr);
@@ -68,7 +68,7 @@ void _rcCalcBounds()
 	float * bmax;
 	AS3_GetScalarFromVar(bmax, bmax_ptr);
 
-	rcCalcBounds(verts, _nv, bmin, bmax);
+	rcCalcBounds(verts, nv, bmin, bmax);
 }
 
 void _rcAllocHeightfield() __attribute__((used,
@@ -86,10 +86,10 @@ void _rcFreeHeightField() __attribute__((used,
 
 void _rcFreeHeightField()
 {
-	rcHeightfield * _ptr;
-	AS3_GetScalarFromVar(_ptr, ptr);
+	rcHeightfield * ptr;
+	AS3_GetScalarFromVar(ptr, ptr);
 
-	rcFreeHeightField(_ptr);
+	rcFreeHeightField(ptr);
 }
 
 void _rcCreateHeightfield() __attribute__((used,
@@ -104,11 +104,11 @@ void _rcCreateHeightfield()
 	rcHeightfield * hf;
 	AS3_GetScalarFromVar(hf, hf_ptr);
 
-	int _width;
-	AS3_GetScalarFromVar(_width, width);
+	int width;
+	AS3_GetScalarFromVar(width, width);
 
-	int _height;
-	AS3_GetScalarFromVar(_height, height);
+	int height;
+	AS3_GetScalarFromVar(height, height);
 
 	float * bmin;
 	AS3_GetScalarFromVar(bmin, bmin_ptr);
@@ -116,13 +116,13 @@ void _rcCreateHeightfield()
 	float * bmax;
 	AS3_GetScalarFromVar(bmax, bmax_ptr);
 
-	float _cs;
-	AS3_GetScalarFromVar(_cs, cs);
+	float cs;
+	AS3_GetScalarFromVar(cs, cs);
 
-	float _ch;
-	AS3_GetScalarFromVar(_ch, ch);
+	float ch;
+	AS3_GetScalarFromVar(ch, ch);
 
-	AS3_Return(rcCreateHeightfield(ctx, *hf, _width, _height, bmin, bmax, _cs, _ch));
+	AS3_Return(rcCreateHeightfield(ctx, *hf, width, height, bmin, bmax, cs, ch));
 }
 
 void _rcMarkWalkableTriangles() __attribute__((used,
@@ -143,13 +143,13 @@ void _rcMarkWalkableTriangles()
 	int * tris;
 	AS3_GetScalarFromVar(tris, tris_ptr);
 
-	int _nt;
-	AS3_GetScalarFromVar(_nt, nt);
+	int nt;
+	AS3_GetScalarFromVar(nt, nt);
 
 	unsigned char* areas;
 	AS3_GetScalarFromVar(areas, areas_ptr);
 
-	rcMarkWalkableTriangles(ctx, _walkableSlopeAngle, verts, 0, tris, _nt, areas);
+	rcMarkWalkableTriangles(ctx, _walkableSlopeAngle, verts, 0, tris, nt, areas);
 }
 
 void _rcRasterizeTriangles() __attribute__((used,
@@ -170,16 +170,16 @@ void _rcRasterizeTriangles()
 	unsigned char* areas;
 	AS3_GetScalarFromVar(areas, areas_ptr);
 
-	int _nt;
-	AS3_GetScalarFromVar(_nt, nt);
+	int nt;
+	AS3_GetScalarFromVar(nt, nt);
 
 	rcHeightfield * solid;
 	AS3_GetScalarFromVar(solid, solid_ptr);
 
-	int _flagMergeThr;
-	AS3_GetScalarFromVar(_flagMergeThr, flagMergeThr);
+	int flagMergeThr;
+	AS3_GetScalarFromVar(flagMergeThr, flagMergeThr);
 
-	rcRasterizeTriangles(ctx, verts, 0, tris, areas, _nt, *solid, _flagMergeThr);
+	rcRasterizeTriangles(ctx, verts, 0, tris, areas, nt, *solid, flagMergeThr);
 }
 
 void _rcFilterLowHangingWalkableObstacles() __attribute__((used,
@@ -191,13 +191,13 @@ void _rcFilterLowHangingWalkableObstacles()
 	rcContext * ctx;
 	AS3_GetScalarFromVar(ctx, ctx_ptr);
 
-	int _walkableClimb;
-	AS3_GetScalarFromVar(_walkableClimb, walkableClimb);
+	int walkableClimb;
+	AS3_GetScalarFromVar(walkableClimb, walkableClimb);
 
 	rcHeightfield * solid;
 	AS3_GetScalarFromVar(solid, solid_ptr);
 
-	rcFilterLowHangingWalkableObstacles(ctx, _walkableClimb, *solid);
+	rcFilterLowHangingWalkableObstacles(ctx, walkableClimb, *solid);
 }
 
 void _rcFilterLedgeSpans() __attribute__((used,
@@ -209,16 +209,16 @@ void _rcFilterLedgeSpans()
 	rcContext * ctx;
 	AS3_GetScalarFromVar(ctx, ctx_ptr);
 
-	int _walkableHeight;
-	AS3_GetScalarFromVar(_walkableHeight, walkableHeight);
+	int walkableHeight;
+	AS3_GetScalarFromVar(walkableHeight, walkableHeight);
 
-	int _walkableClimb;
-	AS3_GetScalarFromVar(_walkableClimb, walkableClimb);
+	int walkableClimb;
+	AS3_GetScalarFromVar(walkableClimb, walkableClimb);
 
 	rcHeightfield * solid;
 	AS3_GetScalarFromVar(solid, solid_ptr);
 
-	rcFilterLedgeSpans(ctx, _walkableHeight, _walkableClimb, *solid);
+	rcFilterLedgeSpans(ctx, walkableHeight, walkableClimb, *solid);
 }
 
 void _rcFilterWalkableLowHeightSpans() __attribute__((used,
@@ -230,13 +230,13 @@ void _rcFilterWalkableLowHeightSpans()
 	rcContext * ctx;
 	AS3_GetScalarFromVar(ctx, ctx_ptr);
 
-	int _walkableHeight;
-	AS3_GetScalarFromVar(_walkableHeight, walkableHeight);
+	int walkableHeight;
+	AS3_GetScalarFromVar(walkableHeight, walkableHeight);
 
 	rcHeightfield * solid;
 	AS3_GetScalarFromVar(solid, solid_ptr);
 
-	rcFilterWalkableLowHeightSpans(ctx, _walkableHeight, *solid);
+	rcFilterWalkableLowHeightSpans(ctx, walkableHeight, *solid);
 }
 
 void _rcAllocCompactHeightfield() __attribute__((used,
@@ -269,11 +269,11 @@ void _rcBuildCompactHeightfield()
 	rcContext * ctx;
 	AS3_GetScalarFromVar(ctx, ctx_ptr);
 
-	int _walkableHeight;
-	AS3_GetScalarFromVar(_walkableHeight, walkableHeight);
+	int walkableHeight;
+	AS3_GetScalarFromVar(walkableHeight, walkableHeight);
 
-	int _walkableClimb;
-	AS3_GetScalarFromVar(_walkableClimb, walkableClimb);
+	int walkableClimb;
+	AS3_GetScalarFromVar(walkableClimb, walkableClimb);
 
 	rcHeightfield * hf;
 	AS3_GetScalarFromVar(hf, hf_ptr);
@@ -281,7 +281,7 @@ void _rcBuildCompactHeightfield()
 	rcCompactHeightfield * chf;
 	AS3_GetScalarFromVar(chf, chf_ptr);
 
-	AS3_Return(rcBuildCompactHeightfield(ctx, _walkableHeight, _walkableClimb, *hf, *chf));
+	AS3_Return(rcBuildCompactHeightfield(ctx, walkableHeight, walkableClimb, *hf, *chf));
 }
 
 void _rcErodeWalkableArea() __attribute__((used,
@@ -293,13 +293,13 @@ void _rcErodeWalkableArea()
 	rcContext * ctx;
 	AS3_GetScalarFromVar(ctx, ctx_ptr);
 
-	int _radius;
-	AS3_GetScalarFromVar(_radius, radius);
+	int radius;
+	AS3_GetScalarFromVar(radius, radius);
 
 	rcCompactHeightfield * chf;
 	AS3_GetScalarFromVar(chf, chf_ptr);
 
-	AS3_Return(rcErodeWalkableArea(ctx, _radius, *chf));
+	AS3_Return(rcErodeWalkableArea(ctx, radius, *chf));
 }
 
 void _rcBuildDistanceField() __attribute__((used,
@@ -329,16 +329,16 @@ void _rcBuildRegions()
 	rcCompactHeightfield * chf;
 	AS3_GetScalarFromVar(chf, chf_ptr);
 
-	int _borderSize;
-	AS3_GetScalarFromVar(_borderSize, borderSize);
+	int borderSize;
+	AS3_GetScalarFromVar(borderSize, borderSize);
 
-	int _minRegionArea;
-	AS3_GetScalarFromVar(_minRegionArea, minRegionArea);
+	int minRegionArea;
+	AS3_GetScalarFromVar(minRegionArea, minRegionArea);
 
-	int _mergeRegionArea;
-	AS3_GetScalarFromVar(_mergeRegionArea, mergeRegionArea);
+	int mergeRegionArea;
+	AS3_GetScalarFromVar(mergeRegionArea, mergeRegionArea);
 
-	AS3_Return(rcBuildRegions(ctx, *chf, _borderSize, _minRegionArea, _mergeRegionArea));
+	AS3_Return(rcBuildRegions(ctx, *chf, borderSize, minRegionArea, mergeRegionArea));
 }
 
 void _rcBuildRegionsMonotone() __attribute__((used,
@@ -353,16 +353,16 @@ void _rcBuildRegionsMonotone()
 	rcCompactHeightfield * chf;
 	AS3_GetScalarFromVar(chf, chf_ptr);
 
-	int _borderSize;
-	AS3_GetScalarFromVar(_borderSize, borderSize);
+	int borderSize;
+	AS3_GetScalarFromVar(borderSize, borderSize);
 
-	int _minRegionArea;
-	AS3_GetScalarFromVar(_minRegionArea, minRegionArea);
+	int minRegionArea;
+	AS3_GetScalarFromVar(minRegionArea, minRegionArea);
 
-	int _mergeRegionArea;
-	AS3_GetScalarFromVar(_mergeRegionArea, mergeRegionArea);
+	int mergeRegionArea;
+	AS3_GetScalarFromVar(mergeRegionArea, mergeRegionArea);
 
-	AS3_Return(rcBuildRegionsMonotone(ctx, *chf, _borderSize, _minRegionArea, _mergeRegionArea));
+	AS3_Return(rcBuildRegionsMonotone(ctx, *chf, borderSize, minRegionArea, mergeRegionArea));
 }
 
 void _rcBuildLayerRegions() __attribute__((used,
@@ -377,13 +377,13 @@ void _rcBuildLayerRegions()
 	rcCompactHeightfield * chf;
 	AS3_GetScalarFromVar(chf, chf_ptr);
 
-	int _borderSize;
-	AS3_GetScalarFromVar(_borderSize, borderSize);
+	int borderSize;
+	AS3_GetScalarFromVar(borderSize, borderSize);
 
-	int _minRegionArea;
-	AS3_GetScalarFromVar(_minRegionArea, minRegionArea);
+	int minRegionArea;
+	AS3_GetScalarFromVar(minRegionArea, minRegionArea);
 
-	AS3_Return(rcBuildLayerRegions(ctx, *chf, _borderSize, _minRegionArea));
+	AS3_Return(rcBuildLayerRegions(ctx, *chf, borderSize, minRegionArea));
 }
 
 void _rcAllocContourSet() __attribute__((used,
@@ -401,10 +401,10 @@ void _rcFreeContourSet() __attribute__((used,
 
 void _rcFreeContourSet()
 {
-	rcContourSet * _ptr;
-	AS3_GetScalarFromVar(_ptr, ptr);
+	rcContourSet * ptr;
+	AS3_GetScalarFromVar(ptr, ptr);
 
-	rcFreeContourSet(_ptr);
+	rcFreeContourSet(ptr);
 }
 
 void _rcBuildContours() __attribute__((used,
@@ -419,19 +419,19 @@ void _rcBuildContours()
 	rcCompactHeightfield * chf;
 	AS3_GetScalarFromVar(chf, chf_ptr);
 
-	float _maxError;
-	AS3_GetScalarFromVar(_maxError, maxError);
+	float maxError;
+	AS3_GetScalarFromVar(maxError, maxError);
 
-	int _maxEdgeLen;
-	AS3_GetScalarFromVar(_maxEdgeLen, maxEdgeLen);
+	int maxEdgeLen;
+	AS3_GetScalarFromVar(maxEdgeLen, maxEdgeLen);
 
 	rcContourSet * cset;
 	AS3_GetScalarFromVar(cset, cset_ptr);
 
-	int _buildFlags;
-	AS3_GetScalarFromVar(_buildFlags, buildFlags);
+	int buildFlags;
+	AS3_GetScalarFromVar(buildFlags, buildFlags);
 
-	rcBuildContours(ctx, *chf, _maxError, _maxEdgeLen, *cset, _buildFlags);
+	rcBuildContours(ctx, *chf, maxError, maxEdgeLen, *cset, buildFlags);
 }
 
 void _rcAllocPolyMesh() __attribute__((used,
@@ -449,10 +449,10 @@ void _rcFreePolyMesh() __attribute__((used,
 
 void _rcFreePolyMesh()
 {
-	rcPolyMesh * _ptr;
-	AS3_GetScalarFromVar(_ptr, ptr);
+	rcPolyMesh * ptr;
+	AS3_GetScalarFromVar(ptr, ptr);
 
-	rcFreePolyMesh(_ptr);
+	rcFreePolyMesh(ptr);
 }
 
 void _rcBuildPolyMesh() __attribute__((used,
@@ -467,13 +467,13 @@ void _rcBuildPolyMesh()
 	rcContourSet * cset;
 	AS3_GetScalarFromVar(cset, cset_ptr);
 
-	int _nvp;
-	AS3_GetScalarFromVar(_nvp, nvp);
+	int nvp;
+	AS3_GetScalarFromVar(nvp, nvp);
 
 	rcPolyMesh * mesh;
 	AS3_GetScalarFromVar(mesh, mesh_ptr);
 
-	AS3_Return(rcBuildPolyMesh(ctx, *cset, _nvp, *mesh));
+	AS3_Return(rcBuildPolyMesh(ctx, *cset, nvp, *mesh));
 }
 
 void _rcMergePolyMeshes() __attribute__((used,
@@ -488,13 +488,13 @@ void _rcMergePolyMeshes()
 	rcPolyMesh * * meshes;
 	AS3_GetScalarFromVar(meshes, meshes_ptr);
 
-	int _nmeshes;
-	AS3_GetScalarFromVar(_nmeshes, nmeshes);
+	int nmeshes;
+	AS3_GetScalarFromVar(nmeshes, nmeshes);
 
 	rcPolyMesh * mesh;
 	AS3_GetScalarFromVar(mesh, mesh_ptr);
 
-	AS3_Return(rcMergePolyMeshes(ctx, meshes, _nmeshes, *mesh));
+	AS3_Return(rcMergePolyMeshes(ctx, meshes, nmeshes, *mesh));
 }
 
 void _rcCopyPolyMesh() __attribute__((used,
@@ -530,10 +530,10 @@ void _rcFreePolyMeshDetail() __attribute__((used,
 
 void _rcFreePolyMeshDetail()
 {
-	rcPolyMeshDetail * _ptr;
-	AS3_GetScalarFromVar(_ptr, ptr);
+	rcPolyMeshDetail * ptr;
+	AS3_GetScalarFromVar(ptr, ptr);
 
-	rcFreePolyMeshDetail(_ptr);
+	rcFreePolyMeshDetail(ptr);
 }
 
 void _rcBuildPolyMeshDetail() __attribute__((used,
@@ -551,16 +551,16 @@ void _rcBuildPolyMeshDetail()
 	rcCompactHeightfield * chf;
 	AS3_GetScalarFromVar(chf, chf_ptr);
 
-	int _sampleDist;
-	AS3_GetScalarFromVar(_sampleDist, sampleDist);
+	int sampleDist;
+	AS3_GetScalarFromVar(sampleDist, sampleDist);
 
-	int _sampleMaxError;
-	AS3_GetScalarFromVar(_sampleMaxError, sampleMaxError);
+	int sampleMaxError;
+	AS3_GetScalarFromVar(sampleMaxError, sampleMaxError);
 
 	rcPolyMeshDetail * dmesh;
 	AS3_GetScalarFromVar(dmesh, dmesh_ptr);
 
-	AS3_Return(rcBuildPolyMeshDetail(ctx, *mesh, *chf, _sampleDist, _sampleMaxError, *dmesh));
+	AS3_Return(rcBuildPolyMeshDetail(ctx, *mesh, *chf, sampleDist, sampleMaxError, *dmesh));
 }
 
 void _rcMergePolyMeshDetails() __attribute__((used,
@@ -575,11 +575,11 @@ void _rcMergePolyMeshDetails()
 	rcPolyMeshDetail * * dmeshes;
 	AS3_GetScalarFromVar(dmeshes, dmeshes_ptr);
 
-	int _nmeshes;
-	AS3_GetScalarFromVar(_nmeshes, nmeshes);
+	int nmeshes;
+	AS3_GetScalarFromVar(nmeshes, nmeshes);
 
 	rcPolyMeshDetail * dmesh;
 	AS3_GetScalarFromVar(dmesh, dmesh_ptr);
 
-	AS3_Return(rcMergePolyMeshDetails(ctx, dmeshes, _nmeshes, *dmesh));
+	AS3_Return(rcMergePolyMeshDetails(ctx, dmeshes, nmeshes, *dmesh));
 }

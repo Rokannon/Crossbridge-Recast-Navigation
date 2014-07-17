@@ -17,10 +17,10 @@ void _dtFree() __attribute__((used,
 
 void _dtFree()
 {
-	void * _ptr;
-	AS3_GetScalarFromVar(_ptr, ptr);
+	void * ptr;
+	AS3_GetScalarFromVar(ptr, ptr);
 
-	dtFree(_ptr);
+	dtFree(ptr);
 }
 
 // ////
@@ -63,10 +63,10 @@ void _dtNavMeshHeaderSwapEndian()
 	unsigned char * data;
 	AS3_GetScalarFromVar(data, data_ptr);
 
-	int _dataSize;
-	AS3_GetScalarFromVar(_dataSize, dataSize);
+	int dataSize;
+	AS3_GetScalarFromVar(dataSize, dataSize);
 
-	AS3_Return(dtNavMeshHeaderSwapEndian(data, _dataSize));
+	AS3_Return(dtNavMeshHeaderSwapEndian(data, dataSize));
 }
 
 void _dtNavMeshDataSwapEndian() __attribute__((used,
@@ -78,10 +78,10 @@ void _dtNavMeshDataSwapEndian()
 	unsigned char * data;
 	AS3_GetScalarFromVar(data, data_ptr);
 
-	int _dataSize;
-	AS3_GetScalarFromVar(_dataSize, dataSize);
+	int dataSize;
+	AS3_GetScalarFromVar(dataSize, dataSize);
 
-	AS3_Return(dtNavMeshDataSwapEndian(data, _dataSize));
+	AS3_Return(dtNavMeshDataSwapEndian(data, dataSize));
 }
 
 // ////
@@ -103,10 +103,10 @@ void _dtFreeNavMesh() __attribute__((used,
 
 void _dtFreeNavMesh()
 {
-	dtNavMesh * _ptr;
-	AS3_GetScalarFromVar(_ptr, ptr);
+	dtNavMesh * ptr;
+	AS3_GetScalarFromVar(ptr, ptr);
 
-	dtFreeNavMesh(_ptr);
+	dtFreeNavMesh(ptr);
 }
 
 void _dtNavMesh_init() __attribute__((used,
@@ -121,13 +121,13 @@ void _dtNavMesh_init()
 	unsigned char * data;
 	AS3_GetScalarFromVar(data, data_ptr);
 
-	int _dataSize;
-	AS3_GetScalarFromVar(_dataSize, dataSize);
+	int dataSize;
+	AS3_GetScalarFromVar(dataSize, dataSize);
 
-	int _flags;
-	AS3_GetScalarFromVar(_flags, flags);
+	int flags;
+	AS3_GetScalarFromVar(flags, flags);
 
-	AS3_Return(nav->init(data, _dataSize, _flags));
+	AS3_Return(nav->init(data, dataSize, flags));
 }
 
 // ////
@@ -149,10 +149,10 @@ void _dtFreeNavMeshQuery() __attribute__((used,
 
 void _dtFreeNavMeshQuery()
 {
-	dtNavMeshQuery * _ptr;
-	AS3_GetScalarFromVar(_ptr, ptr);
+	dtNavMeshQuery * ptr;
+	AS3_GetScalarFromVar(ptr, ptr);
 
-	dtFreeNavMeshQuery(_ptr);
+	dtFreeNavMeshQuery(ptr);
 }
 
 void _dtNavMeshQuery_init() __attribute__((used,
@@ -167,8 +167,8 @@ void _dtNavMeshQuery_init()
 	dtNavMesh * nav;
 	AS3_GetScalarFromVar(nav, nav_ptr);
 
-	int _maxNodes;
-	AS3_GetScalarFromVar(_maxNodes, maxNodes);
+	int maxNodes;
+	AS3_GetScalarFromVar(maxNodes, maxNodes);
 
-	AS3_Return(query->init(nav, _maxNodes));
+	AS3_Return(query->init(nav, maxNodes));
 }
