@@ -78,28 +78,28 @@ package recastnavigation.recast.mesh {
 		public function set nvp(value:int):void { CModule.write32(ptr + OFFSET_NVP, value); }
 		
 		/** The minimum bounds in world space. Component x. [(x, y, z)] */
-		public function get bmin0():Number { return CModule.readFloat(ptr + OFFSET_BMIN); }
-		public function set bmin0(value:Number):void { CModule.writeFloat(ptr + OFFSET_BMIN, value); }
+		public function get bminX():Number { return CModule.readFloat(ptr + OFFSET_BMIN); }
+		public function set bminX(value:Number):void { CModule.writeFloat(ptr + OFFSET_BMIN, value); }
 		
 		/** The minimum bounds in world space. Component y. [(x, y, z)] */
-		public function get bmin1():Number { return CModule.readFloat(ptr + OFFSET_BMIN + 4); }
-		public function set bmin1(value:Number):void { CModule.writeFloat(ptr + OFFSET_BMIN + 4, value); }
+		public function get bminY():Number { return CModule.readFloat(ptr + OFFSET_BMIN + 4); }
+		public function set bminY(value:Number):void { CModule.writeFloat(ptr + OFFSET_BMIN + 4, value); }
 		
 		/** The minimum bounds in world space. Component z. [(x, y, z)] */
-		public function get bmin2():Number { return CModule.readFloat(ptr + OFFSET_BMIN + 8); }
-		public function set bmin2(value:Number):void { CModule.writeFloat(ptr + OFFSET_BMIN + 8, value); }
+		public function get bminZ():Number { return CModule.readFloat(ptr + OFFSET_BMIN + 8); }
+		public function set bminZ(value:Number):void { CModule.writeFloat(ptr + OFFSET_BMIN + 8, value); }
 		
 		/** The maximum bounds in world space. Component x. [(x, y, z)] */
-		public function get bmax0():Number { return CModule.readFloat(ptr + OFFSET_BMAX); }
-		public function set bmax0(value:Number):void { CModule.writeFloat(ptr + OFFSET_BMAX, value); }
+		public function get bmaxX():Number { return CModule.readFloat(ptr + OFFSET_BMAX); }
+		public function set bmaxX(value:Number):void { CModule.writeFloat(ptr + OFFSET_BMAX, value); }
 		
 		/** The maximum bounds in world space. Component y. [(x, y, z)] */
-		public function get bmax1():Number { return CModule.readFloat(ptr + OFFSET_BMAX + 4); }
-		public function set bmax1(value:Number):void { CModule.writeFloat(ptr + OFFSET_BMAX + 4, value); }
+		public function get bmaxY():Number { return CModule.readFloat(ptr + OFFSET_BMAX + 4); }
+		public function set bmaxY(value:Number):void { CModule.writeFloat(ptr + OFFSET_BMAX + 4, value); }
 		
 		/** The maximum bounds in world space. Component z. [(x, y, z)] */
-		public function get bmax2():Number { return CModule.readFloat(ptr + OFFSET_BMAX + 8); }
-		public function set bmax2(value:Number):void { CModule.writeFloat(ptr + OFFSET_BMAX + 8, value); }
+		public function get bmaxZ():Number { return CModule.readFloat(ptr + OFFSET_BMAX + 8); }
+		public function set bmaxZ(value:Number):void { CModule.writeFloat(ptr + OFFSET_BMAX + 8, value); }
 		
 		/** The size of each cell. (On the xz-plane.) */
 		public function get cs():Number { return CModule.readFloat(ptr + OFFSET_CS); }
