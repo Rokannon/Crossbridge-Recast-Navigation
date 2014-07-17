@@ -29,11 +29,7 @@ package recastnavigation.recast.mesh {
 		rn_internal static const OFFSET_CH				:int = offset(4);
 		rn_internal static const OFFSET_BORDER_SIZE		:int = offset(4);
 		
-		private static function offset(size:int):int {
-			
-			return (SIZE += size) - size;
-			
-		}
+		private static function offset(size:int):int { return (SIZE += size) - size; }
 		
 		/** The mesh vertices. Getter. [Form: (x, y, z) * #nverts] */
 		public function getVert(index:int):int { return CModule.read16(CModule.read32(ptr + OFFSET_VERTS) + 2 * index); }

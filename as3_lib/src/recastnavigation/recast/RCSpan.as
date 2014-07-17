@@ -17,11 +17,7 @@ package recastnavigation.recast {
 		rn_internal static const OFFSET_UNION	:int = offset(4);
 		rn_internal static const OFFSET_NEXT	:int = offset(4);
 		
-		private static function offset(size:int):int {
-			
-			return (SIZE += size) - size;
-			
-		}
+		private static function offset(size:int):int { return (SIZE += size) - size; }
 		
 		/** The lower limit of the span. [Limit: < #smax] */
 		public function get smin():int { return readBits(CModule.read32(ptr + OFFSET_UNION), 0, 13); }

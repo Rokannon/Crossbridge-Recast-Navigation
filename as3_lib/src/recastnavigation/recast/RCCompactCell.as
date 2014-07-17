@@ -16,11 +16,7 @@ package recastnavigation.recast {
 		rn_internal static var SIZE					:int = 0;
 		rn_internal static const OFFSET_UNION		:int = offset(4);
 		
-		private static function offset(size:int):int {
-			
-			return (SIZE += size) - size;
-			
-		}
+		private static function offset(size:int):int { return (SIZE += size) - size; }
 		
 		/** Index to the first span in the column. */
 		public function get index():int { return readBits(CModule.read32(ptr + OFFSET_UNION), 0, 24); }

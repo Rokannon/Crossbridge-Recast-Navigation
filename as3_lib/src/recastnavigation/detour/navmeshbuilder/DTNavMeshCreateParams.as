@@ -47,11 +47,7 @@ package recastnavigation.detour.navmeshbuilder {
 		rn_internal static const OFFSET_CH							:int = offset(4);
 		rn_internal static const OFFSET_BUILD_BV_TREE				:int = offset(4);
 		
-		private static function offset(size:int):int {
-			
-			return (SIZE += size) - size;
-			
-		}
+		private static function offset(size:int):int { return (SIZE += size) - size; }
 		
 		/** The polygon mesh vertices. Getter. [(x, y, z) * #vertCount] [Unit: vx] */
 		public function getVert(index:int):int { return CModule.read16(CModule.read32(ptr + OFFSET_VERTS) + 2 * index); }

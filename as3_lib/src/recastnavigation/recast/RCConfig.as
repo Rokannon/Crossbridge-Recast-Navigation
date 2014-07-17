@@ -37,11 +37,7 @@ package recastnavigation.recast {
 		rn_internal static const OFFSET_DETAIL_SAMPLE_DIST			:int = offset(4);
 		rn_internal static const OFFSET_DETAIL_SAMPLE_MAX_ERROR		:int = offset(4);
 		
-		private static function offset(size:int):int {
-			
-			return (SIZE += size) - size;
-			
-		}
+		private static function offset(size:int):int { return (SIZE += size) - size; }
 		
 		/** The width of the field along the x-axis. [Limit: >= 0] [Units: vx] */
 		public function get width():int { return CModule.read32(ptr + OFFSET_WIDTH); }

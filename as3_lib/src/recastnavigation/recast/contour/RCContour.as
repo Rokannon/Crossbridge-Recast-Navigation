@@ -19,11 +19,7 @@ package recastnavigation.recast.contour {
 		rn_internal static const OFFSET_REG			:int = offset(2);
 		rn_internal static const OFFSET_AREA		:int = offset(2);
 		
-		private static function offset(size:int):int {
-			
-			return (SIZE += size) - size;
-			
-		}
+		private static function offset(size:int):int { return (SIZE += size) - size; }
 		
 		/** Simplified contour vertex and connection data. */
 		public function getVert(index:int):int { return CModule.read32(CModule.read32(ptr + OFFSET_VERTS) + 4 * index); }

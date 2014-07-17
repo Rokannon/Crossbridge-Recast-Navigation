@@ -18,11 +18,7 @@ package recastnavigation.recast {
 		rn_internal static const OFFSET_REG			:int = offset(4);
 		rn_internal static const OFFSET_UNION		:int = offset(4);
 		
-		private static function offset(size:int):int {
-			
-			return (SIZE += size) - size;
-			
-		}
+		private static function offset(size:int):int { return (SIZE += size) - size; }
 		
 		/** The lower extent of the span. (Measured from the heightfield's base.) */
 		public function get y():int { return CModule.read32(ptr + OFFSET_Y); }

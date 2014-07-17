@@ -25,11 +25,7 @@ package recastnavigation.recast.contour {
 		rn_internal static const OFFSET_HEIGHT				:int = offset(4);
 		rn_internal static const OFFSET_BORDER_SIZE			:int = offset(4);
 		
-		private static function offset(size:int):int {
-			
-			return (SIZE += size) - size;
-			
-		}
+		private static function offset(size:int):int { return (SIZE += size) - size; }
 		
 		/** An array of the contours in the set. Getter. */
 		public function getCont(index:int, resultContour:RCContour = null):RCContour {

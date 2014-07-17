@@ -22,11 +22,7 @@ package recastnavigation.recast.meshdetail {
 		rn_internal static const OFFSET_NVERTS			:int = offset(4);
 		rn_internal static const OFFSET_NTRIS			:int = offset(4);
 		
-		private static function offset(size:int):int {
-			
-			return (SIZE += size) - size;
-			
-		}
+		private static function offset(size:int):int { return (SIZE += size) - size; }
 		
 		/** The sub-mesh data. Getter. [Size: 4*#nmeshes] */
 		public function getMesh(index:int):int { return CModule.read32(CModule.read32(ptr + OFFSET_MESHES) + 4 * index); }
