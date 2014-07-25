@@ -6,13 +6,13 @@ package recastnavigation.recast.enum {
 	public class RCLogCategory {
 		
 		/** A progress log entry. */
-		public static const RC_LOG_PROGRESS:uint = 1;
+		public static const RC_LOG_PROGRESS:int = 1;
 		
 		/** A warning log entry. */
-		public static const RC_LOG_WARNING:uint = 2;
+		public static const RC_LOG_WARNING:int = 2;
 		
 		/** An error log entry. */
-		public static const RC_LOG_ERROR:uint = 3;
+		public static const RC_LOG_ERROR:int = 3;
 		
 	}
 	

@@ -47,7 +47,7 @@ package recastnavigation.debugutils {
 		}
 		
 		/** Begin drawing primitives. */
-		protected function begin(prim:uint, size:Number = 1.0):void {
+		protected function begin(prim:int, size:Number = 1.0):void {
 			
 		}
 		
