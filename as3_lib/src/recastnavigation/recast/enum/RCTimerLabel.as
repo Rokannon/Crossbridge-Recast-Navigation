@@ -90,7 +90,7 @@ package recastnavigation.recast.enum {
 		public static const RC_TIMER_MERGE_POLYMESHDETAIL:int = 27;
 		
 		/** The maximum number of timers.  (Used for iterating timers.) */
-		public static const RC_TIMER_:int = 28;
+		public static const RC_MAX_TIMERS:int = 28;
 		
 	}
 	
