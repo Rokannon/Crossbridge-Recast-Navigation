@@ -85,13 +85,13 @@ void _rcContext_alloc() __attribute__((used,
 
 void _rcContext_alloc()
 {
-	bool _state;
-	AS3_GetScalarFromVar(_state, state);
+	bool state;
+	AS3_GetScalarFromVar(state, state);
 
-	AS3::local::var * _obj = new AS3::local::var();
-	AS3_GetVarxxFromVar(* _obj, obj);
+	AS3::local::var * obj = new AS3::local::var();
+	AS3_GetVarxxFromVar(* obj, obj);
 
-	AS3_Return(new rcContextAdapter(_state, _obj));
+	AS3_Return(new rcContextAdapter(state, obj));
 }
 
 void _rcContext_enableLog() __attribute__((used,
@@ -103,10 +103,10 @@ void _rcContext_enableLog()
 	rcContext * ctx;
 	AS3_GetScalarFromVar(ctx, ctx_ptr);
 
-	bool _state;
-	AS3_GetScalarFromVar(_state, state);
+	bool state;
+	AS3_GetScalarFromVar(state, state);
 
-	ctx->enableLog(_state);
+	ctx->enableLog(state);
 }
 
 void _rcContext_resetLog() __attribute__((used,
@@ -130,15 +130,15 @@ void _rcContext_log()
 	rcContext * ctx;
 	AS3_GetScalarFromVar(ctx, ctx_ptr);
 
-	rcLogCategory _logCategory;
-	AS3_GetScalarFromVar(_logCategory, logCategory);
+	rcLogCategory logCategory;
+	AS3_GetScalarFromVar(logCategory, logCategory);
 
-	char * _message;
-	AS3_MallocString(_message, message);
+	char * message;
+	AS3_MallocString(message, message);
 
-	ctx->log(_logCategory, _message);
+	ctx->log(logCategory, message);
 
-	free(_message);
+	free(message);
 }
 
 void _rcContext_enableTimer() __attribute__((used,
@@ -150,10 +150,10 @@ void _rcContext_enableTimer()
 	rcContext * ctx;
 	AS3_GetScalarFromVar(ctx, ctx_ptr);
 
-	bool _state;
-	AS3_GetScalarFromVar(_state, state);
+	bool state;
+	AS3_GetScalarFromVar(state, state);
 
-	ctx->enableTimer(_state);
+	ctx->enableTimer(state);
 }
 
 void _rcContext_resetTimers() __attribute__((used,
@@ -177,10 +177,10 @@ void _rcContext_startTimer()
 	rcContext * ctx;
 	AS3_GetScalarFromVar(ctx, ctx_ptr);
 
-	rcTimerLabel _timerLabel;
-	AS3_GetScalarFromVar(_timerLabel, timerLabel);
+	rcTimerLabel timerLabel;
+	AS3_GetScalarFromVar(timerLabel, timerLabel);
 
-	ctx->startTimer(_timerLabel);
+	ctx->startTimer(timerLabel);
 }
 
 void _rcContext_stopTimer() __attribute__((used,
@@ -192,10 +192,10 @@ void _rcContext_stopTimer()
 	rcContext * ctx;
 	AS3_GetScalarFromVar(ctx, ctx_ptr);
 
-	rcTimerLabel _timerLabel;
-	AS3_GetScalarFromVar(_timerLabel, timerLabel);
+	rcTimerLabel timerLabel;
+	AS3_GetScalarFromVar(timerLabel, timerLabel);
 
-	ctx->stopTimer(_timerLabel);
+	ctx->stopTimer(timerLabel);
 }
 
 void _rcContext_getAccumulatedTime() __attribute__((used,
@@ -207,10 +207,8 @@ void _rcContext_getAccumulatedTime()
 	rcContext * ctx;
 	AS3_GetScalarFromVar(ctx, ctx_ptr);
 
-	rcTimerLabel _timerLabel;
-	AS3_GetScalarFromVar(_timerLabel, timerLabel);
+	rcTimerLabel timerLabel;
+	AS3_GetScalarFromVar(timerLabel, timerLabel);
 
-	int time;
-	time = ctx->getAccumulatedTime(_timerLabel);
-	AS3_Return(time);
+	AS3_Return(ctx->getAccumulatedTime(timerLabel));
 }
