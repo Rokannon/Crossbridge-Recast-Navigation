@@ -149,9 +149,10 @@ package recastnavigation.recast {
 		/**
 		 * Calculates the bounding box of an array of vertices.
 		 */
-		public function rcCalcBounds(verts:Vector.<Number>, nv:int):void {
+		public function rcCalcBounds(verts:Vector.<Number>):void {
 			
 			var verts_ptr:int = mallocNumberVector(verts);
+			var nv:int = verts.length / 3;
 			internal_rcCalcBounds(verts_ptr, nv, ptr + OFFSET_WIDTH, ptr + OFFSET_HEIGHT);
 			CModule.free(verts_ptr);
 			
