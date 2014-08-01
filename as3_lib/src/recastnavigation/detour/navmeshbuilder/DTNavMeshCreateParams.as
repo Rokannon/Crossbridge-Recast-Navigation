@@ -2,10 +2,14 @@ package recastnavigation.detour.navmeshbuilder {
 	
 	import recastnavigation.core.RNBase;
 	import recastnavigation.core.rn_internal;
+	import recastnavigation.core.utils.copyBytes;
 	import recastnavigation.core.utils.setBytes;
 	import recastnavigation.internal_api.CModule;
 	import recastnavigation.internal_api.internal_dtAlloc_dtNavMeshCreateParams;
 	import recastnavigation.internal_api.internal_dtFree;
+	import recastnavigation.recast.RCConfig;
+	import recastnavigation.recast.mesh.RCPolyMesh;
+	import recastnavigation.recast.meshdetail.RCPolyMeshDetail;
 	
 	use namespace rn_internal;
 	
@@ -214,6 +218,29 @@ package recastnavigation.detour.navmeshbuilder {
 		/** True if a bounding volume tree should be built for the tile. */
 		public function get buildBvTree():Boolean { return CModule.read8(ptr + OFFSET_BUILD_BV_TREE); }
 		public function set buildBvTree(value:Boolean):void { CModule.write8(ptr + OFFSET_BUILD_BV_TREE, value ? 1 : 0); }
+		
+		public function initFromRecast(cfg:RCConfig, pmesh:RCPolyMesh, dmesh:RCPolyMeshDetail):void {
+			
+			CModule.write32(ptr + OFFSET_CS, CModule.read32(cfg.ptr + RCConfig.OFFSET_CS));
+			CModule.write32(ptr + OFFSET_CH, CModule.read32(cfg.ptr + RCConfig.OFFSET_CH));
+			
+			CModule.write32(ptr + OFFSET_VERTS, CModule.read32(pmesh.ptr + RCPolyMesh.OFFSET_VERTS));
+			CModule.write32(ptr + OFFSET_VERT_COUNT, CModule.read32(pmesh.ptr + RCPolyMesh.OFFSET_NVERTS));
+			CModule.write32(ptr + OFFSET_POLYS, CModule.read32(pmesh.ptr + RCPolyMesh.OFFSET_POLYS));
+			CModule.write32(ptr + OFFSET_POLY_AREAS, CModule.read32(pmesh.ptr + RCPolyMesh.OFFSET_AREAS));
+			CModule.write32(ptr + OFFSET_POLY_FLAGS, CModule.read32(pmesh.ptr + RCPolyMesh.OFFSET_FLAGS));
+			CModule.write32(ptr + OFFSET_POLY_COUNT, CModule.read32(pmesh.ptr + RCPolyMesh.OFFSET_NPOLYS));
+			CModule.write32(ptr + OFFSET_NVP, CModule.read32(pmesh.ptr + RCPolyMesh.OFFSET_NVP));
+			copyBytes(pmesh.ptr + RCPolyMesh.OFFSET_BMIN, ptr + OFFSET_BMIN, 12);
+			copyBytes(pmesh.ptr + RCPolyMesh.OFFSET_BMAX, ptr + OFFSET_BMAX, 12);
+			
+			CModule.write32(ptr + OFFSET_DETAIL_MESHES, CModule.read32(dmesh.ptr + RCPolyMeshDetail.OFFSET_MESHES));
+			CModule.write32(ptr + OFFSET_DETAIL_VERTS, CModule.read32(dmesh.ptr + RCPolyMeshDetail.OFFSET_VERTS));
+			CModule.write32(ptr + OFFSET_DETAIL_VERTS_COUNT, CModule.read32(dmesh.ptr + RCPolyMeshDetail.OFFSET_NVERTS));
+			CModule.write32(ptr + OFFSET_DETAIL_TRIS, CModule.read32(dmesh.ptr + RCPolyMeshDetail.OFFSET_TRIS));
+			CModule.write32(ptr + OFFSET_DETAIL_TRI_COUNT, CModule.read32(dmesh.ptr + RCPolyMeshDetail.OFFSET_NTRIS));
+			
+		}
 		
 		public override function alloc():void {
 			
