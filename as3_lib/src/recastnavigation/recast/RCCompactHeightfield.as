@@ -140,22 +140,6 @@ package recastnavigation.recast {
 		/** Array containing area id data. Setter. [Size: #spanCount] */
 		public function setArea(index:int, value:int):void { CModule.write8(CModule.read32(ptr + OFFSET_AREAS) + 1 * index, value); }
 		
-		/**
-		 * Builds a compact heightfield representing open space, 
-		 * from a heightfield representing solid space.
-		 */
-		public function rcBuildCompactHeightfield(ctx:RCContext, cfg:RCConfig, hf:RCHeightfield):Boolean {
-			
-			return internal_rcBuildCompactHeightfield(
-				ctx.ptr, 
-				CModule.read32(cfg.ptr + RCConfig.OFFSET_WALKABLE_HEIGHT), 
-				CModule.read32(cfg.ptr + RCConfig.OFFSET_WALKABLE_CLIMB),
-				hf.ptr,
-				ptr
-			);
-			
-		}
-		
 		public override function alloc():void {
 			
 			ptr = internal_rcAllocCompactHeightfield();

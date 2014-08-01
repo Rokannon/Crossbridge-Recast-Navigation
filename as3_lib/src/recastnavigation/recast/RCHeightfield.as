@@ -115,24 +115,6 @@ package recastnavigation.recast {
 			
 		}
 		
-		/**
-		 * Initializes a new heightfield.
-		 */
-		public function rcCreateHeightfield(ctx:RCContext, cfg:RCConfig):Boolean {
-			
-			return internal_rcCreateHeightfield(
-				ctx.ptr, 
-				ptr, 
-				CModule.read32(cfg.ptr + RCConfig.OFFSET_WIDTH),
-				CModule.read32(cfg.ptr + RCConfig.OFFSET_HEIGHT),
-				cfg.ptr + RCConfig.OFFSET_BMIN,
-				cfg.ptr + RCConfig.OFFSET_BMAX,
-				CModule.readFloat(cfg.ptr + RCConfig.OFFSET_CS),
-				CModule.readFloat(cfg.ptr + RCConfig.OFFSET_CH)
-			);
-			
-		}
-		
 		public override function alloc():void {
 			
 			ptr = internal_rcAllocHeightfield();
