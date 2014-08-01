@@ -19,6 +19,10 @@ package recastnavigation.recast {
 		
 		internal_rcRasterizeTriangles(ctx.ptr, verts_ptr, tris_ptr, areas_ptr, nt, solid.ptr, flagMergeThr); 
 		
+		CModule.free(verts_ptr);
+		CModule.free(tris_ptr);
+		CModule.free(areas_ptr);
+		
 	}
 	
 }
