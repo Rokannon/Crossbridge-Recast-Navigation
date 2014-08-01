@@ -443,3 +443,133 @@ void _duDebugDrawPolyMeshDetail()
 
 	duDebugDrawPolyMeshDetail(dd, *dmesh);
 }
+
+// ////
+// DetourDebugDraw
+// ////
+
+void _duDebugDrawNavMesh() __attribute__((used,
+	annotate("as3sig:public function internal_duDebugDrawNavMesh(dd_ptr:int, mesh_ptr:int, flags:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _duDebugDrawNavMesh()
+{
+	duDebugDraw * dd;
+	AS3_GetScalarFromVar(dd, dd_ptr);
+
+	dtNavMesh * mesh;
+	AS3_GetScalarFromVar(mesh, mesh_ptr);
+
+	unsigned char flags;
+	AS3_GetScalarFromVar(flags, flags);
+	
+	duDebugDrawNavMesh(dd, *mesh, flags);
+}
+
+void _duDebugDrawNavMeshWithClosedList() __attribute__((used,
+	annotate("as3sig:public function internal_duDebugDrawNavMeshWithClosedList(dd_ptr:int, mesh_ptr:int, query_ptr:int, flags:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _duDebugDrawNavMeshWithClosedList()
+{
+	duDebugDraw * dd;
+	AS3_GetScalarFromVar(dd, dd_ptr);
+
+	dtNavMesh * mesh;
+	AS3_GetScalarFromVar(mesh, mesh_ptr);
+
+	dtNavMeshQuery * query;
+	AS3_GetScalarFromVar(query, query_ptr);
+
+	unsigned char flags;
+	AS3_GetScalarFromVar(flags, flags);
+
+	duDebugDrawNavMeshWithClosedList(dd, *mesh, *query, flags);
+}
+
+void _duDebugDrawNavMeshNodes() __attribute__((used,
+	annotate("as3sig:public function internal_duDebugDrawNavMeshNodes(dd_ptr:int, query_ptr:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _duDebugDrawNavMeshNodes()
+{
+	duDebugDraw * dd;
+	AS3_GetScalarFromVar(dd, dd_ptr);
+
+	dtNavMeshQuery * query;
+	AS3_GetScalarFromVar(query, query_ptr);
+
+	duDebugDrawNavMeshNodes(dd, *query);
+}
+
+void _duDebugDrawNavMeshBVTree() __attribute__((used,
+	annotate("as3sig:public function internal_duDebugDrawNavMeshBVTree(dd_ptr:int, mesh_ptr:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _duDebugDrawNavMeshBVTree()
+{
+	duDebugDraw * dd;
+	AS3_GetScalarFromVar(dd, dd_ptr);
+
+	dtNavMesh * mesh;
+	AS3_GetScalarFromVar(mesh, mesh_ptr);
+
+	duDebugDrawNavMeshBVTree(dd, *mesh);
+}
+
+void _duDebugDrawNavMeshPortals() __attribute__((used,
+	annotate("as3sig:public function internal_duDebugDrawNavMeshPortals(dd_ptr:int, mesh_ptr:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _duDebugDrawNavMeshPortals()
+{
+	duDebugDraw * dd;
+	AS3_GetScalarFromVar(dd, dd_ptr);
+
+	dtNavMesh * mesh;
+	AS3_GetScalarFromVar(mesh, mesh_ptr);
+
+	duDebugDrawNavMeshPortals(dd, *mesh);
+}
+
+void _duDebugDrawNavMeshPolysWithFlags() __attribute__((used,
+	annotate("as3sig:public function internal_duDebugDrawNavMeshPolysWithFlags(dd_ptr:int, mesh_ptr:int, polyFlags:int, col:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _duDebugDrawNavMeshPolysWithFlags()
+{
+	duDebugDraw * dd;
+	AS3_GetScalarFromVar(dd, dd_ptr);
+
+	dtNavMesh * mesh;
+	AS3_GetScalarFromVar(mesh, mesh_ptr);
+
+	unsigned short polyFlags;
+	AS3_GetScalarFromVar(polyFlags, polyFlags);
+
+	unsigned int col;
+	AS3_GetScalarFromVar(col, col);
+
+	duDebugDrawNavMeshPolysWithFlags(dd, *mesh, polyFlags, col);
+}
+
+void _duDebugDrawNavMeshPoly() __attribute__((used,
+	annotate("as3sig:public function internal_duDebugDrawNavMeshPoly(dd_ptr:int, mesh_ptr:int, ref:int, col:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _duDebugDrawNavMeshPoly()
+{
+	duDebugDraw * dd;
+	AS3_GetScalarFromVar(dd, dd_ptr);
+
+	dtNavMesh * mesh;
+	AS3_GetScalarFromVar(mesh, mesh_ptr);
+
+	dtPolyRef ref;
+	AS3_GetScalarFromVar(ref, ref);
+
+	unsigned int col;
+	AS3_GetScalarFromVar(col, col);
+
+	duDebugDrawNavMeshPoly(dd, *mesh, ref, col);
+}
