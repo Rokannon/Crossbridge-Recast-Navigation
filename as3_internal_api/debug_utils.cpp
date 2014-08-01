@@ -277,7 +277,7 @@ void _duDebugDrawCompactHeightfieldSolid()
 	AS3_GetScalarFromVar(dd, dd_ptr);
 
 	rcCompactHeightfield * chf;
-	AS3_GetScalarFromVar(chf, hf_ptr);
+	AS3_GetScalarFromVar(chf, chf_ptr);
 
 	duDebugDrawCompactHeightfieldSolid(dd, *chf);
 }
@@ -292,7 +292,7 @@ void _duDebugDrawCompactHeightfieldRegions()
 	AS3_GetScalarFromVar(dd, dd_ptr);
 
 	rcCompactHeightfield * chf;
-	AS3_GetScalarFromVar(chf, hf_ptr);
+	AS3_GetScalarFromVar(chf, chf_ptr);
 
 	duDebugDrawCompactHeightfieldRegions(dd, *chf);
 }
@@ -307,7 +307,7 @@ void _duDebugDrawCompactHeightfieldDistance()
 	AS3_GetScalarFromVar(dd, dd_ptr);
 
 	rcCompactHeightfield * chf;
-	AS3_GetScalarFromVar(chf, hf_ptr);
+	AS3_GetScalarFromVar(chf, chf_ptr);
 
 	duDebugDrawCompactHeightfieldDistance(dd, *chf);
 }
