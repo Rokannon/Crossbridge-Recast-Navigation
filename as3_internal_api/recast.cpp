@@ -98,7 +98,7 @@ void _rcCreateHeightfield() __attribute__((used,
 
 void _rcCreateHeightfield()
 {
-	rcContext* ctx;
+	rcContext * ctx;
 	AS3_GetScalarFromVar(ctx, ctx_ptr);
 
 	rcHeightfield * hf;
@@ -126,7 +126,7 @@ void _rcCreateHeightfield()
 }
 
 void _rcMarkWalkableTriangles() __attribute__((used,
-	annotate("as3sig:public function internal_rcMarkWalkableTriangles(ctx_ptr:int, walkableSlopeAngle:Number, verts_ptr:int, tris_ptr:int, nt:int, areas_ptr:int):void"),
+	annotate("as3sig:public function internal_rcMarkWalkableTriangles(ctx_ptr:int, walkableSlopeAngle:Number, verts_ptr:int, nv:int, tris_ptr:int, nt:int, areas_ptr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcMarkWalkableTriangles()
@@ -140,20 +140,23 @@ void _rcMarkWalkableTriangles()
 	float * verts;
 	AS3_GetScalarFromVar(verts, verts_ptr);
 
+	int nv;
+	AS3_GetScalarFromVar(nv, nv);
+
 	int * tris;
 	AS3_GetScalarFromVar(tris, tris_ptr);
 
 	int nt;
 	AS3_GetScalarFromVar(nt, nt);
 
-	unsigned char* areas;
+	unsigned char * areas;
 	AS3_GetScalarFromVar(areas, areas_ptr);
 
-	rcMarkWalkableTriangles(ctx, _walkableSlopeAngle, verts, 0, tris, nt, areas);
+	rcMarkWalkableTriangles(ctx, _walkableSlopeAngle, verts, nv, tris, nt, areas);
 }
 
 void _rcRasterizeTriangles() __attribute__((used,
-	annotate("as3sig:public function internal_rcRasterizeTriangles(ctx_ptr:int, verts_ptr:int, tris_ptr:int, areas_ptr:int, nt:int, solid_ptr:int, flagMergeThr:int):void"),
+	annotate("as3sig:public function internal_rcRasterizeTriangles(ctx_ptr:int, verts_ptr:int, nv:int, tris_ptr:int, areas_ptr:int, nt:int, solid_ptr:int, flagMergeThr:int):void"),
 	annotate("as3package:recastnavigation.internal_api")));
 
 void _rcRasterizeTriangles()
@@ -164,10 +167,13 @@ void _rcRasterizeTriangles()
 	float * verts;
 	AS3_GetScalarFromVar(verts, verts_ptr);
 
+	int nv;
+	AS3_GetScalarFromVar(nv, nv);
+
 	int * tris;
 	AS3_GetScalarFromVar(tris, tris_ptr);
 
-	unsigned char* areas;
+	unsigned char * areas;
 	AS3_GetScalarFromVar(areas, areas_ptr);
 
 	int nt;
@@ -179,7 +185,7 @@ void _rcRasterizeTriangles()
 	int flagMergeThr;
 	AS3_GetScalarFromVar(flagMergeThr, flagMergeThr);
 
-	rcRasterizeTriangles(ctx, verts, 0, tris, areas, nt, *solid, flagMergeThr);
+	rcRasterizeTriangles(ctx, verts, nv, tris, areas, nt, *solid, flagMergeThr);
 }
 
 void _rcFilterLowHangingWalkableObstacles() __attribute__((used,
