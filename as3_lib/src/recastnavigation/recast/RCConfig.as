@@ -153,7 +153,7 @@ package recastnavigation.recast {
 			
 			var verts_ptr:int = mallocNumberVector(verts);
 			var nv:int = verts.length / 3;
-			internal_rcCalcBounds(verts_ptr, nv, ptr + OFFSET_WIDTH, ptr + OFFSET_HEIGHT);
+			internal_rcCalcBounds(verts_ptr, nv, ptr + OFFSET_BMIN, ptr + OFFSET_BMAX);
 			CModule.free(verts_ptr);
 			
 		}
