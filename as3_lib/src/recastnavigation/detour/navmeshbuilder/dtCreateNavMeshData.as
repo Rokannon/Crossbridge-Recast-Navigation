@@ -14,8 +14,8 @@ package recastnavigation.detour.navmeshbuilder {
 		var outData_ptr_ptr:int = CModule.malloc(4);
 		var outDataSize_ptr:int = CModule.malloc(4);
 		var result:Boolean = internal_dtCreateNavMeshData(params.ptr, outData_ptr_ptr, outDataSize_ptr); 
-		outData.length = CModule.read32(CModule.read32(outDataSize_ptr));
-		for (var i:int = outData.length - 1; i >= 0; ++i) {
+		outData.length = CModule.read32(outDataSize_ptr);
+		for (var i:int = outData.length - 1; i >= 0; --i) {
 			outData[i] = CModule.read8(CModule.read32(outData_ptr_ptr) + 1 * i);
 		}
 		CModule.free(outData_ptr_ptr);
