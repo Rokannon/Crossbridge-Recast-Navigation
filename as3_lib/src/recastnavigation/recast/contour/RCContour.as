@@ -23,7 +23,7 @@ package recastnavigation.recast.contour {
 		
 		/** Simplified contour vertex and connection data. */
 		public function getVert(index:int):int { return CModule.read32(CModule.read32(ptr + OFFSET_VERTS) + 4 * index); }
-		public function setVert(index:int, value):void { CModule.write32(CModule.read32(ptr + OFFSET_VERTS) + 4 * index, value); }
+		public function setVert(index:int, value:int):void { CModule.write32(CModule.read32(ptr + OFFSET_VERTS) + 4 * index, value); }
 		
 		/** The number of vertices in the simplified contour. */
 		public function get nverts():int { return CModule.read32(ptr + OFFSET_NVERTS); }
@@ -31,7 +31,7 @@ package recastnavigation.recast.contour {
 		
 		/** Raw contour vertex and connection data. */
 		public function getRVert(index:int):int { return CModule.read32(CModule.read32(ptr + OFFSET_RVERTS) + 4 * index); }
-		public function setRVert(index:int, value):void { CModule.write32(CModule.read32(ptr + OFFSET_RVERTS) + 4 * index, value); }
+		public function setRVert(index:int, value:int):void { CModule.write32(CModule.read32(ptr + OFFSET_RVERTS) + 4 * index, value); }
 		
 		/** The number of vertices in the raw contour.  */
 		public function get nrverts():int { return CModule.read32(ptr + OFFSET_NRVERTS); }
