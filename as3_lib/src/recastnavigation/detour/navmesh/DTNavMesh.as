@@ -13,6 +13,12 @@ package recastnavigation.detour.navmesh {
 	/** A navigation mesh based on tiles of convex polygons. */
 	public class DTNavMesh extends RNBase {
 		
+		/** The maximum number of vertices per navigation polygon. */
+		public static const DT_VERTS_PER_POLYGON:int = 6;
+		
+		/** The maximum number of user defined area ids. */
+		public static const DT_MAX_AREAS:int = 64;
+		
 		/** Initializes the navigation mesh for single tile use. */
 		public function init(data:Vector.<int>, flags:int):int {
 			
