@@ -88,6 +88,60 @@ void _dtNavMeshDataSwapEndian()
 // DetourNavMesh
 // ////
 
+void _dtPoly_setArea() __attribute__((used,
+	annotate("as3sig:public function internal_dtPoly_setArea(poly_ptr:int, a:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtPoly_setArea()
+{
+	dtPoly * poly;
+	AS3_GetScalarFromVar(poly, poly_ptr);
+
+	unsigned char a;
+	AS3_GetScalarFromVar(a, a);
+	
+	poly->setArea(a);
+}
+
+void _dtPoly_setType() __attribute__((used,
+	annotate("as3sig:public function internal_dtPoly_setType(poly_ptr:int, t:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtPoly_setType()
+{
+	dtPoly * poly;
+	AS3_GetScalarFromVar(poly, poly_ptr);
+
+	unsigned char t;
+	AS3_GetScalarFromVar(t, t);
+
+	poly->setType(t);
+}
+
+void _dtPoly_getArea() __attribute__((used,
+	annotate("as3sig:public function internal_dtPoly_getArea(poly_ptr:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtPoly_getArea()
+{
+	dtPoly * poly;
+	AS3_GetScalarFromVar(poly, poly_ptr);
+
+	AS3_Return(poly->getArea());
+}
+
+void _dtPoly_getType() __attribute__((used,
+	annotate("as3sig:public function internal_dtPoly_getType(poly_ptr:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtPoly_getType()
+{
+	dtPoly * poly;
+	AS3_GetScalarFromVar(poly, poly_ptr);
+
+	AS3_Return(poly->getType());
+}
+
 void _dtAllocNavMesh() __attribute__((used,
 	annotate("as3sig:public function internal_dtAllocNavMesh():int"),
 	annotate("as3package:recastnavigation.internal_api")));
