@@ -19,7 +19,6 @@ package recastnavigation.detour.navmesh {
 			var data_ptr:int = mallocInt8Vector(data);
 			var dataSize:int = data.length;
 			var result:int = internal_dtNavMesh_init(ptr, data_ptr, dataSize, flags);
-			CModule.free(data_ptr);
 			return result;
 			
 		}
