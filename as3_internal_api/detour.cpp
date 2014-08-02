@@ -188,6 +188,169 @@ void _dtNavMesh_init()
 // DetourNavMeshQuery
 // ////
 
+void _dtQueryFilter_alloc() __attribute__((used,
+	annotate("as3sig:public function internal_dtQueryFilter_alloc():int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtQueryFilter_alloc()
+{
+	AS3_Return(new dtQueryFilter());
+}
+
+void _dtQueryFilter_passFilter() __attribute__((used,
+	annotate("as3sig:public function internal_dtQueryFilter_passFilter(filter_ptr:int, ref:int, tile_ptr:int, poly_ptr:int):Boolean"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtQueryFilter_passFilter()
+{
+	dtQueryFilter * filter;
+	AS3_GetScalarFromVar(filter, filter_ptr);
+
+	dtPolyRef ref;
+	AS3_GetScalarFromVar(ref, ref);
+
+	dtMeshTile * tile;
+	AS3_GetScalarFromVar(tile, tile_ptr);
+
+	dtPoly * poly;
+	AS3_GetScalarFromVar(poly, poly_ptr);
+
+	filter->passFilter(ref, tile, poly);
+	AS3_Return(true);
+}
+
+void _dtQueryFilter_getCost() __attribute__((used,
+	annotate("as3sig:public function internal_dtQueryFilter_getCost(filter_ptr:int, pa_ptr:int, pb_ptr:int, prevRef:int, prevTile_ptr:int, prevPoly_ptr:int, curRef:int, curTile_ptr:int, curPoly_ptr:int, nextRef:int, nextTile_ptr:int, nextPoly_ptr:int):Number"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtQueryFilter_getCost()
+{
+	dtQueryFilter * filter;
+	AS3_GetScalarFromVar(filter, filter_ptr);
+
+	float * pa;
+	AS3_GetScalarFromVar(pa, pa_ptr);
+
+	float * pb;
+	AS3_GetScalarFromVar(pb, pb_ptr);
+
+	dtPolyRef prevRef;
+	AS3_GetScalarFromVar(prevRef, prevRef);
+
+	dtMeshTile * prevTile;
+	AS3_GetScalarFromVar(prevTile, prevTile_ptr);
+
+	dtPoly * prevPoly;
+	AS3_GetScalarFromVar(prevPoly, prevPoly_ptr);
+
+	dtPolyRef curRef;
+	AS3_GetScalarFromVar(curRef, curRef);
+
+	dtMeshTile * curTile;
+	AS3_GetScalarFromVar(curTile, curTile_ptr);
+
+	dtPoly * curPoly;
+	AS3_GetScalarFromVar(curPoly, curPoly_ptr);
+
+	dtPolyRef nextRef;
+	AS3_GetScalarFromVar(nextRef, nextRef);
+
+	dtMeshTile * nextTile;
+	AS3_GetScalarFromVar(nextTile, nextTile_ptr);
+
+	dtPoly * nextPoly;
+	AS3_GetScalarFromVar(nextPoly, nextPoly_ptr);
+
+	AS3_Return(filter->getCost(pa, pb, prevRef, prevTile, prevPoly, curRef, curTile, curPoly, nextRef, nextTile, nextPoly));
+}
+
+void _dtQueryFilter_getAreaCost() __attribute__((used,
+	annotate("as3sig:public function internal_dtQueryFilter_getAreaCost(filter_ptr:int, i:int):Number"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtQueryFilter_getAreaCost()
+{
+	dtQueryFilter * filter;
+	AS3_GetScalarFromVar(filter, filter_ptr);
+
+	int i;
+	AS3_GetScalarFromVar(i, i);
+
+	AS3_Return(filter->getAreaCost(i));
+}
+
+void _dtQueryFilter_setAreaCost() __attribute__((used,
+	annotate("as3sig:public function internal_dtQueryFilter_setAreaCost(filter_ptr:int, i:int, cost:Number):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtQueryFilter_setAreaCost()
+{
+	dtQueryFilter * filter;
+	AS3_GetScalarFromVar(filter, filter_ptr);
+
+	int i;
+	AS3_GetScalarFromVar(i, i);
+
+	float cost;
+	AS3_GetScalarFromVar(cost, cost);
+
+	filter->setAreaCost(i, cost);
+}
+
+void _dtQueryFilter_getIncludeFlags() __attribute__((used,
+	annotate("as3sig:public function internal_dtQueryFilter_getIncludeFlags(filter_ptr:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtQueryFilter_getIncludeFlags()
+{
+	dtQueryFilter * filter;
+	AS3_GetScalarFromVar(filter, filter_ptr);
+
+	AS3_Return(filter->getIncludeFlags());
+}
+
+void _dtQueryFilter_setIncludeFlags() __attribute__((used,
+	annotate("as3sig:public function internal_dtQueryFilter_setIncludeFlags(filter_ptr:int, flags:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtQueryFilter_setIncludeFlags()
+{
+	dtQueryFilter * filter;
+	AS3_GetScalarFromVar(filter, filter_ptr);
+
+	unsigned short flags;
+	AS3_GetScalarFromVar(flags, flags);
+
+	filter->setIncludeFlags(flags);
+}
+
+void _dtQueryFilter_getExcludeFlags() __attribute__((used,
+	annotate("as3sig:public function internal_dtQueryFilter_getExcludeFlags(filter_ptr:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtQueryFilter_getExcludeFlags()
+{
+	dtQueryFilter * filter;
+	AS3_GetScalarFromVar(filter, filter_ptr);
+
+	AS3_Return(filter->getExcludeFlags());
+}
+
+void _dtQueryFilter_setExcludeFlags() __attribute__((used,
+	annotate("as3sig:public function internal_dtQueryFilter_setExcludeFlags(filter_ptr:int, flags:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtQueryFilter_setExcludeFlags()
+{
+	dtQueryFilter * filter;
+	AS3_GetScalarFromVar(filter, filter_ptr);
+
+	unsigned short flags;
+	AS3_GetScalarFromVar(flags, flags);
+
+	filter->setExcludeFlags(flags);
+}
+
 void _dtAllocNavMeshQuery() __attribute__((used,
 	annotate("as3sig:public function internal_dtAllocNavMeshQuery():int"),
 	annotate("as3package:recastnavigation.internal_api")));
