@@ -2,6 +2,7 @@ package recastnavigation.recast {
 	
 	import recastnavigation.core.RNBase;
 	import recastnavigation.core.rn_internal;
+	import recastnavigation.core.utils.copyBytes;
 	import recastnavigation.internal_api.CModule;
 	import recastnavigation.internal_api.internal_rcAllocHeightfield;
 	import recastnavigation.internal_api.internal_rcCreateHeightfield;
@@ -71,7 +72,7 @@ package recastnavigation.recast {
 		public function getSpan(index:int, resultSpan:RCSpan = null):RCSpan {
 			
 			if (resultSpan == null) resultSpan = new RCSpan();
-			resultSpan.ptr = CModule.read32(CModule.read32(ptr + OFFSET_SPANS) + 4 * index);
+			resultSpan.ptr = CModule.read32(CModule.read32(ptr + OFFSET_SPANS) + RCSpan.SIZE * index);
 			return resultSpan;
 			
 		}
@@ -79,7 +80,7 @@ package recastnavigation.recast {
 		/** Heightfield of spans (width*height). Setter. */
 		public function setSpan(index:int, value:RCSpan):void {
 			
-			CModule.write32(CModule.read32(ptr + OFFSET_SPANS) + 4 * index, value.ptr);
+			copyBytes(value.ptr, CModule.read32(ptr + OFFSET_SPANS) + RCSpan.SIZE * index, RCSpan.SIZE);
 			
 		}
 		
