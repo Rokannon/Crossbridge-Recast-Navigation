@@ -3,7 +3,6 @@ package recastnavigation.detour.navmesh {
 	import recastnavigation.core.RNBase;
 	import recastnavigation.core.rn_internal;
 	import recastnavigation.core.utils.mallocInt8Vector;
-	import recastnavigation.internal_api.CModule;
 	import recastnavigation.internal_api.internal_dtAllocNavMesh;
 	import recastnavigation.internal_api.internal_dtFreeNavMesh;
 	import recastnavigation.internal_api.internal_dtNavMesh_getTileAt;
