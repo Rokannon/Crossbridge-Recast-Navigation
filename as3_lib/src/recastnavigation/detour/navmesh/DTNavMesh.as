@@ -6,6 +6,7 @@ package recastnavigation.detour.navmesh {
 	import recastnavigation.internal_api.CModule;
 	import recastnavigation.internal_api.internal_dtAllocNavMesh;
 	import recastnavigation.internal_api.internal_dtFreeNavMesh;
+	import recastnavigation.internal_api.internal_dtNavMesh_getTileAt;
 	import recastnavigation.internal_api.internal_dtNavMesh_init;
 	
 	use namespace rn_internal;
@@ -26,6 +27,15 @@ package recastnavigation.detour.navmesh {
 			var dataSize:int = data.length;
 			var result:int = internal_dtNavMesh_init(ptr, data_ptr, dataSize, flags);
 			return result;
+			
+		}
+		
+		/** Gets the tile at the specified grid location. */
+		public function getTileAt(x:int, y:int, layer:int, resultTile:DTMeshTile = null):DTMeshTile {
+			
+			if (resultTile == null) resultTile = new DTMeshTile();
+			resultTile.ptr = internal_dtNavMesh_getTileAt(ptr, x, y, layer);
+			return resultTile;
 			
 		}
 		

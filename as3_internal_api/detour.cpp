@@ -184,6 +184,27 @@ void _dtNavMesh_init()
 	AS3_Return(nav->init(data, dataSize, flags));
 }
 
+void _dtNavMesh_getTileAt() __attribute__((used,
+	annotate("as3sig:public function internal_dtNavMesh_getTileAt(nav_ptr:int, x:int, y:int, layer:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtNavMesh_getTileAt()
+{
+	dtNavMesh * nav;
+	AS3_GetScalarFromVar(nav, nav_ptr);
+
+	int x;
+	AS3_GetScalarFromVar(x, x);
+
+	int y;
+	AS3_GetScalarFromVar(y, y);
+
+	int layer;
+	AS3_GetScalarFromVar(layer, layer);
+
+	AS3_Return(nav->getTileAt(x, y, layer));
+}
+
 // ////
 // DetourNavMeshQuery
 // ////
