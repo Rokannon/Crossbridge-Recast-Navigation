@@ -410,3 +410,60 @@ void _dtNavMeshQuery_init()
 
 	AS3_Return(query->init(nav, maxNodes));
 }
+
+void _dtNavMeshQuery_findNearestPoly() __attribute__((used,
+	annotate("as3sig:public function internal_dtNavMeshQuery_findNearestPoly(query_ptr:int, center_ptr:int, extents_ptr:int, filter_ptr:int, nearestRef_ptr:int, nearestPt_ptr:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtNavMeshQuery_findNearestPoly()
+{
+	dtNavMeshQuery * query;
+	AS3_GetScalarFromVar(query, query_ptr);
+
+	float * center;
+	AS3_GetScalarFromVar(center, center_ptr);
+
+	float * extents;
+	AS3_GetScalarFromVar(extents, extents_ptr);
+
+	dtQueryFilter * filter;
+	AS3_GetScalarFromVar(filter, filter_ptr);
+
+	dtPolyRef * nearestRef;
+	AS3_GetScalarFromVar(nearestRef, nearestRef_ptr);
+
+	float * nearestPt;
+	AS3_GetScalarFromVar(nearestPt, nearestPt_ptr);
+
+	AS3_Return(query->findNearestPoly(center, extents, filter, nearestRef, nearestPt));
+}
+
+void _dtNavMeshQuery_queryPolygons() __attribute__((used,
+	annotate("as3sig:public function internal_dtNavMeshQuery_queryPolygons(query_ptr:int, center_ptr:int, extents_ptr:int, filter_ptr:int, polys_ptr:int, polyCount_ptr:int, maxPolys:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtNavMeshQuery_queryPolygons()
+{
+	dtNavMeshQuery * query;
+	AS3_GetScalarFromVar(query, query_ptr);
+
+	float * center;
+	AS3_GetScalarFromVar(center, center_ptr);
+
+	float * extents;
+	AS3_GetScalarFromVar(extents, extents_ptr);
+
+	dtQueryFilter * filter;
+	AS3_GetScalarFromVar(filter, filter_ptr);
+
+	dtPolyRef * polys;
+	AS3_GetScalarFromVar(polys, polys_ptr);
+
+	int * polyCount;
+	AS3_GetScalarFromVar(polyCount, polyCount_ptr);
+
+	int maxPolys;
+	AS3_GetScalarFromVar(maxPolys, maxPolys);
+
+	AS3_Return(query->queryPolygons(center, extents, filter, polys, polyCount, maxPolys));
+}
