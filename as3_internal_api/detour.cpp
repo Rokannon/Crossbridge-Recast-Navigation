@@ -411,6 +411,84 @@ void _dtNavMeshQuery_init()
 	AS3_Return(query->init(nav, maxNodes));
 }
 
+void _dtNavMeshQuery_findPath() __attribute__((used,
+	annotate("as3sig:public function internal_dtNavMeshQuery_findPath(query_ptr:int, startRef:int, endRef:int, startPos_ptr:int, endPos_ptr:int, filter_ptr:int, path_ptr:int, pathCount_ptr:int, maxPath:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtNavMeshQuery_findPath()
+{
+	dtNavMeshQuery * query;
+	AS3_GetScalarFromVar(query, query_ptr);
+
+	int startRef;
+	AS3_GetScalarFromVar(startRef, startRef);
+
+	int endRef;
+	AS3_GetScalarFromVar(endRef, endRef);
+
+	float * startPos;
+	AS3_GetScalarFromVar(startPos, startPos_ptr);
+
+	float * endPos;
+	AS3_GetScalarFromVar(endPos, endPos_ptr);
+
+	dtQueryFilter * filter;
+	AS3_GetScalarFromVar(filter, filter_ptr);
+
+	dtPolyRef * path;
+	AS3_GetScalarFromVar(path, path_ptr);
+
+	int * pathCount;
+	AS3_GetScalarFromVar(pathCount, pathCount_ptr);
+
+	int maxPath;
+	AS3_GetScalarFromVar(maxPath, maxPath);
+
+	AS3_Return(query->findPath(startRef, endRef, startPos, endPos, filter, path, pathCount, maxPath));
+}
+
+void _dtNavMeshQuery_findStraightPath() __attribute__((used,
+	annotate("as3sig:public function internal_dtNavMeshQuery_findStraightPath(query_ptr:int, startPos_ptr:int, endPos_ptr:int, path_ptr:int, pathSize:int, straightPath_ptr:int, straightPathFlags_ptr:int, straightPathRefs_ptr:int, straightPathCount_ptr:int, maxStraightPath:int, options:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtNavMeshQuery_findStraightPath()
+{
+	dtNavMeshQuery * query;
+	AS3_GetScalarFromVar(query, query_ptr);
+
+	float * startPos;
+	AS3_GetScalarFromVar(startPos, startPos_ptr);
+
+	float * endPos;
+	AS3_GetScalarFromVar(endPos, endPos_ptr);
+
+	dtPolyRef * path;
+	AS3_GetScalarFromVar(path, path_ptr);
+
+	int pathSize;
+	AS3_GetScalarFromVar(pathSize, pathSize);
+
+	float * straightPath;
+	AS3_GetScalarFromVar(straightPath, straightPath_ptr);
+
+	unsigned char * straightPathFlags;
+	AS3_GetScalarFromVar(straightPathFlags, straightPathFlags_ptr);
+
+	dtPolyRef * straightPathRefs;
+	AS3_GetScalarFromVar(straightPathRefs, straightPathRefs_ptr);
+
+	int * straightPathCount;
+	AS3_GetScalarFromVar(straightPathCount, straightPathCount_ptr);
+
+	int maxStraightPath;
+	AS3_GetScalarFromVar(maxStraightPath, maxStraightPath);
+
+	int options;
+	AS3_GetScalarFromVar(options, options);
+
+	AS3_Return(query->findStraightPath(startPos, endPos, path, pathSize, straightPath, straightPathFlags, straightPathRefs, straightPathCount, maxStraightPath, options));
+}
+
 void _dtNavMeshQuery_findNearestPoly() __attribute__((used,
 	annotate("as3sig:public function internal_dtNavMeshQuery_findNearestPoly(query_ptr:int, center_ptr:int, extents_ptr:int, filter_ptr:int, nearestRef_ptr:int, nearestPt_ptr:int):int"),
 	annotate("as3package:recastnavigation.internal_api")));

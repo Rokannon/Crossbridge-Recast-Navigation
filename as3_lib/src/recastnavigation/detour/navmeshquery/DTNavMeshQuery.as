@@ -8,6 +8,8 @@ package recastnavigation.detour.navmeshquery {
 	import recastnavigation.internal_api.internal_dtAllocNavMeshQuery;
 	import recastnavigation.internal_api.internal_dtFreeNavMeshQuery;
 	import recastnavigation.internal_api.internal_dtNavMeshQuery_findNearestPoly;
+	import recastnavigation.internal_api.internal_dtNavMeshQuery_findPath;
+	import recastnavigation.internal_api.internal_dtNavMeshQuery_findStraightPath;
 	import recastnavigation.internal_api.internal_dtNavMeshQuery_init;
 	import recastnavigation.internal_api.internal_dtNavMeshQuery_queryPolygons;
 	
@@ -18,16 +20,126 @@ package recastnavigation.detour.navmeshquery {
 	 */
 	public class DTNavMeshQuery extends RNBase {
 		
-		private var _helperMem12_1:int;
-		private var _helperMem12_2:int;
-		private var _helperMem12_3:int;
-		private var _helperMem4:int;
-		private var _helperMem512:int;
+		private static const HELPER_MEM_SIZE:int = 1024 * 2;
+		
+		private var _helperMem:int;
 		
 		/** Initializes the query object. */
 		public function init(nav:DTNavMesh, maxNodes:int):int {
 			
 			return internal_dtNavMeshQuery_init(ptr, nav.ptr, maxNodes);
+			
+		}
+		
+		/** Finds a path from the start polygon to the end polygon. */
+		public function findPath(
+			startRef:int, endRef:int, 
+			startPosX:Number, startPosY:Number, startPosZ:Number, 
+			endPosX:Number, endPosY:Number, endPosZ:Number, 
+			filter:DTQueryFilter):int {
+			
+			var offset:int = 0;
+			
+			var startPos_ptr:int = _helperMem + offset;
+			offset += 12;
+			CModule.writeFloat(startPos_ptr + 0, startPosX);
+			CModule.writeFloat(startPos_ptr + 4, startPosY);
+			CModule.writeFloat(startPos_ptr + 8, startPosZ);
+			
+			var endPos_ptr:int = _helperMem + offset;
+			offset += 12;
+			CModule.writeFloat(endPos_ptr + 0, endPosX);
+			CModule.writeFloat(endPos_ptr + 4, endPosY);
+			CModule.writeFloat(endPos_ptr + 8, endPosZ);
+			
+			var pathCount_ptr:int = _helperMem + offset;
+			offset += 4;
+			
+			var path_ptr:int = _helperMem + offset;
+			var maxPath:int = (HELPER_MEM_SIZE - offset) / 4;
+			
+			var result:int = internal_dtNavMeshQuery_findPath(
+				ptr, startRef, endRef, startPos_ptr, endPos_ptr, 
+				filter.ptr, path_ptr, pathCount_ptr, maxPath
+			);
+			
+			if (dtStatusSucceed(result)) {
+				polys.length = CModule.read32(pathCount_ptr);
+				for (var i:int = polys.length - 1; i >= 0; --i) {
+					polys[i] = CModule.read32(path_ptr + 4 * i);
+				}
+			}
+			
+			return result;
+			
+		}
+		
+		public const straightPath:Vector.<Number> = new Vector.<Number>();
+		public const straightPathFlags:Vector.<int> = new Vector.<int>();
+		public const straightPathRefs:Vector.<int> = new Vector.<int>();
+		
+		public function findStraightPath(
+			startPosX:Number, startPosY:Number, startPosZ:Number, 
+			endPosX:Number, endPosY:Number, endPosZ:Number, 
+			path:Vector.<int>, options:int = 0):int {
+			
+			var i:int;
+			var offset:int = 0;
+			
+			var startPos_ptr:int = _helperMem + offset;
+			offset += 12;
+			CModule.writeFloat(startPos_ptr + 0, startPosX);
+			CModule.writeFloat(startPos_ptr + 4, startPosY);
+			CModule.writeFloat(startPos_ptr + 8, startPosZ);
+			
+			var endPos_ptr:int = _helperMem + offset;
+			offset += 12;
+			CModule.writeFloat(endPos_ptr + 0, endPosX);
+			CModule.writeFloat(endPos_ptr + 4, endPosY);
+			CModule.writeFloat(endPos_ptr + 8, endPosZ);
+			
+			var path_ptr:int = _helperMem + offset;
+			var pathSize:int = path.length;
+			offset += 4 * pathSize;
+			for (i = 0; i < pathSize; ++i) {
+				CModule.write32(path_ptr + 4 * i, path[i]);
+			}
+			
+			var straightPathCount_ptr:int = _helperMem + offset;
+			offset += 4;
+			
+			var maxStraightPath:int = (HELPER_MEM_SIZE - offset) / 17;
+			
+			var straightPath_ptr:int = _helperMem + offset;
+			offset += 4 * 3 * maxStraightPath;
+			
+			var straightPathFlags_ptr:int = _helperMem + offset;
+			offset += 1 * maxStraightPath;
+			
+			var straightPathRefs_ptr:int = _helperMem + offset;
+			offset += 4 * maxStraightPath;
+			
+			var result:int = internal_dtNavMeshQuery_findStraightPath(
+				ptr, startPos_ptr, endPos_ptr, path_ptr, pathSize, 
+				straightPath_ptr, straightPathFlags_ptr, straightPathRefs_ptr, 
+				straightPathCount_ptr, maxStraightPath, options
+			);
+			
+			if (dtStatusSucceed(result)) {
+				var length:int = CModule.read32(straightPathCount_ptr);
+				straightPath.length = 3 * length;
+				straightPathFlags.length = length;
+				straightPathRefs.length = length;
+				for (i = 0; i < length; ++i) {
+					straightPath[3 * i + 0] = CModule.readFloat(straightPath_ptr + 12 * i + 0);
+					straightPath[3 * i + 1] = CModule.readFloat(straightPath_ptr + 12 * i + 4);
+					straightPath[3 * i + 2] = CModule.readFloat(straightPath_ptr + 12 * i + 8);
+					straightPathFlags[i] = CModule.read8(straightPathFlags_ptr + 1 * i);
+					straightPathRefs[i] = CModule.read32(straightPathRefs_ptr + 4 * i);
+				}
+			}
+			
+			return result;
 			
 		}
 		
@@ -42,24 +154,36 @@ package recastnavigation.detour.navmeshquery {
 			extentsX:Number, extentsY:Number, extentsZ:Number, 
 			filter:DTQueryFilter):int {
 			
-			CModule.writeFloat(_helperMem12_1 + 0, centerX);
-			CModule.writeFloat(_helperMem12_1 + 4, centerY);
-			CModule.writeFloat(_helperMem12_1 + 8, centerZ);
+			var offset:int = 0;
 			
-			CModule.writeFloat(_helperMem12_2 + 0, extentsX);
-			CModule.writeFloat(_helperMem12_2 + 4, extentsY);
-			CModule.writeFloat(_helperMem12_2 + 8, extentsZ);
+			var center_ptr:int = _helperMem + offset;
+			offset += 12;
+			CModule.writeFloat(center_ptr + 0, centerX);
+			CModule.writeFloat(center_ptr + 4, centerY);
+			CModule.writeFloat(center_ptr + 8, centerZ);
+			
+			var extents_ptr:int = _helperMem + offset;
+			offset += 12;
+			CModule.writeFloat(extents_ptr + 0, extentsX);
+			CModule.writeFloat(extents_ptr + 4, extentsY);
+			CModule.writeFloat(extents_ptr + 8, extentsZ);
+			
+			var nearestRef_ptr:int = _helperMem + offset;
+			offset += 4;
+			
+			var nearestPt_ptr:int = _helperMem + offset;
+			offset += 4;
 			
 			var result:int = internal_dtNavMeshQuery_findNearestPoly(
-				ptr, _helperMem12_1, _helperMem12_2, 
-				filter.ptr, _helperMem4, _helperMem12_3
+				ptr, center_ptr, extents_ptr, 
+				filter.ptr, nearestRef_ptr, nearestPt_ptr
 			);
 			
 			if (dtStatusSucceed(result)) {
-				nearestRef = CModule.read32(_helperMem4);
-				nearestPtX = CModule.readFloat(_helperMem12_3);
-				nearestPtY = CModule.readFloat(_helperMem12_3 + 4);
-				nearestPtZ = CModule.readFloat(_helperMem12_3 + 8);
+				nearestRef = CModule.read32(nearestRef_ptr);
+				nearestPtX = CModule.readFloat(nearestPt_ptr + 0);
+				nearestPtY = CModule.readFloat(nearestPt_ptr + 4);
+				nearestPtZ = CModule.readFloat(nearestPt_ptr + 8);
 			}
 			
 			return result;
@@ -74,24 +198,23 @@ package recastnavigation.detour.navmeshquery {
 			extentsX:Number, extentsY:Number, extentsZ:Number, 
 			filter:DTQueryFilter):int {
 			
-			CModule.writeFloat(_helperMem12_1 + 0, centerX);
-			CModule.writeFloat(_helperMem12_1 + 4, centerY);
-			CModule.writeFloat(_helperMem12_1 + 8, centerZ);
+			CModule.writeFloat(_helperMem, centerX);
+			CModule.writeFloat(_helperMem + 4, centerY);
+			CModule.writeFloat(_helperMem + 8, centerZ);
 			
-			CModule.writeFloat(_helperMem12_2 + 0, extentsX);
-			CModule.writeFloat(_helperMem12_2 + 4, extentsY);
-			CModule.writeFloat(_helperMem12_2 + 8, extentsZ);
+			CModule.writeFloat(_helperMem + 12, extentsX);
+			CModule.writeFloat(_helperMem + 16, extentsY);
+			CModule.writeFloat(_helperMem + 20, extentsZ);
 			
 			var result:int = internal_dtNavMeshQuery_queryPolygons(
-				ptr, _helperMem12_1, _helperMem12_2, 
-				filter.ptr, _helperMem512, _helperMem4, 128
+				ptr, _helperMem, _helperMem + 12, 
+				filter.ptr, _helperMem + 28, _helperMem + 24, (_helperMem - 28) / 4
 			);
 			
 			if (dtStatusSucceed(result)) {
-				polys.length = 0;
-				var length:int = CModule.read32(_helperMem4);
-				for (var i:int = 0; i < length; ++i) {
-					polys[i] = CModule.read32(_helperMem512 + 4 * i);
+				polys.length = CModule.read32(_helperMem + 24);
+				for (var i:int = polys.length; i >= 0; --i) {
+					polys[i] = CModule.read32(_helperMem + 28 + 4 * i);
 				}
 			}
 			
@@ -102,11 +225,7 @@ package recastnavigation.detour.navmeshquery {
 		public override function alloc():void {
 			
 			ptr = internal_dtAllocNavMeshQuery();
-			_helperMem12_1 = CModule.malloc(12);
-			_helperMem12_2 = CModule.malloc(12);
-			_helperMem12_3 = CModule.malloc(12);
-			_helperMem4 = CModule.malloc(4);
-			_helperMem512 = CModule.malloc(512);
+			_helperMem = CModule.malloc(HELPER_MEM_SIZE);
 			
 		}
 		
@@ -114,11 +233,7 @@ package recastnavigation.detour.navmeshquery {
 			
 			internal_dtFreeNavMeshQuery(ptr);
 			ptr = 0;
-			CModule.free(_helperMem12_1);
-			CModule.free(_helperMem12_2);
-			CModule.free(_helperMem12_3);
-			CModule.free(_helperMem4);
-			CModule.free(_helperMem512);
+			CModule.free(_helperMem);
 			
 		}
 		
