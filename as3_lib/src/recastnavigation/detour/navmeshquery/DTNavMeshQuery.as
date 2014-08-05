@@ -7,11 +7,15 @@ package recastnavigation.detour.navmeshquery {
 	import recastnavigation.internal_api.CModule;
 	import recastnavigation.internal_api.internal_dtAllocNavMeshQuery;
 	import recastnavigation.internal_api.internal_dtFreeNavMeshQuery;
+	import recastnavigation.internal_api.internal_dtNavMeshQuery_finalizeSlicedFindPath;
+	import recastnavigation.internal_api.internal_dtNavMeshQuery_finalizeSlicedFindPathPartial;
 	import recastnavigation.internal_api.internal_dtNavMeshQuery_findNearestPoly;
 	import recastnavigation.internal_api.internal_dtNavMeshQuery_findPath;
 	import recastnavigation.internal_api.internal_dtNavMeshQuery_findStraightPath;
 	import recastnavigation.internal_api.internal_dtNavMeshQuery_init;
+	import recastnavigation.internal_api.internal_dtNavMeshQuery_initSlicedFindPath;
 	import recastnavigation.internal_api.internal_dtNavMeshQuery_queryPolygons;
+	import recastnavigation.internal_api.internal_dtNavMeshQuery_updateSlicedFindPath;
 	
 	use namespace rn_internal;
 	
@@ -188,6 +192,108 @@ package recastnavigation.detour.navmeshquery {
 			
 			return result;
 			
+		}
+		
+		/** Intializes a sliced path query. */
+		public function initSlicedFindPath(
+			startRef:int, endRef:int, 
+			startPosX:Number, startPosY:Number, startPosZ:Number,  
+			endPosX:Number, endPosY:Number, endPosZ:Number, 
+			filter:DTQueryFilter, options = 0):int {
+			
+			var offset:int = 0;
+			
+			var startPos_ptr:int = _helperMem + offset;
+			offset += 12;
+			CModule.writeFloat(startPos_ptr + 0, startPosX);
+			CModule.writeFloat(startPos_ptr + 4, startPosY);
+			CModule.writeFloat(startPos_ptr + 8, startPosZ);
+			
+			var endPos_ptr:int = _helperMem + offset;
+			offset += 12;
+			CModule.writeFloat(endPos_ptr + 0, endPosX);
+			CModule.writeFloat(endPos_ptr + 4, endPosY);
+			CModule.writeFloat(endPos_ptr + 8, endPosZ);
+			
+			return internal_dtNavMeshQuery_initSlicedFindPath(
+				ptr, startRef, endRef, 
+				startPos_ptr, endPos_ptr, 
+				filter.ptr, options
+			);
+			
+		}
+		
+		public var doneIters:int;
+		
+		/** Updates an in-progress sliced path query. */
+		public function updateSlicedFindPath(maxIter:int):int {
+			
+			var result:int = internal_dtNavMeshQuery_updateSlicedFindPath(ptr, maxIter, _helperMem);
+			doneIters = CModule.read32(_helperMem);
+			return result;
+			
+		}
+		
+		/** Finalizes and returns the results of a sliced path query. */
+		public function finalizeSlicedFindPath():int {
+			
+			var offset:int = 0;
+			
+			var pathCount_ptr:int = _helperMem + offset;
+			offset += 4;
+			
+			var path_ptr:int = _helperMem + offset;
+			var maxPath:int = (HELPER_MEM_SIZE - offset) / 4;
+			
+			var result:int = internal_dtNavMeshQuery_finalizeSlicedFindPath(ptr, path_ptr, pathCount_ptr, maxPath);
+			
+			if (dtStatusSucceed(result)) {
+				polys.length = CModule.read32(pathCount_ptr);
+				for (var i:int = polys.length - 1; i >= 0; --i) {
+					polys[i] = CModule.read32(path_ptr + 4 * i);
+				}
+			}
+			
+			return result;
+			
+		}
+		
+		/** 
+		 * Finalizes and returns the results of an incomplete sliced path query, 
+		 * returning the path to the furthest polygon on the existing path that 
+		 * was visited during the search.
+		 */
+		public function finalizeSlicedFindPathPartial(existing:Vector.<int>):int {
+			
+			var i:int;
+			var offset:int = 0;
+			
+			var existing_ptr:int = _helperMem + offset;
+			var existingSize:int = existing.length;
+			for (i = 0; i < existingSize; ++i) {
+				CModule.write32(_helperMem + 4 * i, existing[i]);
+			}
+			offset += 4 * existingSize;
+			
+			var pathCount_ptr:int = _helperMem + offset;
+			offset += 4;
+			
+			var path_ptr:int = _helperMem + offset;
+			var maxPath:int = (HELPER_MEM_SIZE - offset) / 4;
+			
+			var result:int = internal_dtNavMeshQuery_finalizeSlicedFindPathPartial(
+				ptr, existing_ptr, existingSize, 
+				path_ptr, pathCount_ptr, maxPath
+			);
+			
+			if (dtStatusSucceed(result)) {
+				polys.length = CModule.read32(pathCount_ptr);
+				for (i = polys.length - 1; i >= 0; --i) {
+					polys[i] = CModule.read32(path_ptr + 4 * i);
+				}
+			}
+			
+			return result;
 		}
 		
 		public const polys:Vector.<int> = new Vector.<int>();

@@ -545,3 +545,99 @@ void _dtNavMeshQuery_queryPolygons()
 
 	AS3_Return(query->queryPolygons(center, extents, filter, polys, polyCount, maxPolys));
 }
+
+void _dtNavMeshQuery_initSlicedFindPath() __attribute__((used,
+	annotate("as3sig:public function internal_dtNavMeshQuery_initSlicedFindPath(query_ptr:int, startRef:int, endRef:int, startPos_ptr:int, endPos_ptr:int, filter_ptr:int, options:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtNavMeshQuery_initSlicedFindPath()
+{
+	dtNavMeshQuery * query;
+	AS3_GetScalarFromVar(query, query_ptr);
+
+	int startRef;
+	AS3_GetScalarFromVar(startRef, startRef);
+
+	int endRef;
+	AS3_GetScalarFromVar(endRef, endRef);
+
+	float * startPos;
+	AS3_GetScalarFromVar(startPos, startPos_ptr);
+
+	float * endPos;
+	AS3_GetScalarFromVar(endPos, endPos_ptr);
+
+	dtQueryFilter * filter;
+	AS3_GetScalarFromVar(filter, filter_ptr);
+
+	unsigned int options;
+	AS3_GetScalarFromVar(options, options);
+
+	AS3_Return(query->initSlicedFindPath(startRef, endRef, startPos, endPos, filter, options));
+}
+
+void _dtNavMeshQuery_updateSlicedFindPath() __attribute__((used,
+	annotate("as3sig:public function internal_dtNavMeshQuery_updateSlicedFindPath(query_ptr:int, maxIter:int, doneIters_ptr:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtNavMeshQuery_updateSlicedFindPath()
+{
+	dtNavMeshQuery * query;
+	AS3_GetScalarFromVar(query, query_ptr);
+
+	int maxIter;
+	AS3_GetScalarFromVar(maxIter, maxIter);
+
+	int * doneIters;
+	AS3_GetScalarFromVar(doneIters, doneIters_ptr);
+
+	AS3_Return(query->updateSlicedFindPath(maxIter, doneIters));
+}
+
+void _dtNavMeshQuery_finalizeSlicedFindPath() __attribute__((used,
+	annotate("as3sig:public function internal_dtNavMeshQuery_finalizeSlicedFindPath(query_ptr:int, path_ptr:int, pathCount_ptr:int, maxPath:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtNavMeshQuery_finalizeSlicedFindPath()
+{
+	dtNavMeshQuery * query;
+	AS3_GetScalarFromVar(query, query_ptr);
+
+	dtPolyRef * path;
+	AS3_GetScalarFromVar(path, path_ptr);
+
+	int * pathCount;
+	AS3_GetScalarFromVar(pathCount, pathCount_ptr);
+
+	int maxPath;
+	AS3_GetScalarFromVar(maxPath, maxPath);
+
+	AS3_Return(query->finalizeSlicedFindPath(path, pathCount, maxPath));
+}
+
+void _dtNavMeshQuery_finalizeSlicedFindPathPartial() __attribute__((used,
+	annotate("as3sig:public function internal_dtNavMeshQuery_finalizeSlicedFindPathPartial(query_ptr:int, existing_ptr:int, existingSize:int, path_ptr:int, pathCount_ptr:int, maxPath:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtNavMeshQuery_finalizeSlicedFindPathPartial()
+{
+	dtNavMeshQuery * query;
+	AS3_GetScalarFromVar(query, query_ptr);
+
+	dtPolyRef * existing;
+	AS3_GetScalarFromVar(existing, existing_ptr);
+
+	int existingSize;
+	AS3_GetScalarFromVar(existingSize, existingSize);
+
+	dtPolyRef * path;
+	AS3_GetScalarFromVar(path, path_ptr);
+
+	int * pathCount;
+	AS3_GetScalarFromVar(pathCount, pathCount_ptr);
+
+	int maxPath;
+	AS3_GetScalarFromVar(maxPath, maxPath);
+
+	AS3_Return(query->finalizeSlicedFindPathPartial(existing, existingSize, path, pathCount, maxPath));
+}
