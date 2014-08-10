@@ -573,3 +573,18 @@ void _duDebugDrawNavMeshPoly()
 
 	duDebugDrawNavMeshPoly(dd, *mesh, ref, col);
 }
+
+void _duLogBuildTimes() __attribute__((used,
+	annotate("as3sig:public function internal_duLogBuildTimes(ctx_ptr:int, totalTileUsec:int):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _duLogBuildTimes()
+{
+	rcContext * ctx;
+	AS3_GetScalarFromVar(ctx, ctx_ptr);
+
+	int totalTileUsec;
+	AS3_GetScalarFromVar(totalTileUsec, totalTileUsec);
+
+	duLogBuildTimes(*ctx, totalTileUsec);
+}
