@@ -54,9 +54,10 @@ package recastnavigation.recast.meshdetail {
 		public function get ntris():int { return CModule.read32(ptr + OFFSET_NTRIS); }
 		public function set ntris(value:int):void { CModule.write32(ptr + OFFSET_NTRIS, value); }
 		
-		public override function alloc():void {
+		public override function alloc():Boolean {
 			
 			ptr = internal_rcAllocPolyMeshDetail();
+			return ptr != 0;
 			
 		}
 		

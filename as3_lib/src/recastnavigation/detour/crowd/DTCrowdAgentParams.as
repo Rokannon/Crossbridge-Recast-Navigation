@@ -78,10 +78,11 @@ package recastnavigation.detour.crowd {
 		public function get userData():Object { return internal_localvar_get(CModule.read32(ptr + OFFSET_USER_DATA)); }
 		public function set userData(value:Object):void { internal_localvar_set(CModule.read32(ptr + OFFSET_USER_DATA), value); }
 		
-		public override function alloc():void {
+		public override function alloc():Boolean {
 			
 			ptr = internal_dtAlloc_dtCrowdAgentParams();
 			CModule.write32(ptr + OFFSET_USER_DATA, internal_localvar_alloc());
+			return ptr != 0;
 			
 		}
 		

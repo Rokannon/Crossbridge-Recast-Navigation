@@ -113,9 +113,10 @@ package recastnavigation.detour.navmeshquery {
 			
 		}
 		
-		public override function alloc():void {
+		public override function alloc():Boolean {
 			
 			ptr = internal_dtQueryFilter_alloc();
+			return ptr != 0;
 			
 		}
 		

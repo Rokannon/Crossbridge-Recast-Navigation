@@ -140,9 +140,10 @@ package recastnavigation.recast {
 		/** Array containing area id data. Setter. [Size: #spanCount] */
 		public function setArea(index:int, value:int):void { CModule.write8(CModule.read32(ptr + OFFSET_AREAS) + 1 * index, value); }
 		
-		public override function alloc():void {
+		public override function alloc():Boolean {
 			
 			ptr = internal_rcAllocCompactHeightfield();
+			return ptr != 0;
 			
 		}
 		

@@ -209,9 +209,10 @@ package recastnavigation.detour.crowd {
 			
 		}
 		
-		public override function alloc():void {
+		public override function alloc():Boolean {
 			
 			ptr = internal_dtAllocCrowd();
+			return ptr != 0;
 			
 		}
 		

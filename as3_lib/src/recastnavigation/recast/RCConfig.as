@@ -158,9 +158,10 @@ package recastnavigation.recast {
 			
 		}
 		
-		public override function alloc():void {
+		public override function alloc():Boolean {
 			
 			ptr = internal_rcAlloc_rcConfig();
+			return ptr != 0;
 			
 		}
 		

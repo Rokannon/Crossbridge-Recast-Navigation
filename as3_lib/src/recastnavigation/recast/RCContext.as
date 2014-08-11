@@ -112,9 +112,10 @@ package recastnavigation.recast {
 			
 		}
 		
-		public override function alloc():void {
+		public override function alloc():Boolean {
 			
 			ptr = internal_rcContext_alloc(_state, _obj);
+			return ptr != 0;
 			
 		}
 		

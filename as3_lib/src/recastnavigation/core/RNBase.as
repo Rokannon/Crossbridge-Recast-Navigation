@@ -10,7 +10,9 @@ package recastnavigation.core {
 			
 		}
 		
-		public function alloc():void {
+		public function alloc():Boolean {
+			
+			return false;
 			
 		}
 		

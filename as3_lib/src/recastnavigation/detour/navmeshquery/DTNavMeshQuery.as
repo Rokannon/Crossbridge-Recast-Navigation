@@ -328,10 +328,11 @@ package recastnavigation.detour.navmeshquery {
 			
 		}
 		
-		public override function alloc():void {
+		public override function alloc():Boolean {
 			
 			ptr = internal_dtAllocNavMeshQuery();
 			_helperMem = CModule.malloc(HELPER_MEM_SIZE);
+			return ptr != 0;
 			
 		}
 		

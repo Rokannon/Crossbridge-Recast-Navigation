@@ -91,9 +91,10 @@ package recastnavigation.recast.contour {
 		public function get borderSize():int { return CModule.read32(ptr + OFFSET_BORDER_SIZE); }
 		public function set borderSize(value:int):void { CModule.write32(ptr + OFFSET_BORDER_SIZE, value); }
 		
-		public override function alloc():void {
+		public override function alloc():Boolean {
 			
 			ptr = internal_rcAllocContourSet();
+			return ptr != 0;
 			
 		}
 		

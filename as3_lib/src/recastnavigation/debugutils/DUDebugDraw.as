@@ -25,9 +25,10 @@ package recastnavigation.debugutils {
 			
 		}
 		
-		public override function alloc():void {
+		public override function alloc():Boolean {
 			
 			ptr = internal_duDebugDraw_alloc(_obj);
+			return ptr != 0;
 			
 		}
 		

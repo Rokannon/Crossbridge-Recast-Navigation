@@ -38,9 +38,10 @@ package recastnavigation.detour.navmesh {
 			
 		}
 		
-		public override function alloc():void {
+		public override function alloc():Boolean {
 			
 			ptr = internal_dtAllocNavMesh();
+			return ptr != 0;
 			
 		}
 		

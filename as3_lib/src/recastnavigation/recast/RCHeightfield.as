@@ -116,9 +116,10 @@ package recastnavigation.recast {
 			
 		}
 		
-		public override function alloc():void {
+		public override function alloc():Boolean {
 			
 			ptr = internal_rcAllocHeightfield();
+			return ptr != 0;
 			
 		}
 		

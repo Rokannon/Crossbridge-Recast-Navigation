@@ -242,10 +242,11 @@ package recastnavigation.detour.navmeshbuilder {
 			
 		}
 		
-		public override function alloc():void {
+		public override function alloc():Boolean {
 			
 			ptr = internal_dtAlloc_dtNavMeshCreateParams();
 			setBytes(ptr, 0, SIZE);
+			return ptr != 0;
 			
 		}
 		
