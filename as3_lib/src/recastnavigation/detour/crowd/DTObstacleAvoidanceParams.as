@@ -3,6 +3,8 @@ package recastnavigation.detour.crowd {
 	import recastnavigation.core.RNBase;
 	import recastnavigation.core.rn_internal;
 	import recastnavigation.internal_api.CModule;
+	import recastnavigation.internal_api.internal_dtAlloc_dtObstacleAvoidanceParams;
+	import recastnavigation.internal_api.internal_dtFree;
 	
 	use namespace rn_internal;
 	
@@ -51,6 +53,20 @@ package recastnavigation.detour.crowd {
 		
 		public function get adaptiveDepth():int { return CModule.read8(ptr + OFFSET_ADAPTIVE_DEPTH); }
 		public function set adaptiveDepth(value:int):void { CModule.write8(ptr + OFFSET_ADAPTIVE_DEPTH, value); }
+		
+		public override function alloc():Boolean {
+			
+			ptr = internal_dtAlloc_dtObstacleAvoidanceParams();
+			return ptr != 0;
+			
+		}
+		
+		public override function free():void {
+			
+			internal_dtFree(ptr);
+			ptr = 0;
+			
+		}
 		
 	}
 	
