@@ -35,7 +35,7 @@ package recastnavigation.recast {
 			_obj.doResetTimers = doResetTimers;
 			_obj.doStartTimer = doStartTimer;
 			_obj.doStopTimer = doStopTimer;
-			_obj.doGetAccumulatedTimer = doGetAccumulatedTime;
+			_obj.doGetAccumulatedTime = doGetAccumulatedTime;
 			
 		}
 		

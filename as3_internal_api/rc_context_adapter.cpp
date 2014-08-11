@@ -72,6 +72,12 @@ protected:
 
 		AS3_DeclareVar(label, int);
 		AS3_CopyScalarToVar(label, (int)lbl);
+
+		AS3_DeclareVar(result, int);
+		inline_as3("result = obj.doGetAccumulatedTime(label);");
+		int result;
+		AS3_GetScalarFromVar(result, result);
+		return result;
 	}
 };
 
