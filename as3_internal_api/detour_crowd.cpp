@@ -248,7 +248,7 @@ void _dtCrowd_getActiveAgents()
 	AS3_GetScalarFromVar(crowd, crowd_ptr);
 
 	dtCrowdAgent * * agents;
-	AS3_GetScalarFromVar(agents, agents_ptr);
+	AS3_GetScalarFromVar(agents, agents_ptr_ptr);
 
 	int maxAgents;
 	AS3_GetScalarFromVar(maxAgents, maxAgents);
