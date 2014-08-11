@@ -437,7 +437,7 @@ void _rcBuildContours()
 	int buildFlags;
 	AS3_GetScalarFromVar(buildFlags, buildFlags);
 
-	rcBuildContours(ctx, *chf, maxError, maxEdgeLen, *cset, buildFlags);
+	AS3_Return(rcBuildContours(ctx, *chf, maxError, maxEdgeLen, *cset, buildFlags));
 }
 
 void _rcAllocPolyMesh() __attribute__((used,
