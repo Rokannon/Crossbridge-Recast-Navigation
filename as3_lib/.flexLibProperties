@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="recastnavigation.debugutils.DUDebugDraw"/>
+    <classEntry path="recastnavigation.debugutils.enum.DUDebugDrawPrimitives"/>
+    <classEntry path="recastnavigation.debugutils.enum.DrawNavMeshFlags"/>
+    <classEntry path="recastnavigation.detour.crowd.DTCrowd"/>
+    <classEntry path="recastnavigation.detour.crowd.DTCrowdAgent"/>
+    <classEntry path="recastnavigation.detour.crowd.DTCrowdAgentDebugInfo"/>
+    <classEntry path="recastnavigation.detour.crowd.DTCrowdAgentParams"/>
+    <classEntry path="recastnavigation.detour.crowd.DTCrowdNeighbour"/>
+    <classEntry path="recastnavigation.detour.crowd.DTObstacleAvoidanceParams"/>
+    <classEntry path="recastnavigation.detour.crowd.enum.DTCrowdAgentState"/>
+    <classEntry path="recastnavigation.detour.crowd.enum.DTCrowdUpdateFlags"/>
+    <classEntry path="recastnavigation.detour.navmesh.DTBVNode"/>
+    <classEntry path="recastnavigation.detour.navmesh.DTLink"/>
+    <classEntry path="recastnavigation.detour.navmesh.DTMeshHeader"/>
+    <classEntry path="recastnavigation.detour.navmesh.DTMeshTile"/>
+    <classEntry path="recastnavigation.detour.navmesh.DTNavMesh"/>
+    <classEntry path="recastnavigation.detour.navmesh.DTNavMeshParams"/>
+    <classEntry path="recastnavigation.detour.navmesh.DTOffMeshConnection"/>
+    <classEntry path="recastnavigation.detour.navmesh.DTPoly"/>
+    <classEntry path="recastnavigation.detour.navmesh.DTPolyDetail"/>
+    <classEntry path="recastnavigation.detour.navmesh.enum.DTFindPathOptions"/>
+    <classEntry path="recastnavigation.detour.navmesh.enum.DTPolyTypes"/>
+    <classEntry path="recastnavigation.detour.navmesh.enum.DTRaycastOptions"/>
+    <classEntry path="recastnavigation.detour.navmesh.enum.DTStraightPathFlags"/>
+    <classEntry path="recastnavigation.detour.navmesh.enum.DTStraightPathOptions"/>
+    <classEntry path="recastnavigation.detour.navmesh.enum.DTTileFlags"/>
+    <classEntry path="recastnavigation.detour.navmeshbuilder.DTNavMeshCreateParams"/>
+    <classEntry path="recastnavigation.detour.navmeshquery.DTNavMeshQuery"/>
+    <classEntry path="recastnavigation.detour.navmeshquery.DTQueryFilter"/>
+    <classEntry path="recastnavigation.detour.navmeshquery.DTRaycastHit"/>
+    <classEntry path="recastnavigation.detour.status.enum.DTStatus"/>
+    <classEntry path="recastnavigation.recast.RCCompactCell"/>
+    <classEntry path="recastnavigation.recast.RCCompactHeightfield"/>
+    <classEntry path="recastnavigation.recast.RCCompactSpan"/>
+    <classEntry path="recastnavigation.recast.RCContext"/>
+    <classEntry path="recastnavigation.recast.RCHeightfield"/>
+    <classEntry path="recastnavigation.recast.RCHeightfieldLayer"/>
+    <classEntry path="recastnavigation.recast.RCHeightfieldLayerSet"/>
+    <classEntry path="recastnavigation.recast.RCSpan"/>
+    <classEntry path="recastnavigation.recast.RCSpanPool"/>
+    <classEntry path="recastnavigation.recast.contour.RCContour"/>
+    <classEntry path="recastnavigation.recast.contour.RCContourSet"/>
+    <classEntry path="recastnavigation.recast.enum.RCAreaType"/>
+    <classEntry path="recastnavigation.recast.enum.RCBuildContoursFlags"/>
+    <classEntry path="recastnavigation.recast.enum.RCLogCategory"/>
+    <classEntry path="recastnavigation.recast.enum.RCTimerLabel"/>
+    <classEntry path="recastnavigation.recast.mesh.RCPolyMesh"/>
+    <classEntry path="recastnavigation.recast.meshdetail.RCPolyMeshDetail"/>
+    <classEntry path="recastnavigation.recast.rcRasterizeTriangles"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>
