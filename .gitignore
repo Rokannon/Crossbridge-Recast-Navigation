@@ -1,3 +1,4 @@
+#MS Visual Studio
 .settings/
 as3_internal_api/Debug/*
 as3_internal_api/Release/*
@@ -5,3 +6,16 @@ as3_internal_api/obj/*
 *.suo
 *.sdf
 *.opensdf
+
+# Mac
+.DS_Store
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Eclipse
+.classpath
+.project
+.settings/
