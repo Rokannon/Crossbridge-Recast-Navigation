@@ -69,7 +69,7 @@ package recastnavigation.detour.crowd {
 		public function init(maxAgents:int, maxAgentRadius:Number, nav:DTNavMesh):Boolean {
 			
 			while (_localvars.length > 0) CModule.free(_localvars.pop());
-			var result:Boolean = internal_dtCrowd_init(localvar_ptr, maxAgents, maxAgentRadius, nav.ptr);
+			var result:Boolean = internal_dtCrowd_init(ptr, maxAgents, maxAgentRadius, nav.ptr);
 			while (_agents.length < maxAgents) _agents.push(new DTCrowdAgent());
 			if (_agents.length > maxAgents) _agents.length = maxAgents;
 			for (var i:int = 0; i < maxAgents; ++i) {
@@ -193,7 +193,7 @@ package recastnavigation.detour.crowd {
 			var numActiveAgents:int = internal_dtCrowd_getActiveAgents(ptr, agents_ptr_ptr, maxAgents);
 			resultAgents.length = 0;
 			for (var i:int = 0; i < numActiveAgents; ++i) {
-				var agent_ptr:int = CModule.read32(CModule.read32(agents_ptr_ptr) + 4 * i);
+				var agent_ptr:int = CModule.read32(agents_ptr_ptr + 4 * i);
 				var idx:int = (agent_ptr - CModule.read32(ptr + OFFSET_M_AGENTS)) / DTCrowdAgent.SIZE;
 				resultAgents[i] = _agents[idx];
 			}
