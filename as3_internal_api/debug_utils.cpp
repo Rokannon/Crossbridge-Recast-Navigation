@@ -588,3 +588,126 @@ void _duLogBuildTimes()
 
 	duLogBuildTimes(*ctx, totalTileUsec);
 }
+
+void _duRGBA() __attribute__((used,
+	annotate("as3sig:public function internal_duRGBA(r:int, g:int, b:int, a:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _duRGBA()
+{
+	int r;
+	AS3_GetScalarFromVar(r, r);
+
+	int g;
+	AS3_GetScalarFromVar(g, g);
+
+	int b;
+	AS3_GetScalarFromVar(b, b);
+
+	int a;
+	AS3_GetScalarFromVar(a, a);
+
+	AS3_Return(duRGBA(r, g, b, a));
+}
+
+void _duDebugDrawBoxWire() __attribute__((used,
+	annotate("as3sig:public function internal_duDebugDrawBoxWire(dd_ptr:int, minx:Number, miny:Number, minz:Number, maxx:Number, maxy:Number, maxz:Number, col:int, lineWidth:Number):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _duDebugDrawBoxWire()
+{
+	duDebugDraw * dd;
+	AS3_GetScalarFromVar(dd, dd_ptr);
+
+	float minx;
+	AS3_GetScalarFromVar(minx, minx);
+
+	float miny;
+	AS3_GetScalarFromVar(miny, miny);
+
+	float minz;
+	AS3_GetScalarFromVar(minz, minz);
+
+	float maxx;
+	AS3_GetScalarFromVar(maxx, maxx);
+
+	float maxy;
+	AS3_GetScalarFromVar(maxy, maxy);
+
+	float maxz;
+	AS3_GetScalarFromVar(maxz, maxz);
+
+	unsigned int col;
+	AS3_GetScalarFromVar(col, col);
+
+	float lineWidth;
+	AS3_GetScalarFromVar(lineWidth, lineWidth);
+
+	duDebugDrawBoxWire(dd, minx, miny, minz, maxx, maxy, maxz, col, lineWidth);
+}
+
+void _duDebugDrawCylinderWire() __attribute__((used,
+	annotate("as3sig:public function internal_duDebugDrawCylinderWire(dd_ptr:int, minx:Number, miny:Number, minz:Number, maxx:Number, maxy:Number, maxz:Number, col:int, lineWidth:Number):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _duDebugDrawCylinderWire()
+{
+	duDebugDraw * dd;
+	AS3_GetScalarFromVar(dd, dd_ptr);
+
+	float minx;
+	AS3_GetScalarFromVar(minx, minx);
+
+	float miny;
+	AS3_GetScalarFromVar(miny, miny);
+
+	float minz;
+	AS3_GetScalarFromVar(minz, minz);
+
+	float maxx;
+	AS3_GetScalarFromVar(maxx, maxx);
+
+	float maxy;
+	AS3_GetScalarFromVar(maxy, maxy);
+
+	float maxz;
+	AS3_GetScalarFromVar(maxz, maxz);
+
+	unsigned int col;
+	AS3_GetScalarFromVar(col, col);
+
+	float lineWidth;
+	AS3_GetScalarFromVar(lineWidth, lineWidth);
+
+	duDebugDrawCylinderWire(dd, minx, miny, minz, maxx, maxy, maxz, col, lineWidth);
+}
+
+void _duDebugDrawCircle() __attribute__((used,
+	annotate("as3sig:public function internal_duDebugDrawCircle(dd_ptr:int, x:Number, y:Number, z:Number, r:Number, col:int, lineWidth:Number):void"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _duDebugDrawCircle()
+{
+	duDebugDraw * dd;
+	AS3_GetScalarFromVar(dd, dd_ptr);
+
+	float x;
+	AS3_GetScalarFromVar(x, x);
+
+	float y;
+	AS3_GetScalarFromVar(y, y);
+
+	float z;
+	AS3_GetScalarFromVar(z, z);
+
+	float r;
+	AS3_GetScalarFromVar(r, r);
+
+	unsigned int col;
+	AS3_GetScalarFromVar(col, col);
+
+	float lineWidth;
+	AS3_GetScalarFromVar(lineWidth, lineWidth);
+
+	duDebugDrawCircle(dd, x, y, z, r, col, lineWidth);
+}
