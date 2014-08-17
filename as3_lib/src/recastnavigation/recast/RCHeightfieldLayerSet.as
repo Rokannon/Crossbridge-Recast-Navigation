@@ -1,39 +1,53 @@
 package recastnavigation.recast
 {
-	import recastnavigation.core.RNBase;
-	import recastnavigation.core.rn_internal;
-	import recastnavigation.core.utils.copyBytes;
-	import recastnavigation.internal_api.CModule;
+    import recastnavigation.core.RNBase;
+    import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.copyBytes;
+    import recastnavigation.internal_api.CModule;
 
-	use namespace rn_internal;
+    use namespace rn_internal;
 
-	/**
-	 * Represents a set of heightfield layers.
-	 */
-	public class RCHeightfieldLayerSet extends RNBase
-	{
-		rn_internal static var SIZE					:int = 0;
-		rn_internal static const OFFSET_LAYERS		:int = offset(4);
-		rn_internal static const OFFSET_NLAYERS		:int = offset(4);
+    /**
+     * Represents a set of heightfield layers.
+     */
+    public class RCHeightfieldLayerSet extends RNBase
+    {
+        rn_internal static var SIZE:int = 0;
+        rn_internal static const OFFSET_LAYERS:int = offset(4);
+        rn_internal static const OFFSET_NLAYERS:int = offset(4);
 
-		private static function offset(size:int):int { return (SIZE += size) - size; }
+        private static function offset(size:int):int
+        {
+            return (SIZE += size) - size;
+        }
 
-		/** The layers in the set. Getter. [Size: #nlayers] */
-		public function getLayer(index:int, resultLayer:RCHeightfieldLayer = null):RCHeightfieldLayer
-		{
-			if (resultLayer == null) resultLayer = new RCHeightfieldLayer();
-			resultLayer.ptr = CModule.read32(ptr + OFFSET_LAYERS) + RCHeightfieldLayer.SIZE * index;
-			return resultLayer;
-		}
+        /** The layers in the set. Getter. [Size: #nlayers] */
+        public function getLayer(index:int, resultLayer:RCHeightfieldLayer = null):RCHeightfieldLayer
+        {
+            if (resultLayer == null)
+            {
+                resultLayer = new RCHeightfieldLayer();
+            }
+            resultLayer.ptr = CModule.read32(ptr + OFFSET_LAYERS) + RCHeightfieldLayer.SIZE * index;
+            return resultLayer;
+        }
 
-		/** The layers in the set. Setter. [Size: #nlayers] */
-		public function setLayer(index:int, value:RCHeightfieldLayer):void
-		{
-			copyBytes(value.ptr, CModule.read32(ptr + OFFSET_LAYERS) + RCHeightfieldLayer.SIZE * index, RCHeightfieldLayer.SIZE);
-		}
+        /** The layers in the set. Setter. [Size: #nlayers] */
+        public function setLayer(index:int, value:RCHeightfieldLayer):void
+        {
+            copyBytes(value.ptr, CModule.read32(ptr + OFFSET_LAYERS) + RCHeightfieldLayer.SIZE * index,
+                      RCHeightfieldLayer.SIZE);
+        }
 
-		/** The number of layers in the set. */
-		public function get nlayers():int { return CModule.read32(ptr + OFFSET_NLAYERS); }
-		public function set nlayers(value:int):void { CModule.write32(ptr + OFFSET_NLAYERS, value); }
-	}
+        /** The number of layers in the set. */
+        public function get nlayers():int
+        {
+            return CModule.read32(ptr + OFFSET_NLAYERS);
+        }
+
+        public function set nlayers(value:int):void
+        {
+            CModule.write32(ptr + OFFSET_NLAYERS, value);
+        }
+    }
 }
