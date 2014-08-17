@@ -5,6 +5,7 @@ package recastnavigation.detour.navmesh
     import recastnavigation.core.utils.mallocInt8Vector;
     import recastnavigation.internal_api.internal_dtAllocNavMesh;
     import recastnavigation.internal_api.internal_dtFreeNavMesh;
+    import recastnavigation.internal_api.internal_dtNavMesh_getPolyRefBase;
     import recastnavigation.internal_api.internal_dtNavMesh_getTileAt;
     import recastnavigation.internal_api.internal_dtNavMesh_init;
 
@@ -36,6 +37,12 @@ package recastnavigation.detour.navmesh
             }
             resultTile.ptr = internal_dtNavMesh_getTileAt(ptr, x, y, layer);
             return resultTile;
+        }
+
+        /** Gets the polygon reference for the tile's base polygon. */
+        public function getPolyRefBase(tile:DTMeshTile):int
+        {
+            return internal_dtNavMesh_getPolyRefBase(ptr, tile.ptr);
         }
 
         public override function alloc():Boolean

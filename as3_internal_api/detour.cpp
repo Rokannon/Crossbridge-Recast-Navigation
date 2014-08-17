@@ -205,6 +205,21 @@ void _dtNavMesh_getTileAt()
 	AS3_Return(nav->getTileAt(x, y, layer));
 }
 
+void _dtNavMesh_getPolyRefBase() __attribute__((used,
+	annotate("as3sig:public function internal_dtNavMesh_getPolyRefBase(nav_ptr:int, tile_ptr:int):int"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtNavMesh_getPolyRefBase()
+{
+	dtNavMesh * nav;
+	AS3_GetScalarFromVar(nav, nav_ptr);
+
+	dtMeshTile * tile;
+	AS3_GetScalarFromVar(tile, tile_ptr);
+
+	AS3_Return(nav->getPolyRefBase(tile));
+}
+
 // ////
 // DetourNavMeshQuery
 // ////
