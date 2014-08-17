@@ -1,15 +1,15 @@
-package recastnavigation.debugutils {
-	
+package recastnavigation.debugutils
+{
 	import recastnavigation.core.rn_internal;
 	import recastnavigation.core.utils.mallocInt32Vector;
 	import recastnavigation.core.utils.mallocNumberVector;
 	import recastnavigation.internal_api.CModule;
 	import recastnavigation.internal_api.internal_duDebugDrawTriMeshSlope;
-	
+
 	use namespace rn_internal;
-	
-	public function duDebugDrawTriMeshSlope(dd:DUDebugDraw, verts:Vector.<Number>, tris:Vector.<int>, normals:Vector.<Number>, walkableSlopeAngle:Number, texScale:Number):void {
-		
+
+	public function duDebugDrawTriMeshSlope(dd:DUDebugDraw, verts:Vector.<Number>, tris:Vector.<int>, normals:Vector.<Number>, walkableSlopeAngle:Number, texScale:Number):void
+	{
 		var verts_ptr:int = mallocNumberVector(verts);
 		var nverts:int = verts.length / 3;
 		var tris_ptr:int = mallocInt32Vector(tris);
@@ -19,7 +19,5 @@ package recastnavigation.debugutils {
 		CModule.free(verts_ptr);
 		CModule.free(tris_ptr);
 		CModule.free(normals_ptr);
-		
 	}
-	
 }

@@ -1,25 +1,22 @@
-package recastnavigation.core {
-	
+package recastnavigation.core
+{
 	use namespace rn_internal;
-	
-	public class RNBase {
-		
+
+	public class RNBase
+	{
 		rn_internal var ptr:int;
-		
-		public function RNBase() {
-			
+
+		public function RNBase()
+		{
 		}
-		
-		public function alloc():Boolean {
-			
+
+		public function alloc():Boolean
+		{
 			return false;
-			
 		}
-		
-		public function free():void {
-			
+
+		public function free():void
+		{
 		}
-		
 	}
-	
 }

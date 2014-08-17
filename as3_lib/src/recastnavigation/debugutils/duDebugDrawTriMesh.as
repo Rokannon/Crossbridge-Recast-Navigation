@@ -1,16 +1,16 @@
-package recastnavigation.debugutils {
-	
+package recastnavigation.debugutils
+{
 	import recastnavigation.core.rn_internal;
 	import recastnavigation.core.utils.mallocInt32Vector;
 	import recastnavigation.core.utils.mallocInt8Vector;
 	import recastnavigation.core.utils.mallocNumberVector;
 	import recastnavigation.internal_api.CModule;
 	import recastnavigation.internal_api.internal_duDebugDrawTriMesh;
-	
+
 	use namespace rn_internal;
-	
-	public function duDebugDrawTriMesh(dd:DUDebugDraw, verts:Vector.<Number>, tris:Vector.<int>, normals:Vector.<Number>, flags:Vector.<int>, texScale:Number):void {
-		
+
+	public function duDebugDrawTriMesh(dd:DUDebugDraw, verts:Vector.<Number>, tris:Vector.<int>, normals:Vector.<Number>, flags:Vector.<int>, texScale:Number):void
+	{
 		var verts_ptr:int = mallocNumberVector(verts);
 		var nverts:int = verts.length / 3;
 		var tris_ptr:int = mallocInt32Vector(tris);
@@ -22,7 +22,5 @@ package recastnavigation.debugutils {
 		CModule.free(tris_ptr);
 		CModule.free(normals_ptr);
 		CModule.free(flags_ptr);
-		
 	}
-	
 }
