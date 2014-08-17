@@ -15,6 +15,7 @@ package recastnavigation.recast
                                             tris:Vector.<int>, resultAreas:Vector.<int>):void
     {
         var i:int;
+
         var verts_ptr:int = mallocNumberVector(verts);
         var nv:int = verts.length / 3;
         var tris_ptr:int = mallocInt32Vector(tris);

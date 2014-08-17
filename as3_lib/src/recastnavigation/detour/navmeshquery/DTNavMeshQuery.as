@@ -38,20 +38,25 @@ package recastnavigation.detour.navmeshquery
                                  endPosX:Number, endPosY:Number, endPosZ:Number, filter:DTQueryFilter):int
         {
             var offset:int = 0;
+
             var startPos_ptr:int = _helperMem + offset;
             offset += 12;
             CModule.writeFloat(startPos_ptr + 0, startPosX);
             CModule.writeFloat(startPos_ptr + 4, startPosY);
             CModule.writeFloat(startPos_ptr + 8, startPosZ);
+
             var endPos_ptr:int = _helperMem + offset;
             offset += 12;
             CModule.writeFloat(endPos_ptr + 0, endPosX);
             CModule.writeFloat(endPos_ptr + 4, endPosY);
             CModule.writeFloat(endPos_ptr + 8, endPosZ);
+
             var pathCount_ptr:int = _helperMem + offset;
             offset += 4;
+
             var path_ptr:int = _helperMem + offset;
             var maxPath:int = (HELPER_MEM_SIZE - offset) / 4;
+
             var result:int = internal_dtNavMeshQuery_findPath(ptr, startRef, endRef, startPos_ptr, endPos_ptr,
                                                               filter.ptr, path_ptr, pathCount_ptr, maxPath);
             if (dtStatusSucceed(result))
@@ -74,16 +79,19 @@ package recastnavigation.detour.navmeshquery
         {
             var i:int;
             var offset:int = 0;
+
             var startPos_ptr:int = _helperMem + offset;
             offset += 12;
             CModule.writeFloat(startPos_ptr + 0, startPosX);
             CModule.writeFloat(startPos_ptr + 4, startPosY);
             CModule.writeFloat(startPos_ptr + 8, startPosZ);
+
             var endPos_ptr:int = _helperMem + offset;
             offset += 12;
             CModule.writeFloat(endPos_ptr + 0, endPosX);
             CModule.writeFloat(endPos_ptr + 4, endPosY);
             CModule.writeFloat(endPos_ptr + 8, endPosZ);
+
             var path_ptr:int = _helperMem + offset;
             var pathSize:int = path.length;
             offset += 4 * pathSize;
@@ -91,15 +99,21 @@ package recastnavigation.detour.navmeshquery
             {
                 CModule.write32(path_ptr + 4 * i, path[i]);
             }
+
             var straightPathCount_ptr:int = _helperMem + offset;
             offset += 4;
+
             var maxStraightPath:int = (HELPER_MEM_SIZE - offset) / 17;
+
             var straightPath_ptr:int = _helperMem + offset;
             offset += 4 * 3 * maxStraightPath;
+
             var straightPathFlags_ptr:int = _helperMem + offset;
             offset += 1 * maxStraightPath;
+
             var straightPathRefs_ptr:int = _helperMem + offset;
             offset += 4 * maxStraightPath;
+
             var result:int = internal_dtNavMeshQuery_findStraightPath(ptr, startPos_ptr, endPos_ptr, path_ptr, pathSize,
                                                                       straightPath_ptr, straightPathFlags_ptr,
                                                                       straightPathRefs_ptr, straightPathCount_ptr,
@@ -132,20 +146,25 @@ package recastnavigation.detour.navmeshquery
                                         extentsY:Number, extentsZ:Number, filter:DTQueryFilter):int
         {
             var offset:int = 0;
+
             var center_ptr:int = _helperMem + offset;
             offset += 12;
             CModule.writeFloat(center_ptr + 0, centerX);
             CModule.writeFloat(center_ptr + 4, centerY);
             CModule.writeFloat(center_ptr + 8, centerZ);
+
             var extents_ptr:int = _helperMem + offset;
             offset += 12;
             CModule.writeFloat(extents_ptr + 0, extentsX);
             CModule.writeFloat(extents_ptr + 4, extentsY);
             CModule.writeFloat(extents_ptr + 8, extentsZ);
+
             var nearestRef_ptr:int = _helperMem + offset;
             offset += 4;
+
             var nearestPt_ptr:int = _helperMem + offset;
             offset += 4;
+
             var result:int = internal_dtNavMeshQuery_findNearestPoly(ptr, center_ptr, extents_ptr, filter.ptr,
                                                                      nearestRef_ptr, nearestPt_ptr);
             if (dtStatusSucceed(result))
@@ -164,16 +183,19 @@ package recastnavigation.detour.navmeshquery
                                            filter:DTQueryFilter, options = 0):int
         {
             var offset:int = 0;
+
             var startPos_ptr:int = _helperMem + offset;
             offset += 12;
             CModule.writeFloat(startPos_ptr + 0, startPosX);
             CModule.writeFloat(startPos_ptr + 4, startPosY);
             CModule.writeFloat(startPos_ptr + 8, startPosZ);
+
             var endPos_ptr:int = _helperMem + offset;
             offset += 12;
             CModule.writeFloat(endPos_ptr + 0, endPosX);
             CModule.writeFloat(endPos_ptr + 4, endPosY);
             CModule.writeFloat(endPos_ptr + 8, endPosZ);
+
             return internal_dtNavMeshQuery_initSlicedFindPath(ptr, startRef, endRef, startPos_ptr, endPos_ptr,
                                                               filter.ptr, options);
         }
@@ -192,10 +214,13 @@ package recastnavigation.detour.navmeshquery
         public function finalizeSlicedFindPath():int
         {
             var offset:int = 0;
+
             var pathCount_ptr:int = _helperMem + offset;
             offset += 4;
+
             var path_ptr:int = _helperMem + offset;
             var maxPath:int = (HELPER_MEM_SIZE - offset) / 4;
+
             var result:int = internal_dtNavMeshQuery_finalizeSlicedFindPath(ptr, path_ptr, pathCount_ptr, maxPath);
             if (dtStatusSucceed(result))
             {
@@ -217,6 +242,7 @@ package recastnavigation.detour.navmeshquery
         {
             var i:int;
             var offset:int = 0;
+
             var existing_ptr:int = _helperMem + offset;
             var existingSize:int = existing.length;
             for (i = 0; i < existingSize; ++i)
@@ -224,10 +250,13 @@ package recastnavigation.detour.navmeshquery
                 CModule.write32(_helperMem + 4 * i, existing[i]);
             }
             offset += 4 * existingSize;
+
             var pathCount_ptr:int = _helperMem + offset;
             offset += 4;
+
             var path_ptr:int = _helperMem + offset;
             var maxPath:int = (HELPER_MEM_SIZE - offset) / 4;
+
             var result:int = internal_dtNavMeshQuery_finalizeSlicedFindPathPartial(ptr, existing_ptr, existingSize,
                                                                                    path_ptr, pathCount_ptr, maxPath);
             if (dtStatusSucceed(result))
@@ -253,6 +282,7 @@ package recastnavigation.detour.navmeshquery
             CModule.writeFloat(_helperMem + 12, extentsX);
             CModule.writeFloat(_helperMem + 16, extentsY);
             CModule.writeFloat(_helperMem + 20, extentsZ);
+
             var result:int = internal_dtNavMeshQuery_queryPolygons(ptr, _helperMem, _helperMem + 12, filter.ptr,
                                                                    _helperMem + 28, _helperMem + 24,
                                                                    (_helperMem - 28) / 4);
