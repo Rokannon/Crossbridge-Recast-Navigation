@@ -16,6 +16,7 @@ package recastnavigation.debugutils
 
 		public function DUDebugDraw()
 		{
+			super();
 			_obj.depthMask = depthMask;
 			_obj.texture = texture;
 			_obj.begin = begin;
