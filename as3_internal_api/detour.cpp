@@ -656,3 +656,18 @@ void _dtNavMeshQuery_finalizeSlicedFindPathPartial()
 
 	AS3_Return(query->finalizeSlicedFindPathPartial(existing, existingSize, path, pathCount, maxPath));
 }
+
+void _dtNavMeshQuery_isInClosedList() __attribute__((used,
+	annotate("as3sig:public function internal_dtNavMeshQuery_isInClosedList(query_ptr:int, ref:int):Boolean"),
+	annotate("as3package:recastnavigation.internal_api")));
+
+void _dtNavMeshQuery_isInClosedList()
+{
+	dtNavMeshQuery * query;
+	AS3_GetScalarFromVar(query, query_ptr);
+
+	dtPolyRef ref;
+	AS3_GetScalarFromVar(ref, ref);
+
+	AS3_Return(query->isInClosedList(ref));
+}

@@ -14,6 +14,7 @@ package recastnavigation.detour.navmeshquery
     import recastnavigation.internal_api.internal_dtNavMeshQuery_findStraightPath;
     import recastnavigation.internal_api.internal_dtNavMeshQuery_init;
     import recastnavigation.internal_api.internal_dtNavMeshQuery_initSlicedFindPath;
+    import recastnavigation.internal_api.internal_dtNavMeshQuery_isInClosedList;
     import recastnavigation.internal_api.internal_dtNavMeshQuery_queryPolygons;
     import recastnavigation.internal_api.internal_dtNavMeshQuery_updateSlicedFindPath;
 
@@ -295,6 +296,12 @@ package recastnavigation.detour.navmeshquery
                 }
             }
             return result;
+        }
+
+        /** Returns true if the polygon reference is in the closed list. */
+        public function isInClosedList(ref:int):Boolean
+        {
+            return internal_dtNavMeshQuery_isInClosedList(ptr, ref);
         }
 
         public override function alloc():Boolean
