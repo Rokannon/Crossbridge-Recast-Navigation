@@ -9,6 +9,8 @@ package app.view
 
     import recastnavigation.recast.RCConfig;
 
+    import starling.animation.Tween;
+    import starling.core.Starling;
     import starling.events.Event;
 
     public class PropertiesViewMediator
@@ -19,6 +21,7 @@ package app.view
         private var _guiModel:GUIModel;
         private var _soloMesh:SoloMesh;
         private var _propertiesView:PropertiesView;
+        private var _firstBuild:Boolean = true;
 
         public function PropertiesViewMediator()
         {
@@ -85,6 +88,17 @@ package app.view
             {
                 var meshInfo:MeshInfo = MeshInfoLibrary.instance.meshes[_propertiesView.meshPickerList.selectedIndex];
                 _soloMesh.setMesh(meshInfo);
+            }
+            if (_firstBuild)
+            {
+                _propertiesView.scrollToPosition(0, _propertiesView.maxVerticalScrollPosition, 0.5);
+                Starling.current.juggler.removeTweens(_propertiesView.buildButton);
+                _propertiesView.buildButton.alpha = 1.0;
+                var tween:Tween = new Tween(_propertiesView.buildButton, 0.5);
+                tween.animate("alpha", 0.5)
+                tween.reverse = true;
+                tween.repeatCount = 0;
+                Starling.current.juggler.add(tween);
             }
         }
 
@@ -154,6 +168,12 @@ package app.view
             if (_propertiesView.meshPickerList.selectedIndex != -1)
             {
                 _soloMesh.build();
+                if (_firstBuild)
+                {
+                    _firstBuild = false;
+                    Starling.current.juggler.removeTweens(_propertiesView.buildButton);
+                    _propertiesView.buildButton.alpha = 1.0;
+                }
             }
         }
 
