@@ -19,3 +19,5 @@ as3_internal_api/obj/*
 .classpath
 .project
 .settings/
+
+demo/bin-debug/
