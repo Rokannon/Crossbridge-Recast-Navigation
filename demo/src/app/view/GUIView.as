@@ -47,7 +47,7 @@ package app.view
             addChild(logView);
 
             ald = new AnchorLayoutData();
-            ald.top = 30;
+            ald.top = SIDEBAR_PADDING;
             ald.bottom = SIDEBAR_PADDING;
             ald.left = SIDEBAR_PADDING;
             toolsView.layoutData = ald;

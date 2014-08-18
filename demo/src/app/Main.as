@@ -19,7 +19,7 @@ package app
             DeviceCapabilities.dpi = 150;
             _starlingInstance = new Starling(MainApplication, stage);
 //            _starlingInstance = new Starling(TestApplication, stage);
-            _starlingInstance.showStats = true;
+//            _starlingInstance.showStats = true;
             _starlingInstance.start();
         }
     }
