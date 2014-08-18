@@ -268,7 +268,7 @@ void _dtCrowd_update()
 	float dt;
 	AS3_GetScalarFromVar(dt, dt);
 
-	dtCrowdAgentDebugInfo* debug;
+	dtCrowdAgentDebugInfo * debug;
 	AS3_GetScalarFromVar(debug, debug_ptr);
 
 	crowd->update(dt, debug);

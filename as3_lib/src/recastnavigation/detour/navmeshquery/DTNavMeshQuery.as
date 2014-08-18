@@ -277,22 +277,34 @@ package recastnavigation.detour.navmeshquery
         public function queryPolygons(centerX:Number, centerY:Number, centerZ:Number, extentsX:Number, extentsY:Number,
                                       extentsZ:Number, filter:DTQueryFilter):int
         {
-            CModule.writeFloat(_helperMem, centerX);
-            CModule.writeFloat(_helperMem + 4, centerY);
-            CModule.writeFloat(_helperMem + 8, centerZ);
-            CModule.writeFloat(_helperMem + 12, extentsX);
-            CModule.writeFloat(_helperMem + 16, extentsY);
-            CModule.writeFloat(_helperMem + 20, extentsZ);
+            var offset:int = 0;
 
-            var result:int = internal_dtNavMeshQuery_queryPolygons(ptr, _helperMem, _helperMem + 12, filter.ptr,
-                                                                   _helperMem + 28, _helperMem + 24,
-                                                                   (_helperMem - 28) / 4);
+            var center_ptr:int = _helperMem + offset;
+            offset += 12;
+            CModule.writeFloat(center_ptr + 0, centerX);
+            CModule.writeFloat(center_ptr + 4, centerY);
+            CModule.writeFloat(center_ptr + 8, centerZ);
+
+            var extents_ptr:int = _helperMem + offset;
+            offset += 12;
+            CModule.writeFloat(center_ptr + 0, extentsX);
+            CModule.writeFloat(center_ptr + 4, extentsX);
+            CModule.writeFloat(center_ptr + 8, extentsX);
+
+            var polyCount_ptr:int = _helperMem + offset;
+            offset += 4;
+
+            var polys_ptr:int = _helperMem + offset;
+            var maxPolys:int = (HELPER_MEM_SIZE - offset) / 4;
+
+            var result:int = internal_dtNavMeshQuery_queryPolygons(ptr, center_ptr, extents_ptr, filter.ptr,
+                                                                   polyCount_ptr, polys_ptr, maxPolys);
             if (dtStatusSucceed(result))
             {
-                polys.length = CModule.read32(_helperMem + 24);
-                for (var i:int = polys.length; i >= 0; --i)
+                polys.length = CModule.read32(polyCount_ptr);
+                for (var i:int = polys.length - 1; i >= 0; --i)
                 {
-                    polys[i] = CModule.read32(_helperMem + 28 + 4 * i);
+                    polys[i] = CModule.read32(polys_ptr + 4 * i);
                 }
             }
             return result;

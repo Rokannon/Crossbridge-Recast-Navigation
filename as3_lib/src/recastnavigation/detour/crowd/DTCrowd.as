@@ -116,9 +116,9 @@ package recastnavigation.detour.crowd
         /** Gets the specified agent from the pool. */
         public function getAgent(idx:int):DTCrowdAgent
         {
-            //			if (resultAgent == null) resultAgent = new DTCrowdAgent();
-            //			resultAgent.ptr = internal_dtCrowd_getAgent(ptr, idx);
-            //			return resultAgent;
+//            if (resultAgent == null) resultAgent = new DTCrowdAgent();
+//            resultAgent.ptr = internal_dtCrowd_getAgent(ptr, idx);
+//            return resultAgent;
             return _agents[idx];
         }
 
