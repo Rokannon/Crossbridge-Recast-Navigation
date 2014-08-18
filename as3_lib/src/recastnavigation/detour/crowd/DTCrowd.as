@@ -83,7 +83,7 @@ package recastnavigation.detour.crowd
             }
             for (var i:int = 0; i < maxAgents; ++i)
             {
-                var agent_ptr:int = ptr + OFFSET_M_AGENTS + DTCrowdAgent.SIZE * i;
+                var agent_ptr:int = CModule.read32(ptr + OFFSET_M_AGENTS) + DTCrowdAgent.SIZE * i;
                 _agents[i].ptr = agent_ptr;
 
                 // Alloc new localvar to hold agent's userData.
@@ -229,11 +229,11 @@ package recastnavigation.detour.crowd
         }
 
         [Inline]
-        private function handleUserData(idx:int, params:DTCrowdAgentParams):void
+        private final function handleUserData(idx:int, params:DTCrowdAgentParams):void
         {
             // Restore agent params' userData localvar.
             var localvar_ptr:int = _localvars[idx];
-            var userData_ptr:int = ptr + OFFSET_M_AGENTS + DTCrowdAgent.SIZE * idx + DTCrowdAgent.OFFSET_PARAMS + DTCrowdAgentParams.OFFSET_USER_DATA;
+            var userData_ptr:int = CModule.read32(ptr + OFFSET_M_AGENTS) + DTCrowdAgent.SIZE * idx + DTCrowdAgent.OFFSET_PARAMS + DTCrowdAgentParams.OFFSET_USER_DATA;
             CModule.write32(userData_ptr, localvar_ptr);
 
             // Put userData from argument params to agent params.
