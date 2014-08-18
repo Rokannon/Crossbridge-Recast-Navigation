@@ -4,6 +4,7 @@ package app.view
     import app.model.GUIModelEvent;
     import app.model.SoloMesh;
     import app.model.SoloMeshEvent;
+    import app.model.enum.ToolType;
 
     import feathers.controls.Alert;
     import feathers.data.ListCollection;
@@ -29,7 +30,20 @@ package app.view
             _soloMesh.addEventListener(SoloMeshEvent.NO_MESH_SELECTED, onNoMeshSelected);
             _soloMesh.addEventListener(SoloMeshEvent.MESH_IS_NOT_BUILT, onMeshIsNotBuilt);
             _soloMesh.addEventListener(SoloMeshEvent.NO_TOOL_SELECTED, onNoToolSelected);
+            _soloMesh.addEventListener(SoloMeshEvent.TOOL_CHANGED, onToolChanged);
             updateLog();
+        }
+
+        private function onToolChanged(event:SoloMeshEvent):void
+        {
+            if (_soloMesh.currentToolType == ToolType.TOOL_TESTER)
+            {
+                _guiView.toolCaptionLabel.text = "Click/SHIFT+Click to set Start/End points.";
+            }
+            else
+            {
+                _guiView.toolCaptionLabel.text = "";
+            }
         }
 
         private function onNoToolSelected(event:SoloMeshEvent):void

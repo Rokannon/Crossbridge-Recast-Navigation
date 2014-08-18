@@ -1,5 +1,6 @@
 package app.view
 {
+    import feathers.controls.Label;
     import feathers.controls.Screen;
     import feathers.layout.AnchorLayout;
     import feathers.layout.AnchorLayoutData;
@@ -14,6 +15,7 @@ package app.view
         public const propertiesView:PropertiesView = new PropertiesView();
         public const logView:LogView = new LogView();
         public const toolsView:ToolsView = new ToolsView();
+        public const toolCaptionLabel:Label = new Label();
 
         private var _propertiesViewLayoutData:AnchorLayoutData;
         private var _logViewLayoutData:AnchorLayoutData;
@@ -52,6 +54,12 @@ package app.view
             ald.left = SIDEBAR_PADDING;
             toolsView.layoutData = ald;
             addChild(toolsView);
+
+            ald = new AnchorLayoutData();
+            ald.top = SIDEBAR_PADDING;
+            ald.left = SIDEBAR_PADDING + toolsView.width;
+            toolCaptionLabel.layoutData = ald;
+            addChild(toolCaptionLabel);
         }
 
         public function hideLog():void
