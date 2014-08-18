@@ -26,12 +26,12 @@ package app.data.mesh
 
         public static function initialize():void
         {
-            MeshInfoLibrary.instance.addMeshInfoFromByteArray(new dungeon_obj(), "dungeon.obj");
-            MeshInfoLibrary.instance.addMeshInfoFromByteArray(new nav_test_obj(), "nav_test.obj");
+//            MeshInfoLibrary.instance.addMeshInfoFromByteArray(new dungeon_obj(), "dungeon.obj");
+//            MeshInfoLibrary.instance.addMeshInfoFromByteArray(new nav_test_obj(), "nav_test.obj");
             MeshInfoLibrary.instance.addMeshInfoFromByteArray(new Obj_test_1_obj(), "Obj-test-1.obj", 0.5);
-            MeshInfoLibrary.instance.addMeshInfoFromByteArray(new Obj_test_2_obj(), "Obj-test-2.obj");
-            MeshInfoLibrary.instance.addMeshInfoFromByteArray(new Obj_test_3_obj(), "Obj-test-3.obj");
-            MeshInfoLibrary.instance.addMeshInfoFromByteArray(new Obj_test_4_obj(), "Obj-test-4.obj");
+//            MeshInfoLibrary.instance.addMeshInfoFromByteArray(new Obj_test_2_obj(), "Obj-test-2.obj");
+//            MeshInfoLibrary.instance.addMeshInfoFromByteArray(new Obj_test_3_obj(), "Obj-test-3.obj");
+//            MeshInfoLibrary.instance.addMeshInfoFromByteArray(new Obj_test_4_obj(), "Obj-test-4.obj");
         }
     }
 }
