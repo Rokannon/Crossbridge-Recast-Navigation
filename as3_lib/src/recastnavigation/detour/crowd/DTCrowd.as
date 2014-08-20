@@ -21,6 +21,7 @@ package recastnavigation.detour.crowd
     import recastnavigation.internal_api.internal_dtFreeCrowd;
     import recastnavigation.internal_api.internal_localvar_alloc;
     import recastnavigation.internal_api.internal_localvar_set;
+    import recastnavigation.internal_api.internal_sizeof_dtObstacleAvoidanceParams;
     import recastnavigation.internal_api.internal_sizeof_dtPathQueue;
     import recastnavigation.internal_api.internal_sizeof_dtQueryFilter;
 
@@ -47,7 +48,7 @@ package recastnavigation.detour.crowd
         rn_internal static const OFFSET_M_ACTIVE_AGENTS:int = offsetBytes(4, DTCrowd);
         rn_internal static const OFFSET_M_AGENT_ANIMS:int = offsetBytes(4, DTCrowd);
         rn_internal static const OFFSET_M_PATHQ:int = offsetBytes(internal_sizeof_dtPathQueue(), DTCrowd);
-        rn_internal static const OFFSET_M_OBSTACLE_QUERY_PARAMS:int = offsetBytes(DTObstacleAvoidanceParams.SIZE * DT_CROWD_MAX_OBSTAVOIDANCE_PARAMS,
+        rn_internal static const OFFSET_M_OBSTACLE_QUERY_PARAMS:int = offsetBytes(internal_sizeof_dtObstacleAvoidanceParams() * DT_CROWD_MAX_OBSTAVOIDANCE_PARAMS,
                                                                                   DTCrowd);
         rn_internal static const OFFSET_M_OBSTACLE_QUERY:int = offsetBytes(4, DTCrowd);
         rn_internal static const OFFSET_M_GRID:int = offsetBytes(4, DTCrowd);
