@@ -2,6 +2,7 @@ package recastnavigation.recast
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
 
     use namespace rn_internal;
@@ -12,26 +13,21 @@ package recastnavigation.recast
     public class RCHeightfieldLayer extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_BMIN:int = offset(12);
-        rn_internal static const OFFSET_BMAX:int = offset(12);
-        rn_internal static const OFFSET_CS:int = offset(4);
-        rn_internal static const OFFSET_CH:int = offset(4);
-        rn_internal static const OFFSET_WIDTH:int = offset(4);
-        rn_internal static const OFFSET_HEIGHT:int = offset(4);
-        rn_internal static const OFFSET_MINX:int = offset(4);
-        rn_internal static const OFFSET_MAXX:int = offset(4);
-        rn_internal static const OFFSET_MINY:int = offset(4);
-        rn_internal static const OFFSET_MAXY:int = offset(4);
-        rn_internal static const OFFSET_HMIN:int = offset(4);
-        rn_internal static const OFFSET_HMAX:int = offset(4);
-        rn_internal static const OFFSET_HEIGHTS:int = offset(4);
-        rn_internal static const OFFSET_AREAS:int = offset(4);
-        rn_internal static const OFFSET_CONS:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_BMIN:int = offsetBytes(12, RCHeightfieldLayer);
+        rn_internal static const OFFSET_BMAX:int = offsetBytes(12, RCHeightfieldLayer);
+        rn_internal static const OFFSET_CS:int = offsetBytes(4, RCHeightfieldLayer);
+        rn_internal static const OFFSET_CH:int = offsetBytes(4, RCHeightfieldLayer);
+        rn_internal static const OFFSET_WIDTH:int = offsetBytes(4, RCHeightfieldLayer);
+        rn_internal static const OFFSET_HEIGHT:int = offsetBytes(4, RCHeightfieldLayer);
+        rn_internal static const OFFSET_MINX:int = offsetBytes(4, RCHeightfieldLayer);
+        rn_internal static const OFFSET_MAXX:int = offsetBytes(4, RCHeightfieldLayer);
+        rn_internal static const OFFSET_MINY:int = offsetBytes(4, RCHeightfieldLayer);
+        rn_internal static const OFFSET_MAXY:int = offsetBytes(4, RCHeightfieldLayer);
+        rn_internal static const OFFSET_HMIN:int = offsetBytes(4, RCHeightfieldLayer);
+        rn_internal static const OFFSET_HMAX:int = offsetBytes(4, RCHeightfieldLayer);
+        rn_internal static const OFFSET_HEIGHTS:int = offsetBytes(4, RCHeightfieldLayer);
+        rn_internal static const OFFSET_AREAS:int = offsetBytes(4, RCHeightfieldLayer);
+        rn_internal static const OFFSET_CONS:int = offsetBytes(4, RCHeightfieldLayer);
 
         /** The minimum bounds in world space. Component x. [(x, y, z)] */
         public function get bminX():Number

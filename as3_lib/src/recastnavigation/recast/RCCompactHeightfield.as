@@ -3,6 +3,7 @@ package recastnavigation.recast
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
     import recastnavigation.core.utils.copyBytes;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
     import recastnavigation.internal_api.internal_rcAllocCompactHeightfield;
     import recastnavigation.internal_api.internal_rcFreeCompactHeightfield;
@@ -12,27 +13,22 @@ package recastnavigation.recast
     public class RCCompactHeightfield extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_WIDTH:int = offset(4);
-        rn_internal static const OFFSET_HEIGHT:int = offset(4);
-        rn_internal static const OFFSET_SPAN_COUNT:int = offset(4);
-        rn_internal static const OFFSET_WALKABLE_HEIGHT:int = offset(4);
-        rn_internal static const OFFSET_WALKABLE_CLIMB:int = offset(4);
-        rn_internal static const OFFSET_BORDER_SIZE:int = offset(4);
-        rn_internal static const OFFSET_MAX_DISTANCE:int = offset(2);
-        rn_internal static const OFFSET_MAX_REGIONS:int = offset(2);
-        rn_internal static const OFFSET_BMIN:int = offset(12);
-        rn_internal static const OFFSET_BMAX:int = offset(12);
-        rn_internal static const OFFSET_CS:int = offset(4);
-        rn_internal static const OFFSET_CH:int = offset(4);
-        rn_internal static const OFFSET_CELLS:int = offset(4);
-        rn_internal static const OFFSET_SPANS:int = offset(4);
-        rn_internal static const OFFSET_DIST:int = offset(4);
-        rn_internal static const OFFSET_AREAS:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_WIDTH:int = offsetBytes(4, RCCompactHeightfield);
+        rn_internal static const OFFSET_HEIGHT:int = offsetBytes(4, RCCompactHeightfield);
+        rn_internal static const OFFSET_SPAN_COUNT:int = offsetBytes(4, RCCompactHeightfield);
+        rn_internal static const OFFSET_WALKABLE_HEIGHT:int = offsetBytes(4, RCCompactHeightfield);
+        rn_internal static const OFFSET_WALKABLE_CLIMB:int = offsetBytes(4, RCCompactHeightfield);
+        rn_internal static const OFFSET_BORDER_SIZE:int = offsetBytes(4, RCCompactHeightfield);
+        rn_internal static const OFFSET_MAX_DISTANCE:int = offsetBytes(2, RCCompactHeightfield);
+        rn_internal static const OFFSET_MAX_REGIONS:int = offsetBytes(2, RCCompactHeightfield);
+        rn_internal static const OFFSET_BMIN:int = offsetBytes(12, RCCompactHeightfield);
+        rn_internal static const OFFSET_BMAX:int = offsetBytes(12, RCCompactHeightfield);
+        rn_internal static const OFFSET_CS:int = offsetBytes(4, RCCompactHeightfield);
+        rn_internal static const OFFSET_CH:int = offsetBytes(4, RCCompactHeightfield);
+        rn_internal static const OFFSET_CELLS:int = offsetBytes(4, RCCompactHeightfield);
+        rn_internal static const OFFSET_SPANS:int = offsetBytes(4, RCCompactHeightfield);
+        rn_internal static const OFFSET_DIST:int = offsetBytes(4, RCCompactHeightfield);
+        rn_internal static const OFFSET_AREAS:int = offsetBytes(4, RCCompactHeightfield);
 
         /** The width of the heightfield. (Along the x-axis in cell units.) */
         public function get width():int

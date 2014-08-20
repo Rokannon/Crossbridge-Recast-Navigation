@@ -2,6 +2,7 @@ package recastnavigation.detour.navmesh
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
 
     use namespace rn_internal;
@@ -12,32 +13,27 @@ package recastnavigation.detour.navmesh
     public class DTMeshHeader extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_MAGIC:int = offset(4);
-        rn_internal static const OFFSET_VERSION:int = offset(4);
-        rn_internal static const OFFSET_X:int = offset(4);
-        rn_internal static const OFFSET_Y:int = offset(4);
-        rn_internal static const OFFSET_LAYER:int = offset(4);
-        rn_internal static const OFFSET_USER_ID:int = offset(4);
-        rn_internal static const OFFSET_POLY_COUNT:int = offset(4);
-        rn_internal static const OFFSET_VERT_COUNT:int = offset(4);
-        rn_internal static const OFFSET_MAX_LINK_COUNT:int = offset(4);
-        rn_internal static const OFFSET_DETAIL_MESH_COUNT:int = offset(4);
-        rn_internal static const OFFSET_DETAIL_VERT_COUNT:int = offset(4);
-        rn_internal static const OFFSET_DETAIL_TRI_COUNT:int = offset(4);
-        rn_internal static const OFFSET_BV_NODE_COUNT:int = offset(4);
-        rn_internal static const OFFSET_OFFMESH_CON_COUNT:int = offset(4);
-        rn_internal static const OFFSET_OFFMESH_BASE:int = offset(4);
-        rn_internal static const OFFSET_WALKABLE_HEIGHT:int = offset(4);
-        rn_internal static const OFFSET_WALKABLE_RADIUS:int = offset(4);
-        rn_internal static const OFFSET_WALKABLE_CLIMB:int = offset(4);
-        rn_internal static const OFFSET_BMIN:int = offset(12);
-        rn_internal static const OFFSET_BMAX:int = offset(12);
-        rn_internal static const OFFSET_BV_QUANT_FACTOR:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_MAGIC:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_VERSION:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_X:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_Y:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_LAYER:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_USER_ID:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_POLY_COUNT:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_VERT_COUNT:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_MAX_LINK_COUNT:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_DETAIL_MESH_COUNT:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_DETAIL_VERT_COUNT:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_DETAIL_TRI_COUNT:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_BV_NODE_COUNT:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_OFFMESH_CON_COUNT:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_OFFMESH_BASE:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_WALKABLE_HEIGHT:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_WALKABLE_RADIUS:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_WALKABLE_CLIMB:int = offsetBytes(4, DTMeshHeader);
+        rn_internal static const OFFSET_BMIN:int = offsetBytes(12, DTMeshHeader);
+        rn_internal static const OFFSET_BMAX:int = offsetBytes(12, DTMeshHeader);
+        rn_internal static const OFFSET_BV_QUANT_FACTOR:int = offsetBytes(4, DTMeshHeader);
 
         /** Tile magic number. (Used to identify the data format.) */
         public function get magic():int

@@ -2,6 +2,7 @@ package recastnavigation.detour.navmesh
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
 
     use namespace rn_internal;
@@ -12,15 +13,10 @@ package recastnavigation.detour.navmesh
     public class DTPolyDetail extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_VERT_BASE:int = offset(4);
-        rn_internal static const OFFSET_TRI_VASE:int = offset(4);
-        rn_internal static const OFFSET_VERT_COUNT:int = offset(1);
-        rn_internal static const OFFSET_TRI_COUNT:int = offset(1);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_VERT_BASE:int = offsetBytes(4, DTPolyDetail);
+        rn_internal static const OFFSET_TRI_VASE:int = offsetBytes(4, DTPolyDetail);
+        rn_internal static const OFFSET_VERT_COUNT:int = offsetBytes(1, DTPolyDetail);
+        rn_internal static const OFFSET_TRI_COUNT:int = offsetBytes(1, DTPolyDetail);
 
         /** The offset of the vertices in the dtMeshTile::detailVerts array. */
         public function get vertBase():int

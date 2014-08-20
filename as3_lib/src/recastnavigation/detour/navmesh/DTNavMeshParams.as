@@ -2,6 +2,7 @@ package recastnavigation.detour.navmesh
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
 
     use namespace rn_internal;
@@ -14,16 +15,11 @@ package recastnavigation.detour.navmesh
     public class DTNavMeshParams extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_ORIG:int = offset(12);
-        rn_internal static const OFFSET_TILE_WIDTH:int = offset(4);
-        rn_internal static const OFFSET_TILE_HEIGHT:int = offset(4);
-        rn_internal static const OFFSET_MAX_TILES:int = offset(4);
-        rn_internal static const OFFSET_MAX_POLYS:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_ORIG:int = offsetBytes(12, DTNavMeshParams);
+        rn_internal static const OFFSET_TILE_WIDTH:int = offsetBytes(4, DTNavMeshParams);
+        rn_internal static const OFFSET_TILE_HEIGHT:int = offsetBytes(4, DTNavMeshParams);
+        rn_internal static const OFFSET_MAX_TILES:int = offsetBytes(4, DTNavMeshParams);
+        rn_internal static const OFFSET_MAX_POLYS:int = offsetBytes(4, DTNavMeshParams);
 
         /** The world space origin of the navigation mesh's tile space. Component x. [(x, y, z)] */
         public function get origX():Number

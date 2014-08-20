@@ -2,6 +2,7 @@ package recastnavigation.detour.crowd
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.detour.navmesh.DTNavMesh;
     import recastnavigation.internal_api.CModule;
     import recastnavigation.internal_api.internal_dtAllocCrowd;
@@ -41,26 +42,23 @@ package recastnavigation.detour.crowd
          */
         public static const DT_CROWD_MAX_QUERY_FILTER_TYPE:int = 16;
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_M_MAX_AGENTS:int = offset(4);
-        rn_internal static const OFFSET_M_AGENTS:int = offset(4);
-        rn_internal static const OFFSET_M_ACTIVE_AGENTS:int = offset(4);
-        rn_internal static const OFFSET_M_AGENT_ANIMS:int = offset(4);
-        rn_internal static const OFFSET_M_PATHQ:int = offset(internal_sizeof_dtPathQueue());
-        rn_internal static const OFFSET_M_OBSTACLE_QUERY_PARAMS:int = offset(DTObstacleAvoidanceParams.SIZE * DT_CROWD_MAX_OBSTAVOIDANCE_PARAMS);
-        rn_internal static const OFFSET_M_OBSTACLE_QUERY:int = offset(4);
-        rn_internal static const OFFSET_M_GRID:int = offset(4);
-        rn_internal static const OFFSET_M_PATH_RESULT:int = offset(4);
-        rn_internal static const OFFSET_M_MAX_PATH_RESULT:int = offset(4);
-        rn_internal static const OFFSET_M_EXT:int = offset(12);
-        rn_internal static const OFFSET_M_FILTERS:int = offset(internal_sizeof_dtQueryFilter() * DT_CROWD_MAX_QUERY_FILTER_TYPE);
-        rn_internal static const OFFSET_M_MAX_AGENT_RADIUS:int = offset(4);
-        rn_internal static const OFFSET_M_VELOCITY_SAMPLE_COUNT:int = offset(4);
-        rn_internal static const OFFSET_M_NAVQUERY:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_M_MAX_AGENTS:int = offsetBytes(4, DTCrowd);
+        rn_internal static const OFFSET_M_AGENTS:int = offsetBytes(4, DTCrowd);
+        rn_internal static const OFFSET_M_ACTIVE_AGENTS:int = offsetBytes(4, DTCrowd);
+        rn_internal static const OFFSET_M_AGENT_ANIMS:int = offsetBytes(4, DTCrowd);
+        rn_internal static const OFFSET_M_PATHQ:int = offsetBytes(internal_sizeof_dtPathQueue(), DTCrowd);
+        rn_internal static const OFFSET_M_OBSTACLE_QUERY_PARAMS:int = offsetBytes(DTObstacleAvoidanceParams.SIZE * DT_CROWD_MAX_OBSTAVOIDANCE_PARAMS,
+                                                                                  DTCrowd);
+        rn_internal static const OFFSET_M_OBSTACLE_QUERY:int = offsetBytes(4, DTCrowd);
+        rn_internal static const OFFSET_M_GRID:int = offsetBytes(4, DTCrowd);
+        rn_internal static const OFFSET_M_PATH_RESULT:int = offsetBytes(4, DTCrowd);
+        rn_internal static const OFFSET_M_MAX_PATH_RESULT:int = offsetBytes(4, DTCrowd);
+        rn_internal static const OFFSET_M_EXT:int = offsetBytes(12, DTCrowd);
+        rn_internal static const OFFSET_M_FILTERS:int = offsetBytes(internal_sizeof_dtQueryFilter() * DT_CROWD_MAX_QUERY_FILTER_TYPE,
+                                                                    DTCrowd);
+        rn_internal static const OFFSET_M_MAX_AGENT_RADIUS:int = offsetBytes(4, DTCrowd);
+        rn_internal static const OFFSET_M_VELOCITY_SAMPLE_COUNT:int = offsetBytes(4, DTCrowd);
+        rn_internal static const OFFSET_M_NAVQUERY:int = offsetBytes(4, DTCrowd);
 
         private const _localvars:Vector.<int> = new Vector.<int>();
         private const _agents:Vector.<DTCrowdAgent> = new Vector.<DTCrowdAgent>();

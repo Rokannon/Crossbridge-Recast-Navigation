@@ -3,6 +3,7 @@ package recastnavigation.recast
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
     import recastnavigation.core.utils.copyBytes;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
 
     use namespace rn_internal;
@@ -13,13 +14,8 @@ package recastnavigation.recast
     public class RCHeightfieldLayerSet extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_LAYERS:int = offset(4);
-        rn_internal static const OFFSET_NLAYERS:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_LAYERS:int = offsetBytes(4, RCHeightfieldLayerSet);
+        rn_internal static const OFFSET_NLAYERS:int = offsetBytes(4, RCHeightfieldLayerSet);
 
         /** The layers in the set. Getter. [Size: #nlayers] */
         public function getLayer(index:int, resultLayer:RCHeightfieldLayer = null):RCHeightfieldLayer

@@ -3,6 +3,7 @@ package recastnavigation.recast.contour
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
     import recastnavigation.core.utils.copyBytes;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
     import recastnavigation.internal_api.internal_rcAllocContourSet;
     import recastnavigation.internal_api.internal_rcFreeContourSet;
@@ -15,20 +16,15 @@ package recastnavigation.recast.contour
     public class RCContourSet extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_CONTS:int = offset(4);
-        rn_internal static const OFFSET_NCONTS:int = offset(4);
-        rn_internal static const OFFSET_BMIN:int = offset(12);
-        rn_internal static const OFFSET_BMAX:int = offset(12);
-        rn_internal static const OFFSET_CS:int = offset(4);
-        rn_internal static const OFFSET_CH:int = offset(4);
-        rn_internal static const OFFSET_WIDTH:int = offset(4);
-        rn_internal static const OFFSET_HEIGHT:int = offset(4);
-        rn_internal static const OFFSET_BORDER_SIZE:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_CONTS:int = offsetBytes(4, RCContourSet);
+        rn_internal static const OFFSET_NCONTS:int = offsetBytes(4, RCContourSet);
+        rn_internal static const OFFSET_BMIN:int = offsetBytes(12, RCContourSet);
+        rn_internal static const OFFSET_BMAX:int = offsetBytes(12, RCContourSet);
+        rn_internal static const OFFSET_CS:int = offsetBytes(4, RCContourSet);
+        rn_internal static const OFFSET_CH:int = offsetBytes(4, RCContourSet);
+        rn_internal static const OFFSET_WIDTH:int = offsetBytes(4, RCContourSet);
+        rn_internal static const OFFSET_HEIGHT:int = offsetBytes(4, RCContourSet);
+        rn_internal static const OFFSET_BORDER_SIZE:int = offsetBytes(4, RCContourSet);
 
         /** An array of the contours in the set. Getter. */
         public function getCont(index:int, resultContour:RCContour = null):RCContour

@@ -2,6 +2,7 @@ package recastnavigation.recast
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.core.utils.readBits;
     import recastnavigation.core.utils.writeBits;
     import recastnavigation.internal_api.CModule;
@@ -14,13 +15,8 @@ package recastnavigation.recast
     public class RCSpan extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_UNION:int = offset(4);
-        rn_internal static const OFFSET_NEXT:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_UNION:int = offsetBytes(4, RCSpan);
+        rn_internal static const OFFSET_NEXT:int = offsetBytes(4, RCSpan);
 
         /** The lower limit of the span. [Limit: < #smax] */
         public function get smin():int

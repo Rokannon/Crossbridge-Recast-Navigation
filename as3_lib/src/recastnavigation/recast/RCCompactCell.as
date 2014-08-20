@@ -2,6 +2,7 @@ package recastnavigation.recast
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.core.utils.readBits;
     import recastnavigation.core.utils.writeBits;
     import recastnavigation.internal_api.CModule;
@@ -14,12 +15,7 @@ package recastnavigation.recast
     public class RCCompactCell extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_UNION:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_UNION:int = offsetBytes(4, RCCompactCell);
 
         /** Index to the first span in the column. */
         public function get index():int

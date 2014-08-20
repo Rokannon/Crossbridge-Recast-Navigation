@@ -2,6 +2,7 @@ package recastnavigation.detour.crowd
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
     import recastnavigation.internal_api.internal_dtAlloc_dtObstacleAvoidanceParams;
     import recastnavigation.internal_api.internal_dtFree;
@@ -11,21 +12,16 @@ package recastnavigation.detour.crowd
     public class DTObstacleAvoidanceParams extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_VEL_BIAS:int = offset(4);
-        rn_internal static const OFFSET_WEIGHT_DES_VEL:int = offset(4);
-        rn_internal static const OFFSET_WEIGHT_CUR_VEL:int = offset(4);
-        rn_internal static const OFFSET_WEIGHT_SIDE:int = offset(4);
-        rn_internal static const OFFSET_WEIGHT_TOI:int = offset(4);
-        rn_internal static const OFFSET_HORIZ_TIME:int = offset(4);
-        rn_internal static const OFFSET_GRID_SIZE:int = offset(1);
-        rn_internal static const OFFSET_ADAPTIVE_DIVS:int = offset(1);
-        rn_internal static const OFFSET_ADAPTIVE_RINGS:int = offset(1);
-        rn_internal static const OFFSET_ADAPTIVE_DEPTH:int = offset(1);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_VEL_BIAS:int = offsetBytes(4, DTObstacleAvoidanceParams);
+        rn_internal static const OFFSET_WEIGHT_DES_VEL:int = offsetBytes(4, DTObstacleAvoidanceParams);
+        rn_internal static const OFFSET_WEIGHT_CUR_VEL:int = offsetBytes(4, DTObstacleAvoidanceParams);
+        rn_internal static const OFFSET_WEIGHT_SIDE:int = offsetBytes(4, DTObstacleAvoidanceParams);
+        rn_internal static const OFFSET_WEIGHT_TOI:int = offsetBytes(4, DTObstacleAvoidanceParams);
+        rn_internal static const OFFSET_HORIZ_TIME:int = offsetBytes(4, DTObstacleAvoidanceParams);
+        rn_internal static const OFFSET_GRID_SIZE:int = offsetBytes(1, DTObstacleAvoidanceParams);
+        rn_internal static const OFFSET_ADAPTIVE_DIVS:int = offsetBytes(1, DTObstacleAvoidanceParams);
+        rn_internal static const OFFSET_ADAPTIVE_RINGS:int = offsetBytes(1, DTObstacleAvoidanceParams);
+        rn_internal static const OFFSET_ADAPTIVE_DEPTH:int = offsetBytes(1, DTObstacleAvoidanceParams);
 
         public function get velBias():Number
         {

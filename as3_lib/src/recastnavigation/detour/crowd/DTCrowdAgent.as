@@ -3,6 +3,7 @@ package recastnavigation.detour.crowd
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
     import recastnavigation.core.utils.copyBytes;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
     import recastnavigation.internal_api.internal_sizeof_dtLocalBoundary;
     import recastnavigation.internal_api.internal_sizeof_dtPathCorridor;
@@ -27,36 +28,32 @@ package recastnavigation.detour.crowd
          */
         public static const DT_CROWDAGENT_MAX_CORNERS:int = 4;
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_ACTIVE:int = offset(1);
-        rn_internal static const OFFSET_STATE:int = offset(1);
-        rn_internal static const OFFSET_PARTIAL:int = offset(2);
-        rn_internal static const OFFSET_CORRIDOR:int = offset(internal_sizeof_dtPathCorridor());
-        rn_internal static const OFFSET_BOUNDARY:int = offset(internal_sizeof_dtLocalBoundary());
-        rn_internal static const OFFSET_TOPOLOGY_OPT_TIME:int = offset(4);
-        rn_internal static const OFFSET_NEIS:int = offset(DTCrowdNeighbour.SIZE * DT_CROWDAGENT_MAX_NEIGHBOURS);
-        rn_internal static const OFFSET_NNEIS:int = offset(4);
-        rn_internal static const OFFSET_DESIRED_SPEED:int = offset(4);
-        rn_internal static const OFFSET_NPOS:int = offset(12);
-        rn_internal static const OFFSET_DISP:int = offset(12);
-        rn_internal static const OFFSET_DVEL:int = offset(12);
-        rn_internal static const OFFSET_NVEL:int = offset(12);
-        rn_internal static const OFFSET_VEL:int = offset(12);
-        rn_internal static const OFFSET_PARAMS:int = offset(DTCrowdAgentParams.SIZE);
-        rn_internal static const OFFSET_CORNER_VERTS:int = offset(4 * 3 * DT_CROWDAGENT_MAX_CORNERS);
-        rn_internal static const OFFSET_CORNER_FLAGS:int = offset(DT_CROWDAGENT_MAX_CORNERS);
-        rn_internal static const OFFSET_CORNER_POLYS:int = offset(4 * DT_CROWDAGENT_MAX_CORNERS);
-        rn_internal static const OFFSET_NCORNERS:int = offset(4);
-        rn_internal static const OFFSET_TARGET_STATE:int = offset(4);
-        rn_internal static const OFFSET_TARGET_REF:int = offset(4);
-        rn_internal static const OFFSET_TARGET_POS:int = offset(12);
-        rn_internal static const OFFSET_TARGET_PATHQ_REF:int = offset(4);
-        rn_internal static const OFFSET_TARGET_REPLAN:int = offset(4);
-        rn_internal static const OFFSET_TARGET_REPLAN_TIME:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_ACTIVE:int = offsetBytes(1, DTCrowdAgent);
+        rn_internal static const OFFSET_STATE:int = offsetBytes(1, DTCrowdAgent);
+        rn_internal static const OFFSET_PARTIAL:int = offsetBytes(2, DTCrowdAgent);
+        rn_internal static const OFFSET_CORRIDOR:int = offsetBytes(internal_sizeof_dtPathCorridor(), DTCrowdAgent);
+        rn_internal static const OFFSET_BOUNDARY:int = offsetBytes(internal_sizeof_dtLocalBoundary(), DTCrowdAgent);
+        rn_internal static const OFFSET_TOPOLOGY_OPT_TIME:int = offsetBytes(4, DTCrowdAgent);
+        rn_internal static const OFFSET_NEIS:int = offsetBytes(DTCrowdNeighbour.SIZE * DT_CROWDAGENT_MAX_NEIGHBOURS,
+                                                               DTCrowdAgent);
+        rn_internal static const OFFSET_NNEIS:int = offsetBytes(4, DTCrowdAgent);
+        rn_internal static const OFFSET_DESIRED_SPEED:int = offsetBytes(4, DTCrowdAgent);
+        rn_internal static const OFFSET_NPOS:int = offsetBytes(12, DTCrowdAgent);
+        rn_internal static const OFFSET_DISP:int = offsetBytes(12, DTCrowdAgent);
+        rn_internal static const OFFSET_DVEL:int = offsetBytes(12, DTCrowdAgent);
+        rn_internal static const OFFSET_NVEL:int = offsetBytes(12, DTCrowdAgent);
+        rn_internal static const OFFSET_VEL:int = offsetBytes(12, DTCrowdAgent);
+        rn_internal static const OFFSET_PARAMS:int = offsetBytes(DTCrowdAgentParams.SIZE, DTCrowdAgent);
+        rn_internal static const OFFSET_CORNER_VERTS:int = offsetBytes(4 * 3 * DT_CROWDAGENT_MAX_CORNERS, DTCrowdAgent);
+        rn_internal static const OFFSET_CORNER_FLAGS:int = offsetBytes(DT_CROWDAGENT_MAX_CORNERS, DTCrowdAgent);
+        rn_internal static const OFFSET_CORNER_POLYS:int = offsetBytes(4 * DT_CROWDAGENT_MAX_CORNERS, DTCrowdAgent);
+        rn_internal static const OFFSET_NCORNERS:int = offsetBytes(4, DTCrowdAgent);
+        rn_internal static const OFFSET_TARGET_STATE:int = offsetBytes(4, DTCrowdAgent);
+        rn_internal static const OFFSET_TARGET_REF:int = offsetBytes(4, DTCrowdAgent);
+        rn_internal static const OFFSET_TARGET_POS:int = offsetBytes(12, DTCrowdAgent);
+        rn_internal static const OFFSET_TARGET_PATHQ_REF:int = offsetBytes(4, DTCrowdAgent);
+        rn_internal static const OFFSET_TARGET_REPLAN:int = offsetBytes(4, DTCrowdAgent);
+        rn_internal static const OFFSET_TARGET_REPLAN_TIME:int = offsetBytes(4, DTCrowdAgent);
 
         /** True if the agent is active, false if the agent is in an unused slot in the agent pool. */
         public function get active():Boolean

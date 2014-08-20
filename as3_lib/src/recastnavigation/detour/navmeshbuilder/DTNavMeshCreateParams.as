@@ -3,6 +3,7 @@ package recastnavigation.detour.navmeshbuilder
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
     import recastnavigation.core.utils.copyBytes;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.core.utils.setBytes;
     import recastnavigation.internal_api.CModule;
     import recastnavigation.internal_api.internal_dtAlloc_dtNavMeshCreateParams;
@@ -19,42 +20,37 @@ package recastnavigation.detour.navmeshbuilder
     public class DTNavMeshCreateParams extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_VERTS:int = offset(4);
-        rn_internal static const OFFSET_VERT_COUNT:int = offset(4);
-        rn_internal static const OFFSET_POLYS:int = offset(4);
-        rn_internal static const OFFSET_POLY_FLAGS:int = offset(4);
-        rn_internal static const OFFSET_POLY_AREAS:int = offset(4);
-        rn_internal static const OFFSET_POLY_COUNT:int = offset(4);
-        rn_internal static const OFFSET_NVP:int = offset(4);
-        rn_internal static const OFFSET_DETAIL_MESHES:int = offset(4);
-        rn_internal static const OFFSET_DETAIL_VERTS:int = offset(4);
-        rn_internal static const OFFSET_DETAIL_VERTS_COUNT:int = offset(4);
-        rn_internal static const OFFSET_DETAIL_TRIS:int = offset(4);
-        rn_internal static const OFFSET_DETAIL_TRI_COUNT:int = offset(4);
-        rn_internal static const OFFSET_OFF_MESH_CON_VERTS:int = offset(4);
-        rn_internal static const OFFSET_OFF_MESH_CON_RAD:int = offset(4);
-        rn_internal static const OFFSET_OFF_MESH_CON_FLAGS:int = offset(4);
-        rn_internal static const OFFSET_OFF_MESH_CON_AREAS:int = offset(4);
-        rn_internal static const OFFSET_OFF_MESH_CON_DIR:int = offset(4);
-        rn_internal static const OFFSET_OFF_MESH_CON_USER_ID:int = offset(4);
-        rn_internal static const OFFSET_OFF_MESH_CON_COUNT:int = offset(4);
-        rn_internal static const OFFSET_USER_ID:int = offset(4);
-        rn_internal static const OFFSET_TILE_X:int = offset(4);
-        rn_internal static const OFFSET_TILE_Y:int = offset(4);
-        rn_internal static const OFFSET_TILE_LAYER:int = offset(4);
-        rn_internal static const OFFSET_BMIN:int = offset(12);
-        rn_internal static const OFFSET_BMAX:int = offset(12);
-        rn_internal static const OFFSET_WALKABLE_HEIGHT:int = offset(4);
-        rn_internal static const OFFSET_WALKABLE_RADIUS:int = offset(4);
-        rn_internal static const OFFSET_WALKABLE_CLIMB:int = offset(4);
-        rn_internal static const OFFSET_CS:int = offset(4);
-        rn_internal static const OFFSET_CH:int = offset(4);
-        rn_internal static const OFFSET_BUILD_BV_TREE:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_VERTS:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_VERT_COUNT:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_POLYS:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_POLY_FLAGS:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_POLY_AREAS:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_POLY_COUNT:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_NVP:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_DETAIL_MESHES:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_DETAIL_VERTS:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_DETAIL_VERTS_COUNT:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_DETAIL_TRIS:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_DETAIL_TRI_COUNT:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_OFF_MESH_CON_VERTS:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_OFF_MESH_CON_RAD:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_OFF_MESH_CON_FLAGS:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_OFF_MESH_CON_AREAS:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_OFF_MESH_CON_DIR:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_OFF_MESH_CON_USER_ID:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_OFF_MESH_CON_COUNT:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_USER_ID:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_TILE_X:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_TILE_Y:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_TILE_LAYER:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_BMIN:int = offsetBytes(12, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_BMAX:int = offsetBytes(12, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_WALKABLE_HEIGHT:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_WALKABLE_RADIUS:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_WALKABLE_CLIMB:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_CS:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_CH:int = offsetBytes(4, DTNavMeshCreateParams);
+        rn_internal static const OFFSET_BUILD_BV_TREE:int = offsetBytes(4, DTNavMeshCreateParams);
 
         /** The polygon mesh vertices. Getter. [(x, y, z) * #vertCount] [Unit: vx] */
         public function getVert(index:int):int

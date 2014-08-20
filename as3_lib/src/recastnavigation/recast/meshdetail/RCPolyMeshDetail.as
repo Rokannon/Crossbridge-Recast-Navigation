@@ -2,6 +2,7 @@ package recastnavigation.recast.meshdetail
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
     import recastnavigation.internal_api.internal_rcAllocPolyMeshDetail;
     import recastnavigation.internal_api.internal_rcFreePolyMeshDetail;
@@ -15,17 +16,12 @@ package recastnavigation.recast.meshdetail
     public class RCPolyMeshDetail extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_MESHES:int = offset(4);
-        rn_internal static const OFFSET_VERTS:int = offset(4);
-        rn_internal static const OFFSET_TRIS:int = offset(4);
-        rn_internal static const OFFSET_NMESHES:int = offset(4);
-        rn_internal static const OFFSET_NVERTS:int = offset(4);
-        rn_internal static const OFFSET_NTRIS:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_MESHES:int = offsetBytes(4, RCPolyMeshDetail);
+        rn_internal static const OFFSET_VERTS:int = offsetBytes(4, RCPolyMeshDetail);
+        rn_internal static const OFFSET_TRIS:int = offsetBytes(4, RCPolyMeshDetail);
+        rn_internal static const OFFSET_NMESHES:int = offsetBytes(4, RCPolyMeshDetail);
+        rn_internal static const OFFSET_NVERTS:int = offsetBytes(4, RCPolyMeshDetail);
+        rn_internal static const OFFSET_NTRIS:int = offsetBytes(4, RCPolyMeshDetail);
 
         /** The sub-mesh data. Getter. [Size: 4*#nmeshes] */
         public function getMesh(index:int):int

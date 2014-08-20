@@ -2,6 +2,7 @@ package recastnavigation.recast.contour
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
 
     use namespace rn_internal;
@@ -12,17 +13,12 @@ package recastnavigation.recast.contour
     public class RCContour extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_VERTS:int = offset(4);
-        rn_internal static const OFFSET_NVERTS:int = offset(4);
-        rn_internal static const OFFSET_RVERTS:int = offset(4);
-        rn_internal static const OFFSET_NRVERTS:int = offset(4);
-        rn_internal static const OFFSET_REG:int = offset(2);
-        rn_internal static const OFFSET_AREA:int = offset(2);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_VERTS:int = offsetBytes(4, RCContour);
+        rn_internal static const OFFSET_NVERTS:int = offsetBytes(4, RCContour);
+        rn_internal static const OFFSET_RVERTS:int = offsetBytes(4, RCContour);
+        rn_internal static const OFFSET_NRVERTS:int = offsetBytes(4, RCContour);
+        rn_internal static const OFFSET_REG:int = offsetBytes(2, RCContour);
+        rn_internal static const OFFSET_AREA:int = offsetBytes(2, RCContour);
 
         /** Simplified contour vertex and connection data. */
         public function getVert(index:int):int

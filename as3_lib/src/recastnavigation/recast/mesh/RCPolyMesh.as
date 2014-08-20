@@ -2,6 +2,7 @@ package recastnavigation.recast.mesh
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
     import recastnavigation.internal_api.internal_rcAllocPolyMesh;
     import recastnavigation.internal_api.internal_rcFreePolyMesh;
@@ -14,25 +15,20 @@ package recastnavigation.recast.mesh
     public class RCPolyMesh extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_VERTS:int = offset(4);
-        rn_internal static const OFFSET_POLYS:int = offset(4);
-        rn_internal static const OFFSET_REGS:int = offset(4);
-        rn_internal static const OFFSET_FLAGS:int = offset(4);
-        rn_internal static const OFFSET_AREAS:int = offset(4);
-        rn_internal static const OFFSET_NVERTS:int = offset(4);
-        rn_internal static const OFFSET_NPOLYS:int = offset(4);
-        rn_internal static const OFFSET_MAXPOLYS:int = offset(4);
-        rn_internal static const OFFSET_NVP:int = offset(4);
-        rn_internal static const OFFSET_BMIN:int = offset(12);
-        rn_internal static const OFFSET_BMAX:int = offset(12);
-        rn_internal static const OFFSET_CS:int = offset(4);
-        rn_internal static const OFFSET_CH:int = offset(4);
-        rn_internal static const OFFSET_BORDER_SIZE:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_VERTS:int = offsetBytes(4, RCPolyMesh);
+        rn_internal static const OFFSET_POLYS:int = offsetBytes(4, RCPolyMesh);
+        rn_internal static const OFFSET_REGS:int = offsetBytes(4, RCPolyMesh);
+        rn_internal static const OFFSET_FLAGS:int = offsetBytes(4, RCPolyMesh);
+        rn_internal static const OFFSET_AREAS:int = offsetBytes(4, RCPolyMesh);
+        rn_internal static const OFFSET_NVERTS:int = offsetBytes(4, RCPolyMesh);
+        rn_internal static const OFFSET_NPOLYS:int = offsetBytes(4, RCPolyMesh);
+        rn_internal static const OFFSET_MAXPOLYS:int = offsetBytes(4, RCPolyMesh);
+        rn_internal static const OFFSET_NVP:int = offsetBytes(4, RCPolyMesh);
+        rn_internal static const OFFSET_BMIN:int = offsetBytes(12, RCPolyMesh);
+        rn_internal static const OFFSET_BMAX:int = offsetBytes(12, RCPolyMesh);
+        rn_internal static const OFFSET_CS:int = offsetBytes(4, RCPolyMesh);
+        rn_internal static const OFFSET_CH:int = offsetBytes(4, RCPolyMesh);
+        rn_internal static const OFFSET_BORDER_SIZE:int = offsetBytes(4, RCPolyMesh);
 
         /** The mesh vertices. Getter. [Form: (x, y, z) * #nverts] */
         public function getVert(index:int):int

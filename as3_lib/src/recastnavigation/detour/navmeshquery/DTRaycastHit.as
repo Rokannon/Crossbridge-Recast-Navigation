@@ -2,6 +2,7 @@ package recastnavigation.detour.navmeshquery
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
 
     use namespace rn_internal;
@@ -12,17 +13,12 @@ package recastnavigation.detour.navmeshquery
     public class DTRaycastHit extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_T:int = offset(4);
-        rn_internal static const OFFSET_HIT_NORMAL:int = offset(12);
-        rn_internal static const OFFSET_PATH:int = offset(4);
-        rn_internal static const OFFSET_PATH_COUNT:int = offset(4);
-        rn_internal static const OFFSET_MAX_PATH:int = offset(4);
-        rn_internal static const OFFSET_PATH_COST:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_T:int = offsetBytes(4, DTRaycastHit);
+        rn_internal static const OFFSET_HIT_NORMAL:int = offsetBytes(12, DTRaycastHit);
+        rn_internal static const OFFSET_PATH:int = offsetBytes(4, DTRaycastHit);
+        rn_internal static const OFFSET_PATH_COUNT:int = offsetBytes(4, DTRaycastHit);
+        rn_internal static const OFFSET_MAX_PATH:int = offsetBytes(4, DTRaycastHit);
+        rn_internal static const OFFSET_PATH_COST:int = offsetBytes(4, DTRaycastHit);
 
         /** The hit parameter. (FLT_MAX if no wall hit.) */
         public function get t():Number

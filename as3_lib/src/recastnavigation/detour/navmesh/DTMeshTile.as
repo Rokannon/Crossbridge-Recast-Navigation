@@ -3,6 +3,7 @@ package recastnavigation.detour.navmesh
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
     import recastnavigation.core.utils.copyBytes;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
 
     use namespace rn_internal;
@@ -13,26 +14,21 @@ package recastnavigation.detour.navmesh
     public class DTMeshTile extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_SALT:int = offset(4);
-        rn_internal static const OFFSET_LINKS_FREE_LIST:int = offset(4);
-        rn_internal static const OFFSET_HEADER:int = offset(4);
-        rn_internal static const OFFSET_POLYS:int = offset(4);
-        rn_internal static const OFFSET_VERTS:int = offset(4);
-        rn_internal static const OFFSET_LINKS:int = offset(4);
-        rn_internal static const OFFSET_DETAIL_MESHES:int = offset(4);
-        rn_internal static const OFFSET_DETAIL_VERTS:int = offset(4);
-        rn_internal static const OFFSET_DETAIL_TRIS:int = offset(4);
-        rn_internal static const OFFSET_BV_TREE:int = offset(4);
-        rn_internal static const OFFSET_OFF_MESH_CONS:int = offset(4);
-        rn_internal static const OFFSET_DATA:int = offset(4);
-        rn_internal static const OFFSET_DATA_SIZE:int = offset(4);
-        rn_internal static const OFFSET_FLAGS:int = offset(4);
-        rn_internal static const OFFSET_NEXT:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_SALT:int = offsetBytes(4, DTMeshTile);
+        rn_internal static const OFFSET_LINKS_FREE_LIST:int = offsetBytes(4, DTMeshTile);
+        rn_internal static const OFFSET_HEADER:int = offsetBytes(4, DTMeshTile);
+        rn_internal static const OFFSET_POLYS:int = offsetBytes(4, DTMeshTile);
+        rn_internal static const OFFSET_VERTS:int = offsetBytes(4, DTMeshTile);
+        rn_internal static const OFFSET_LINKS:int = offsetBytes(4, DTMeshTile);
+        rn_internal static const OFFSET_DETAIL_MESHES:int = offsetBytes(4, DTMeshTile);
+        rn_internal static const OFFSET_DETAIL_VERTS:int = offsetBytes(4, DTMeshTile);
+        rn_internal static const OFFSET_DETAIL_TRIS:int = offsetBytes(4, DTMeshTile);
+        rn_internal static const OFFSET_BV_TREE:int = offsetBytes(4, DTMeshTile);
+        rn_internal static const OFFSET_OFF_MESH_CONS:int = offsetBytes(4, DTMeshTile);
+        rn_internal static const OFFSET_DATA:int = offsetBytes(4, DTMeshTile);
+        rn_internal static const OFFSET_DATA_SIZE:int = offsetBytes(4, DTMeshTile);
+        rn_internal static const OFFSET_FLAGS:int = offsetBytes(4, DTMeshTile);
+        rn_internal static const OFFSET_NEXT:int = offsetBytes(4, DTMeshTile);
 
         /** Counter describing modifications to the tile. */
         public function get salt():int

@@ -2,6 +2,7 @@ package recastnavigation.detour.navmesh
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
     import recastnavigation.internal_api.internal_dtPoly_getArea;
     import recastnavigation.internal_api.internal_dtPoly_getType;
@@ -16,17 +17,12 @@ package recastnavigation.detour.navmesh
     public class DTPoly extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_FIRST_LINK:int = offset(4);
-        rn_internal static const OFFSET_VERTS:int = offset(2 * DTNavMesh.DT_VERTS_PER_POLYGON);
-        rn_internal static const OFFSET_NEIS:int = offset(2 * DTNavMesh.DT_VERTS_PER_POLYGON);
-        rn_internal static const OFFSET_FLAGS:int = offset(2);
-        rn_internal static const OFFSET_VERT_COUNT:int = offset(1);
-        rn_internal static const OFFSET_AREA_AND_TYPE:int = offset(1);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_FIRST_LINK:int = offsetBytes(4, DTPoly);
+        rn_internal static const OFFSET_VERTS:int = offsetBytes(2 * DTNavMesh.DT_VERTS_PER_POLYGON, DTPoly);
+        rn_internal static const OFFSET_NEIS:int = offsetBytes(2 * DTNavMesh.DT_VERTS_PER_POLYGON, DTPoly);
+        rn_internal static const OFFSET_FLAGS:int = offsetBytes(2, DTPoly);
+        rn_internal static const OFFSET_VERT_COUNT:int = offsetBytes(1, DTPoly);
+        rn_internal static const OFFSET_AREA_AND_TYPE:int = offsetBytes(1, DTPoly);
 
         /** Index to first link in linked list. (Or #DT_NULL_LINK if there is no link.) */
         public function get firstLink():int

@@ -2,6 +2,7 @@ package recastnavigation.recast
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
 
     use namespace rn_internal;
@@ -13,13 +14,8 @@ package recastnavigation.recast
     {
         public static const RC_SPANS_PER_POOL:int = 2048;
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_NEXT:int = offset(4);
-        rn_internal static const OFFSET_ITEMS:int = offset(RCSpan.SIZE * RC_SPANS_PER_POOL);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_NEXT:int = offsetBytes(4, RCSpanPool);
+        rn_internal static const OFFSET_ITEMS:int = offsetBytes(RCSpan.SIZE * RC_SPANS_PER_POOL, RCSpanPool);
 
         /** The next span pool. Getter. */
         public function getNext(resultSpanPool:RCSpanPool = null):RCSpanPool

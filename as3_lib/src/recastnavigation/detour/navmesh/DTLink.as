@@ -2,6 +2,7 @@ package recastnavigation.detour.navmesh
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
 
     use namespace rn_internal;
@@ -12,17 +13,12 @@ package recastnavigation.detour.navmesh
     public class DTLink extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_REF:int = offset(4);
-        rn_internal static const OFFSET_NEXT:int = offset(4);
-        rn_internal static const OFFSET_EDGE:int = offset(1);
-        rn_internal static const OFFSET_SIDE:int = offset(1);
-        rn_internal static const OFFSET_BMIN:int = offset(1);
-        rn_internal static const OFFSET_BMAX:int = offset(1);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_REF:int = offsetBytes(4, DTLink);
+        rn_internal static const OFFSET_NEXT:int = offsetBytes(4, DTLink);
+        rn_internal static const OFFSET_EDGE:int = offsetBytes(1, DTLink);
+        rn_internal static const OFFSET_SIDE:int = offsetBytes(1, DTLink);
+        rn_internal static const OFFSET_BMIN:int = offsetBytes(1, DTLink);
+        rn_internal static const OFFSET_BMAX:int = offsetBytes(1, DTLink);
 
         /** Neighbour reference. (The neighbor that is linked to.) */
         public function get ref():int

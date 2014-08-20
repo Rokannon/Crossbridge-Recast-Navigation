@@ -3,6 +3,7 @@ package recastnavigation.recast
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
     import recastnavigation.core.utils.mallocNumberVector;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
     import recastnavigation.internal_api.internal_rcAlloc_rcConfig;
     import recastnavigation.internal_api.internal_rcCalcBounds;
@@ -17,30 +18,25 @@ package recastnavigation.recast
     public class RCConfig extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_WIDTH:int = offset(4);
-        rn_internal static const OFFSET_HEIGHT:int = offset(4);
-        rn_internal static const OFFSET_TILE_SIZE:int = offset(4);
-        rn_internal static const OFFSET_BORDER_SIZE:int = offset(4);
-        rn_internal static const OFFSET_CS:int = offset(4);
-        rn_internal static const OFFSET_CH:int = offset(4);
-        rn_internal static const OFFSET_BMIN:int = offset(12);
-        rn_internal static const OFFSET_BMAX:int = offset(12);
-        rn_internal static const OFFSET_WALKABLE_SLOPE_ANGLE:int = offset(4);
-        rn_internal static const OFFSET_WALKABLE_HEIGHT:int = offset(4);
-        rn_internal static const OFFSET_WALKABLE_CLIMB:int = offset(4);
-        rn_internal static const OFFSET_WALKABLE_RADIUS:int = offset(4);
-        rn_internal static const OFFSET_MAX_EDGE_LEN:int = offset(4);
-        rn_internal static const OFFSET_MAX_SIMPLIFICATION_ERROR:int = offset(4);
-        rn_internal static const OFFSET_MIN_REGION_AREA:int = offset(4);
-        rn_internal static const OFFSET_MERGE_REGION_AREA:int = offset(4);
-        rn_internal static const OFFSET_MAX_VERTS_PER_POLY:int = offset(4);
-        rn_internal static const OFFSET_DETAIL_SAMPLE_DIST:int = offset(4);
-        rn_internal static const OFFSET_DETAIL_SAMPLE_MAX_ERROR:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_WIDTH:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_HEIGHT:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_TILE_SIZE:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_BORDER_SIZE:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_CS:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_CH:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_BMIN:int = offsetBytes(12, RCConfig);
+        rn_internal static const OFFSET_BMAX:int = offsetBytes(12, RCConfig);
+        rn_internal static const OFFSET_WALKABLE_SLOPE_ANGLE:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_WALKABLE_HEIGHT:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_WALKABLE_CLIMB:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_WALKABLE_RADIUS:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_MAX_EDGE_LEN:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_MAX_SIMPLIFICATION_ERROR:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_MIN_REGION_AREA:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_MERGE_REGION_AREA:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_MAX_VERTS_PER_POLY:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_DETAIL_SAMPLE_DIST:int = offsetBytes(4, RCConfig);
+        rn_internal static const OFFSET_DETAIL_SAMPLE_MAX_ERROR:int = offsetBytes(4, RCConfig);
 
         /** The width of the field along the x-axis. [Limit: >= 0] [Units: vx] */
         public function get width():int

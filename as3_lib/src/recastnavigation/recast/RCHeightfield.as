@@ -3,6 +3,7 @@ package recastnavigation.recast
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
     import recastnavigation.core.utils.copyBytes;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
     import recastnavigation.internal_api.internal_rcAllocHeightfield;
     import recastnavigation.internal_api.internal_rcFreeHeightField;
@@ -15,20 +16,15 @@ package recastnavigation.recast
     public class RCHeightfield extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_WIDTH:int = offset(4);
-        rn_internal static const OFFSET_HEIGHT:int = offset(4);
-        rn_internal static const OFFSET_BMIN:int = offset(12);
-        rn_internal static const OFFSET_BMAX:int = offset(12);
-        rn_internal static const OFFSET_CS:int = offset(4);
-        rn_internal static const OFFSET_CH:int = offset(4);
-        rn_internal static const OFFSET_SPANS:int = offset(4);
-        rn_internal static const OFFSET_POOLS:int = offset(4);
-        rn_internal static const OFFSET_FREELIST:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_WIDTH:int = offsetBytes(4, RCHeightfield);
+        rn_internal static const OFFSET_HEIGHT:int = offsetBytes(4, RCHeightfield);
+        rn_internal static const OFFSET_BMIN:int = offsetBytes(12, RCHeightfield);
+        rn_internal static const OFFSET_BMAX:int = offsetBytes(12, RCHeightfield);
+        rn_internal static const OFFSET_CS:int = offsetBytes(4, RCHeightfield);
+        rn_internal static const OFFSET_CH:int = offsetBytes(4, RCHeightfield);
+        rn_internal static const OFFSET_SPANS:int = offsetBytes(4, RCHeightfield);
+        rn_internal static const OFFSET_POOLS:int = offsetBytes(4, RCHeightfield);
+        rn_internal static const OFFSET_FREELIST:int = offsetBytes(4, RCHeightfield);
 
         /** The width of the heightfield. (Along the x-axis in cell units.) */
         public function get width():int

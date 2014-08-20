@@ -2,6 +2,7 @@ package recastnavigation.detour.crowd
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
     import recastnavigation.internal_api.internal_dtAlloc_dtCrowdAgentParams;
     import recastnavigation.internal_api.internal_dtFree;
@@ -17,22 +18,17 @@ package recastnavigation.detour.crowd
     public class DTCrowdAgentParams extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_RADIUS:int = offset(4);
-        rn_internal static const OFFSET_HEIGHT:int = offset(4);
-        rn_internal static const OFFSET_MAX_ACCELERATION:int = offset(4);
-        rn_internal static const OFFSET_MAX_SPEED:int = offset(4);
-        rn_internal static const OFFSET_COLLISION_QUERY_RANGE:int = offset(4);
-        rn_internal static const OFFSET_PATH_OPTIMIZATION_RANGE:int = offset(4);
-        rn_internal static const OFFSET_SEPARATION_WEIGTH:int = offset(4);
-        rn_internal static const OFFSET_UPDATE_FLAGS:int = offset(1);
-        rn_internal static const OFFSET_OBSTACLE_AVOIDANCE_TYPE:int = offset(1);
-        rn_internal static const OFFSET_QUERY_FILTER_TYPE:int = offset(2);
-        rn_internal static const OFFSET_USER_DATA:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_RADIUS:int = offsetBytes(4, DTCrowdAgentParams);
+        rn_internal static const OFFSET_HEIGHT:int = offsetBytes(4, DTCrowdAgentParams);
+        rn_internal static const OFFSET_MAX_ACCELERATION:int = offsetBytes(4, DTCrowdAgentParams);
+        rn_internal static const OFFSET_MAX_SPEED:int = offsetBytes(4, DTCrowdAgentParams);
+        rn_internal static const OFFSET_COLLISION_QUERY_RANGE:int = offsetBytes(4, DTCrowdAgentParams);
+        rn_internal static const OFFSET_PATH_OPTIMIZATION_RANGE:int = offsetBytes(4, DTCrowdAgentParams);
+        rn_internal static const OFFSET_SEPARATION_WEIGTH:int = offsetBytes(4, DTCrowdAgentParams);
+        rn_internal static const OFFSET_UPDATE_FLAGS:int = offsetBytes(1, DTCrowdAgentParams);
+        rn_internal static const OFFSET_OBSTACLE_AVOIDANCE_TYPE:int = offsetBytes(1, DTCrowdAgentParams);
+        rn_internal static const OFFSET_QUERY_FILTER_TYPE:int = offsetBytes(2, DTCrowdAgentParams);
+        rn_internal static const OFFSET_USER_DATA:int = offsetBytes(4, DTCrowdAgentParams);
 
         /** Agent radius. [Limit: >= 0] */
         public function get radius():Number

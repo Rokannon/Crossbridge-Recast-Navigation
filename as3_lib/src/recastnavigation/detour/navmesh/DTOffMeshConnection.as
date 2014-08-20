@@ -2,6 +2,7 @@ package recastnavigation.detour.navmesh
 {
     import recastnavigation.core.RNBase;
     import recastnavigation.core.rn_internal;
+    import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
 
     use namespace rn_internal;
@@ -14,17 +15,12 @@ package recastnavigation.detour.navmesh
     public class DTOffMeshConnection extends RNBase
     {
         rn_internal static var SIZE:int = 0;
-        rn_internal static const OFFSET_POS:int = offset(4 * 6);
-        rn_internal static const OFFSET_RAD:int = offset(4);
-        rn_internal static const OFFSET_POLY:int = offset(2);
-        rn_internal static const OFFSET_FLAGS:int = offset(1);
-        rn_internal static const OFFSET_SIDE:int = offset(1);
-        rn_internal static const OFFSET_USER_ID:int = offset(4);
-
-        private static function offset(size:int):int
-        {
-            return (SIZE += size) - size;
-        }
+        rn_internal static const OFFSET_POS:int = offsetBytes(4 * 6, DTOffMeshConnection);
+        rn_internal static const OFFSET_RAD:int = offsetBytes(4, DTOffMeshConnection);
+        rn_internal static const OFFSET_POLY:int = offsetBytes(2, DTOffMeshConnection);
+        rn_internal static const OFFSET_FLAGS:int = offsetBytes(1, DTOffMeshConnection);
+        rn_internal static const OFFSET_SIDE:int = offsetBytes(1, DTOffMeshConnection);
+        rn_internal static const OFFSET_USER_ID:int = offsetBytes(4, DTOffMeshConnection);
 
         /** The endpoints of the connection. Component ax. [(ax, ay, az, bx, by, bz)] */
         public function get posAX():Number
