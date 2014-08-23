@@ -1,29 +1,17 @@
 package app
 {
-    import app.data.MeshBounds;
     import app.data.mesh.MeshInfo;
     import app.data.mesh.MeshInfoLibrary;
     import app.model.SoloMesh;
-    import app.view.debugdraw.StarlingGraphicsDUDebugDraw;
-    import app.view.debugdraw.StarlingTextureDUDebugDraw;
 
     import flash.geom.Point;
 
-    import flash.utils.getTimer;
-
-    import recastnavigation.debugutils.duDebugDrawBoxWire;
-    import recastnavigation.debugutils.duDebugDrawTriMesh;
-    import recastnavigation.debugutils.duRGBA;
     import recastnavigation.detour.crowd.DTCrowd;
-    import recastnavigation.detour.crowd.DTCrowdAgent;
     import recastnavigation.detour.navmeshquery.DTQueryFilter;
     import recastnavigation.recast.RCContext;
 
-    import starling.display.Image;
-    import starling.display.Shape;
     import starling.display.Sprite;
     import starling.events.Event;
-    import starling.textures.RenderTexture;
 
     public class TestApplication extends Sprite
     {

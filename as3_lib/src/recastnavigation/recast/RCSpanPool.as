@@ -16,7 +16,8 @@ package recastnavigation.recast
         public static const RC_SPANS_PER_POOL:int = 2048;
         rn_internal static var SIZE:int = 0;
         rn_internal static const OFFSET_NEXT:int = offsetBytes(4, RCSpanPool);
-        rn_internal static const OFFSET_ITEMS:int = offsetBytes(internal_sizeof_rcSpan() * RC_SPANS_PER_POOL, RCSpanPool);
+        rn_internal static const OFFSET_ITEMS:int = offsetBytes(internal_sizeof_rcSpan() * RC_SPANS_PER_POOL,
+                                                                RCSpanPool);
 
         /** The next span pool. Getter. */
         public function getNext(resultSpanPool:RCSpanPool = null):RCSpanPool
