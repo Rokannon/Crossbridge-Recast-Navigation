@@ -136,7 +136,10 @@ package recastnavigation.detour.crowd
             CModule.writeFloat(pos_ptr + 8, posZ);
             var result:int = internal_dtCrowd_addAgent(ptr, pos_ptr, params.ptr);
             CModule.free(pos_ptr);
-            handleUserData(result, params);
+            if (result != -1)
+            {
+                handleUserData(result, params);
+            }
             return result;
         }
 
