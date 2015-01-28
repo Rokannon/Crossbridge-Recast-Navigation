@@ -281,15 +281,15 @@ package recastnavigation.detour.navmeshquery
 
             var center_ptr:int = _helperMem + offset;
             offset += 12;
-            CModule.writeFloat(center_ptr + 0, centerX);
+            CModule.writeFloat(center_ptr, centerX);
             CModule.writeFloat(center_ptr + 4, centerY);
             CModule.writeFloat(center_ptr + 8, centerZ);
 
             var extents_ptr:int = _helperMem + offset;
             offset += 12;
-            CModule.writeFloat(center_ptr + 0, extentsX);
-            CModule.writeFloat(center_ptr + 4, extentsX);
-            CModule.writeFloat(center_ptr + 8, extentsX);
+            CModule.writeFloat(extents_ptr, extentsX);
+            CModule.writeFloat(extents_ptr + 4, extentsY);
+            CModule.writeFloat(extents_ptr + 8, extentsZ);
 
             var polyCount_ptr:int = _helperMem + offset;
             offset += 4;
@@ -298,7 +298,7 @@ package recastnavigation.detour.navmeshquery
             var maxPolys:int = (HELPER_MEM_SIZE - offset) / 4;
 
             var result:int = internal_dtNavMeshQuery_queryPolygons(ptr, center_ptr, extents_ptr, filter.ptr,
-                                                                   polyCount_ptr, polys_ptr, maxPolys);
+                                                                   polys_ptr, polyCount_ptr, maxPolys);
             if (dtStatusSucceed(result))
             {
                 polys.length = CModule.read32(polyCount_ptr);
