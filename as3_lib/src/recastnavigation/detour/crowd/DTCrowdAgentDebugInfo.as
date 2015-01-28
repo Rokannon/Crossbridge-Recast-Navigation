@@ -4,6 +4,7 @@ package recastnavigation.detour.crowd
     import recastnavigation.core.rn_internal;
     import recastnavigation.core.utils.offsetBytes;
     import recastnavigation.internal_api.CModule;
+    import recastnavigation.internal_api.internal_sizeof_dtCrowdAgentDebugInfo;
 
     use namespace rn_internal;
 
@@ -83,6 +84,18 @@ package recastnavigation.detour.crowd
         public function set optEndZ(value:Number):void
         {
             CModule.writeFloat(ptr + OFFSET_OPT_END + 8, value);
+        }
+
+        override public function alloc():Boolean
+        {
+            ptr = CModule.malloc(internal_sizeof_dtCrowdAgentDebugInfo());
+            return ptr != 0;
+        }
+
+        override public function free():void
+        {
+            CModule.free(ptr);
+            ptr = 0;
         }
     }
 }
