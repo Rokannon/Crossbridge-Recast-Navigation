@@ -19,12 +19,15 @@ package recastnavigation.detour.navmesh
         /** The maximum number of user defined area ids. */
         public static const DT_MAX_AREAS:int = 64;
 
+        private var _data_ptr:int = -1;
+        private var _dataSize:int;
+
         /** Initializes the navigation mesh for single tile use. */
         public function init(data:Vector.<int>, flags:int):int
         {
-            var data_ptr:int = mallocInt8Vector(data);
-            var dataSize:int = data.length;
-            var result:int = internal_dtNavMesh_init(ptr, data_ptr, dataSize, flags);
+            _data_ptr = mallocInt8Vector(data);
+            _dataSize = data.length;
+            var result:int = internal_dtNavMesh_init(ptr, _data_ptr, _dataSize, flags);
             return result;
         }
 
@@ -53,6 +56,9 @@ package recastnavigation.detour.navmesh
 
         public override function free():void
         {
+            if (_data_ptr != -1)
+                CModule.free(_data_ptr);
+            _dataSize = 0;
             internal_dtFreeNavMesh(ptr);
             ptr = 0;
         }
