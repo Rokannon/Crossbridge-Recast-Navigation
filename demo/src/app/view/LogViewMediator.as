@@ -29,9 +29,7 @@ package app.view
         {
             _logView.scrollText.text += event.message + "\n";
             if (event.logCategory == RCLogCategory.RC_LOG_ERROR)
-            {
                 _guiModel.showLog = true;
-            }
         }
 
         private function onContextReset(event:CustomRCContextEvent):void

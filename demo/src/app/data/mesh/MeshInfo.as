@@ -77,9 +77,7 @@ package app.data.mesh
         public function getMeshBoundMin(resultBounds:MeshBounds = null):MeshBounds
         {
             if (resultBounds == null)
-            {
                 resultBounds = new MeshBounds();
-            }
             resultBounds.x = Number.POSITIVE_INFINITY;
             resultBounds.y = Number.POSITIVE_INFINITY;
             resultBounds.z = Number.POSITIVE_INFINITY;
@@ -95,9 +93,7 @@ package app.data.mesh
         public function getMeshBoundMax(resultBounds:MeshBounds = null):MeshBounds
         {
             if (resultBounds == null)
-            {
                 resultBounds = new MeshBounds();
-            }
             resultBounds.x = Number.NEGATIVE_INFINITY;
             resultBounds.y = Number.NEGATIVE_INFINITY;
             resultBounds.z = Number.NEGATIVE_INFINITY;

@@ -68,18 +68,12 @@ package recastnavigation.detour.crowd
         public function init(maxAgents:int, maxAgentRadius:Number, nav:DTNavMesh):Boolean
         {
             while (_localvars.length > 0)
-            {
                 CModule.free(_localvars.pop());
-            }
             var result:Boolean = internal_dtCrowd_init(ptr, maxAgents, maxAgentRadius, nav.ptr);
             while (_agents.length < maxAgents)
-            {
                 _agents.push(new DTCrowdAgent());
-            }
             if (_agents.length > maxAgents)
-            {
                 _agents.length = maxAgents;
-            }
             for (var i:int = 0; i < maxAgents; ++i)
             {
                 var agent_ptr:int = CModule.read32(ptr + OFFSET_M_AGENTS) + DTCrowdAgent.SIZE * i;
@@ -105,9 +99,7 @@ package recastnavigation.detour.crowd
                                                    resultParams:DTObstacleAvoidanceParams = null):DTObstacleAvoidanceParams
         {
             if (resultParams == null)
-            {
                 resultParams = new DTObstacleAvoidanceParams();
-            }
             resultParams.ptr = internal_dtCrowd_getObstacleAvoidanceParams(ptr, idx);
             return resultParams;
         }
@@ -137,9 +129,7 @@ package recastnavigation.detour.crowd
             var result:int = internal_dtCrowd_addAgent(ptr, pos_ptr, params.ptr);
             CModule.free(pos_ptr);
             if (result != -1)
-            {
                 handleUserData(result, params);
-            }
             return result;
         }
 
@@ -191,9 +181,7 @@ package recastnavigation.detour.crowd
         public function getActiveAgents(resultAgents:Vector.<DTCrowdAgent> = null):Vector.<DTCrowdAgent>
         {
             if (resultAgents == null)
-            {
                 resultAgents = new Vector.<DTCrowdAgent>();
-            }
             var maxAgents:int = CModule.read32(ptr + OFFSET_M_MAX_AGENTS);
             var agents_ptr_ptr:int = CModule.malloc(4 * maxAgents);
             var numActiveAgents:int = internal_dtCrowd_getActiveAgents(ptr, agents_ptr_ptr, maxAgents);
@@ -223,9 +211,7 @@ package recastnavigation.detour.crowd
         public override function free():void
         {
             while (_localvars.length > 0)
-            {
                 CModule.free(_localvars.pop());
-            }
             internal_dtFreeCrowd(ptr);
             ptr = 0;
         }

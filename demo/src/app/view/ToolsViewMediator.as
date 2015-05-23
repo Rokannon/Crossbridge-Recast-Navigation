@@ -29,9 +29,7 @@ package app.view
             for (var i:int = 0; i < _toolsView.toolStateToggleGroups.length; ++i)
             {
                 if (_toolsView.toolStateToggleGroups[i].isInitialized)
-                {
                     initToolStateToggleGroup(_toolsView.toolStateToggleGroups[i]);
-                }
                 else
                 {
                     _toolsView.toolStateToggleGroups[i].addEventListener(FeathersEventType.INITIALIZE,

@@ -35,13 +35,9 @@ package app.model.tool
         public override function handleClick(x:Number, y:Number, shift:Boolean):void
         {
             if (shift)
-            {
                 endPoint.setTo(x, y);
-            }
             else
-            {
                 startPoint.setTo(x, y);
-            }
             recalc();
         }
 
@@ -94,9 +90,7 @@ package app.model.tool
                     renderPending = true;
                 }
                 if (renderPending)
-                {
                     dispatchEvent(new MeshToolEvent(MeshToolEvent.RENDER));
-                }
             }
         }
 
@@ -104,9 +98,7 @@ package app.model.tool
         {
             super.setToolState(toolState);
             if (_isWake)
-            {
                 recalc();
-            }
         }
     }
 }

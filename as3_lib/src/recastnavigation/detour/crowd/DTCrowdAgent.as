@@ -108,9 +108,7 @@ package recastnavigation.detour.crowd
         public function getNei(index:int, resultNei:DTCrowdNeighbour = null):DTCrowdNeighbour
         {
             if (resultNei == null)
-            {
                 resultNei = new DTCrowdNeighbour();
-            }
             resultNei.ptr = ptr + OFFSET_NEIS + DTCrowdNeighbour.SIZE * index;
             return resultNei;
         }
@@ -306,9 +304,7 @@ package recastnavigation.detour.crowd
         public function getParams(resultParams:DTCrowdAgentParams = null):DTCrowdAgentParams
         {
             if (resultParams == null)
-            {
                 resultParams = new DTCrowdAgentParams();
-            }
             resultParams.ptr = ptr + OFFSET_PARAMS;
             return resultParams;
         }

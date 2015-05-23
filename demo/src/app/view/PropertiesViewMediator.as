@@ -201,9 +201,7 @@ package app.view
         private function updateVoxelsLabel():void
         {
             if (_propertiesView.meshPickerList.selectedIndex == -1)
-            {
                 _propertiesView.voxelsLabel.text = " ";
-            }
             else
             {
                 var meshInfo:MeshInfo = MeshInfoLibrary.instance.meshes[_propertiesView.meshPickerList.selectedIndex];

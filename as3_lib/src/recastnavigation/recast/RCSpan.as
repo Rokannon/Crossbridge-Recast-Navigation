@@ -55,9 +55,7 @@ package recastnavigation.recast
         public function getNext(resultSpan:RCSpan = null):RCSpan
         {
             if (resultSpan == null)
-            {
                 resultSpan = new RCSpan();
-            }
             resultSpan.ptr = CModule.read32(ptr + OFFSET_NEXT);
             return resultSpan;
         }

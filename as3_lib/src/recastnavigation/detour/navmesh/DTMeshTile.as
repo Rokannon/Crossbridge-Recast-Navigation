@@ -56,9 +56,7 @@ package recastnavigation.detour.navmesh
         public function getHeader(resultHeader:DTMeshHeader = null):DTMeshHeader
         {
             if (resultHeader == null)
-            {
                 resultHeader = new DTMeshHeader();
-            }
             resultHeader.ptr = CModule.read32(ptr + OFFSET_HEADER);
             return resultHeader;
         }
@@ -73,9 +71,7 @@ package recastnavigation.detour.navmesh
         public function getPoly(index:int, resultPoly:DTPoly = null):DTPoly
         {
             if (resultPoly == null)
-            {
                 resultPoly = new DTPoly();
-            }
             resultPoly.ptr = CModule.read32(CModule.read32(ptr + OFFSET_POLYS) + DTPoly.SIZE * index);
             return resultPoly;
         }
@@ -102,9 +98,7 @@ package recastnavigation.detour.navmesh
         public function getLink(index:int, resultLink:DTLink = null):DTLink
         {
             if (resultLink == null)
-            {
                 resultLink = new DTLink();
-            }
             resultLink.ptr = CModule.read32(CModule.read32(ptr + OFFSET_LINKS) + DTLink.SIZE * index);
             return resultLink;
         }
@@ -119,9 +113,7 @@ package recastnavigation.detour.navmesh
         public function getDetailMesh(index:int, resultDetailMesh:DTPolyDetail = null):DTPolyDetail
         {
             if (resultDetailMesh == null)
-            {
                 resultDetailMesh = new DTPolyDetail();
-            }
             resultDetailMesh.ptr = CModule.read32(CModule.read32(ptr + OFFSET_DETAIL_MESHES) + DTPolyDetail.SIZE * index);
             return resultDetailMesh;
         }
@@ -161,9 +153,7 @@ package recastnavigation.detour.navmesh
         public function getBVTree(resultTree:DTBVNode = null):DTBVNode
         {
             if (resultTree == null)
-            {
                 resultTree = new DTBVNode();
-            }
             resultTree.ptr = CModule.read32(ptr + OFFSET_BV_TREE);
             return resultTree;
         }
@@ -178,9 +168,7 @@ package recastnavigation.detour.navmesh
         public function getOffMeshCon(index:int, resultCon:DTOffMeshConnection = null):DTOffMeshConnection
         {
             if (resultCon == null)
-            {
                 resultCon = new DTOffMeshConnection();
-            }
             resultCon.ptr = CModule.read32(CModule.read32(ptr + OFFSET_OFF_MESH_CONS) + DTOffMeshConnection.SIZE * index);
             return resultCon;
         }
@@ -230,9 +218,7 @@ package recastnavigation.detour.navmesh
         public function getNext(resultTile:DTMeshTile = null):DTMeshTile
         {
             if (resultTile == null)
-            {
                 resultTile = new DTMeshTile();
-            }
             resultTile.ptr = CModule.read32(ptr + OFFSET_NEXT);
             return resultTile;
         }

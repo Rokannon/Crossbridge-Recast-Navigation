@@ -41,9 +41,7 @@ package app.rccontext
         protected override function doResetTimers():void
         {
             for (var i:int = _accumulatedTimes.length - 1; i >= 0; --i)
-            {
                 _accumulatedTimes[i] = 0;
-            }
         }
 
         protected override function doStartTimer(timerLabel:int):void

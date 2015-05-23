@@ -26,9 +26,7 @@ package app.model
         public function sceneToModel(point:Point, resultPoint:Point = null):Point
         {
             if (resultPoint == null)
-            {
                 resultPoint = new Point();
-            }
             var dx:Number = _xMax - _xMin;
             var dy:Number = _yMax - _yMin;
             if (dx < dy)
@@ -47,9 +45,7 @@ package app.model
         public function modelToScene(point:Point, resultPoint:Point = null):Point
         {
             if (resultPoint == null)
-            {
                 resultPoint = new Point();
-            }
             var dx:Number = _xMax - _xMin;
             var dy:Number = _yMax - _yMin;
             if (dx < dy)

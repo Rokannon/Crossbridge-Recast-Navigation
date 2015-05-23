@@ -23,9 +23,7 @@ package recastnavigation.recast
         public function getNext(resultSpanPool:RCSpanPool = null):RCSpanPool
         {
             if (resultSpanPool == null)
-            {
                 resultSpanPool = new RCSpanPool();
-            }
             resultSpanPool.ptr = CModule.read32(ptr + OFFSET_NEXT);
             return resultSpanPool;
         }
@@ -40,9 +38,7 @@ package recastnavigation.recast
         public function getItem(index:int, resultSpan:RCSpan = null):RCSpan
         {
             if (resultSpan == null)
-            {
                 resultSpan = new RCSpan();
-            }
             resultSpan.ptr = CModule.read32(ptr + OFFSET_ITEMS + RCSpan.SIZE * index);
             return resultSpan;
         }

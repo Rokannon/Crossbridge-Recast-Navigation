@@ -21,9 +21,7 @@ package recastnavigation.recast
         public function getLayer(index:int, resultLayer:RCHeightfieldLayer = null):RCHeightfieldLayer
         {
             if (resultLayer == null)
-            {
                 resultLayer = new RCHeightfieldLayer();
-            }
             resultLayer.ptr = CModule.read32(ptr + OFFSET_LAYERS) + RCHeightfieldLayer.SIZE * index;
             return resultLayer;
         }

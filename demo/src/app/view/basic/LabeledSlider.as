@@ -22,9 +22,7 @@ package app.view.basic
         public override function dispose():void
         {
             if (isInitialized)
-            {
                 slider.removeEventListener(Event.CHANGE, slider_changeHandler);
-            }
             super.dispose();
         }
 

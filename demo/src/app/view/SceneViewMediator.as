@@ -50,17 +50,13 @@ package app.view
         private function onKeyDown(event:KeyboardEvent):void
         {
             if (event.keyCode == Keyboard.SHIFT)
-            {
                 _isShiftDown = true;
-            }
         }
 
         private function onKeyUp(event:KeyboardEvent):void
         {
             if (event.keyCode == Keyboard.SHIFT)
-            {
                 _isShiftDown = false;
-            }
         }
 
         private function onMeshSelected(event:SoloMeshEvent):void
@@ -104,9 +100,7 @@ package app.view
                         {
                             touch.getLocation(_sceneView, HELPER_POINT_1);
                             if (_soloMesh.meshInfo != null)
-                            {
                                 _soloMesh.coordSpace.sceneToModel(HELPER_POINT_1, HELPER_POINT_2);
-                            }
                             _soloMesh.handleClick(HELPER_POINT_2.x, HELPER_POINT_2.y, _isShiftDown);
                         }
                         _isMouseDown = false;

@@ -64,9 +64,7 @@ package recastnavigation.detour.navmeshquery
             {
                 polys.length = CModule.read32(pathCount_ptr);
                 for (var i:int = polys.length - 1; i >= 0; --i)
-                {
                     polys[i] = CModule.read32(path_ptr + 4 * i);
-                }
             }
             return result;
         }
@@ -97,9 +95,7 @@ package recastnavigation.detour.navmeshquery
             var pathSize:int = path.length;
             offset += 4 * pathSize;
             for (i = 0; i < pathSize; ++i)
-            {
                 CModule.write32(path_ptr + 4 * i, path[i]);
-            }
 
             var straightPathCount_ptr:int = _helperMem + offset;
             offset += 4;
@@ -227,9 +223,7 @@ package recastnavigation.detour.navmeshquery
             {
                 polys.length = CModule.read32(pathCount_ptr);
                 for (var i:int = polys.length - 1; i >= 0; --i)
-                {
                     polys[i] = CModule.read32(path_ptr + 4 * i);
-                }
             }
             return result;
         }
@@ -247,9 +241,7 @@ package recastnavigation.detour.navmeshquery
             var existing_ptr:int = _helperMem + offset;
             var existingSize:int = existing.length;
             for (i = 0; i < existingSize; ++i)
-            {
                 CModule.write32(_helperMem + 4 * i, existing[i]);
-            }
             offset += 4 * existingSize;
 
             var pathCount_ptr:int = _helperMem + offset;
@@ -264,9 +256,7 @@ package recastnavigation.detour.navmeshquery
             {
                 polys.length = CModule.read32(pathCount_ptr);
                 for (i = polys.length - 1; i >= 0; --i)
-                {
                     polys[i] = CModule.read32(path_ptr + 4 * i);
-                }
             }
             return result;
         }
@@ -303,9 +293,7 @@ package recastnavigation.detour.navmeshquery
             {
                 polys.length = CModule.read32(polyCount_ptr);
                 for (var i:int = polys.length - 1; i >= 0; --i)
-                {
                     polys[i] = CModule.read32(polys_ptr + 4 * i);
-                }
             }
             return result;
         }

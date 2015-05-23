@@ -30,9 +30,7 @@ package recastnavigation.recast.contour
         public function getCont(index:int, resultContour:RCContour = null):RCContour
         {
             if (resultContour == null)
-            {
                 resultContour = new RCContour();
-            }
             resultContour.ptr = CModule.read32(ptr + OFFSET_CONTS) + RCContour.SIZE * index;
             return resultContour;
         }

@@ -73,9 +73,7 @@ package app.model.tool
             {
                 var agent:DTCrowdAgent = crowd.getAgent(i);
                 if (agent.active)
-                {
                     crowd.requestMoveTarget(i, _targetRef, targetPoint.x, 0, targetPoint.y);
-                }
             }
         }
 
@@ -99,13 +97,9 @@ package app.model.tool
 
                 var idx:int = crowd.addAgent(x, 0.1, y, ap);
                 if (idx == -1)
-                {
                     trace("Add Agent Error");
-                }
                 else
-                {
 //                    crowd.requestMoveTarget(idx, _targetRef, targetPoint.x, 0, targetPoint.y);
-                }
 
                 updateTarget();
                 ap.free();

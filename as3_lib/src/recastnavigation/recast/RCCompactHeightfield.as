@@ -210,9 +210,7 @@ package recastnavigation.recast
         public function getCell(index:int, resultCompactCell:RCCompactCell = null):RCCompactCell
         {
             if (resultCompactCell == null)
-            {
                 resultCompactCell = new RCCompactCell();
-            }
             resultCompactCell.ptr = CModule.read32(ptr + OFFSET_CELLS) + RCCompactCell.SIZE * index;
             return resultCompactCell;
         }
@@ -227,9 +225,7 @@ package recastnavigation.recast
         public function getSpan(index:int, resultCompactSpan:RCCompactSpan = null):RCCompactSpan
         {
             if (resultCompactSpan == null)
-            {
                 resultCompactSpan = new RCCompactSpan();
-            }
             resultCompactSpan.ptr = CModule.read32(ptr + OFFSET_SPANS) + RCCompactSpan.SIZE * index;
             return resultCompactSpan;
         }

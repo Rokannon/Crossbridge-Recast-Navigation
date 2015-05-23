@@ -37,13 +37,9 @@ package app.view
         private function onToolChanged(event:SoloMeshEvent):void
         {
             if (_soloMesh.currentToolType == ToolType.TOOL_TESTER)
-            {
                 _guiView.toolCaptionLabel.text = "Click/SHIFT+Click to set Start/End points.";
-            }
             else
-            {
                 _guiView.toolCaptionLabel.text = "";
-            }
         }
 
         private function onNoToolSelected(event:SoloMeshEvent):void
@@ -84,13 +80,9 @@ package app.view
         private function updateLog():void
         {
             if (_guiModel.showLog)
-            {
                 _guiView.showLog();
-            }
             else
-            {
                 _guiView.hideLog();
-            }
         }
     }
 }

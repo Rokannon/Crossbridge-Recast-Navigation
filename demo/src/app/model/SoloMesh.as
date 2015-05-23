@@ -127,9 +127,7 @@ package app.model
         {
             _context = context;
             for each (var meshTool:MeshTool in meshTools)
-            {
                 meshTool.connect(this);
-            }
         }
 
         public function setMesh(meshInfo:MeshInfo):void
@@ -147,9 +145,7 @@ package app.model
             if (_navMesh != null)
             {
                 if (_currentToolType != -1)
-                {
                     meshTools[_currentToolType].sleep();
-                }
                 meshTools[toolType].wake();
             }
             _currentToolType = toolType;
@@ -359,9 +355,7 @@ package app.model
             {
                 var navData:Vector.<int> = new Vector.<int>();
                 for (var i:int = _pmesh.npolys - 1; i >= 0; --i)
-                {
                     _pmesh.setFlag(i, 1);
-                }
 
                 var params:DTNavMeshCreateParams = new DTNavMeshCreateParams();
                 params.alloc();
@@ -415,9 +409,7 @@ package app.model
 
             dispatchEvent(new SoloMeshEvent(SoloMeshEvent.BUILD_COMPLETE));
             if (_currentToolType != -1)
-            {
                 meshTools[_currentToolType].wake();
-            }
 
             params.free();
         }
@@ -464,9 +456,7 @@ package app.model
                 _navMesh = null;
             }
             if (_currentToolType != -1)
-            {
                 meshTools[_currentToolType].sleep();
-            }
         }
 
         [Inline]

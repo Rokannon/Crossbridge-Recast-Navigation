@@ -35,9 +35,7 @@ package recastnavigation.detour.navmesh
         public function getTileAt(x:int, y:int, layer:int, resultTile:DTMeshTile = null):DTMeshTile
         {
             if (resultTile == null)
-            {
                 resultTile = new DTMeshTile();
-            }
             resultTile.ptr = internal_dtNavMesh_getTileAt(ptr, x, y, layer);
             return resultTile;
         }

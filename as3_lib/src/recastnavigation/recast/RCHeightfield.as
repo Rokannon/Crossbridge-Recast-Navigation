@@ -140,9 +140,7 @@ package recastnavigation.recast
         public function getSpan(index:int, resultSpan:RCSpan = null):RCSpan
         {
             if (resultSpan == null)
-            {
                 resultSpan = new RCSpan();
-            }
             resultSpan.ptr = CModule.read32(CModule.read32(ptr + OFFSET_SPANS) + RCSpan.SIZE * index);
             return resultSpan;
         }
@@ -157,9 +155,7 @@ package recastnavigation.recast
         public function getPools(resultSpanPool:RCSpanPool = null):RCSpanPool
         {
             if (resultSpanPool == null)
-            {
                 resultSpanPool = new RCSpanPool();
-            }
             resultSpanPool.ptr = CModule.read32(ptr + OFFSET_POOLS);
             return resultSpanPool;
         }
@@ -174,9 +170,7 @@ package recastnavigation.recast
         public function getFreelist(resultSpan:RCSpan = null):RCSpan
         {
             if (resultSpan == null)
-            {
                 resultSpan = new RCSpan();
-            }
             resultSpan.ptr = CModule.read32(ptr + OFFSET_FREELIST);
             return resultSpan;
         }

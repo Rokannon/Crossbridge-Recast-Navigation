@@ -150,16 +150,12 @@ package app.view.tool
                     _toolView.addChild(polyView);
                     HELPER_COLOR.copyFrom(POLY_COL);
                     if (_soloMesh.query.polys.indexOf(polyRef) != -1)
-                    {
                         HELPER_COLOR.mutliply(0.7);
-                    }
                     polyView.material.color = HELPER_COLOR.getFlashColor();
                     polyView.material.alpha = HELPER_COLOR.getFlashAlpha();
                 }
                 else
-                {
                     _toolView.removeChild(polyView);
-                }
             }
         }
 

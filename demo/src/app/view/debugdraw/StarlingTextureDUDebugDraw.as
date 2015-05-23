@@ -79,9 +79,7 @@ package app.view.debugdraw
             }
 
             for (var i:int = _currentVerts.length - 1; i >= 0; --i)
-            {
                 releaseVertexData(_currentVerts[i]);
-            }
             _currentVerts.length = 0;
         }
 
@@ -115,9 +113,7 @@ package app.view.debugdraw
                 }
             }
             if (vertsCount != 0)
-            {
                 flush();
-            }
         }
 
         [Inline]
@@ -141,9 +137,7 @@ package app.view.debugdraw
                 }
             }
             if (vertsCount != 0)
-            {
                 flush();
-            }
         }
 
         [Inline]
@@ -187,9 +181,7 @@ package app.view.debugdraw
                 }
             }
             if (vertsCount != 0)
-            {
                 flush();
-            }
         }
 
         [Inline]

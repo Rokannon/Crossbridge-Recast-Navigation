@@ -49,9 +49,7 @@ package app
             for (var i:int = crowd.getAgentCount() - 1; i >= 0; --i)
             {
                 if (crowd.getAgent(i).active)
-                {
                     trace("active");
-                }
             }
         }
     }
