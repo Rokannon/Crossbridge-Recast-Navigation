@@ -17,9 +17,7 @@ package recastnavigation.recast.meshdetail
         var nmeshes:int = dmeshes.length;
         var dmeshes_ptr:int = CModule.malloc(RCPolyMeshDetail.SIZE * nmeshes);
         for (var i:int = 0; i < nmeshes; ++i)
-        {
             copyBytes(dmeshes[i].ptr, dmeshes_ptr + RCPolyMeshDetail.SIZE * i, RCPolyMeshDetail.SIZE);
-        }
         var res:Boolean = internal_rcMergePolyMeshDetails(ctx.ptr, dmeshes_ptr, nmeshes, dmesh.ptr);
         CModule.free(dmeshes_ptr);
         return res;

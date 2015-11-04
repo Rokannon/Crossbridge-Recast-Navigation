@@ -13,9 +13,7 @@ package recastnavigation.detour.navmeshbuilder
         var dataSize:int = data.length;
         var result:Boolean = internal_dtNavMeshDataSwapEndian(data_ptr, dataSize);
         for (var i:int = 0; i < dataSize; ++i)
-        {
             data[i] = CModule.read8(data_ptr + 1 * i);
-        }
         CModule.free(data_ptr);
         return result;
     }

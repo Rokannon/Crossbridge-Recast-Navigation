@@ -6,9 +6,7 @@ package recastnavigation.core.utils
     {
         var ptr:int = CModule.malloc(2 * vector.length);
         for (var i:int = vector.length - 1; i >= 0; --i)
-        {
             CModule.write16(ptr + 2 * i, vector[i]);
-        }
         return ptr;
     }
 }

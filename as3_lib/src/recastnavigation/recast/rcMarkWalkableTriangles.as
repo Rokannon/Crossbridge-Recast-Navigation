@@ -25,16 +25,12 @@ package recastnavigation.recast
         resultAreas.fixed = true;
         var areas_ptr:int = CModule.malloc(nt);
         for (i = 0; i < nt; ++i)
-        {
             CModule.write8(areas_ptr + i, 0);
-        }
         internal_rcMarkWalkableTriangles(ctx.ptr, walkableSlopeAngle, verts_ptr, nv, tris_ptr, nt, areas_ptr);
         CModule.free(verts_ptr);
         CModule.free(tris_ptr);
         for (i = 0; i < nt; ++i)
-        {
             resultAreas[i] = CModule.read8(areas_ptr + i);
-        }
         CModule.free(areas_ptr);
     }
 }
